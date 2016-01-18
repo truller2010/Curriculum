@@ -96,17 +96,22 @@
     <Compile Include="Authentication\AuthenticationUsers\AuthenticationUsers.cs" />
     <Compile Include="Authentication\AuthenticationUsers\LockCode.cs" />
     <Compile Include="Authentication\Enums\Enums.cs" />
-    <Compile Include="BlogArchives\BlogArchives.cs" />
-    <Compile Include="BlogCategory\BlogCategory.cs" />
-    <Compile Include="BlogPostTagMap\BlogPostTagMap.cs" />
-    <Compile Include="BlogPost\BlogPost.cs" />
-    <Compile Include="BlogTag\BlogTag.cs" />
+    <Compile Include="Courses\Courses.cs" />
+    <Compile Include="Educations\Educations.cs" />
+    <Compile Include="ProfilesSkillsCode\ProfilesSkillsCode.cs" />
+    <Compile Include="ProfilesSkillsProfessionals\ProfilesSkillsProfessionals.cs" />
+    <Compile Include="ProfilesSkillsSoftware\ProfilesSkillsSoftware.cs" />
+    <Compile Include="Profiles\Profiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Revision\AppRevisionEntity.cs" />
     <Compile Include="Revision\AppRevisionListener.cs" />
+    <Compile Include="SkillsCode\SkillsCode.cs" />
+    <Compile Include="SkillsPercentages\SkillsPercentages.cs" />
+    <Compile Include="SkillsProfessionals\SkillsProfessionals.cs" />
+    <Compile Include="SkillsSoftware\SkillsSoftware.cs" />
+    <Compile Include="WorkExperiences\WorkExperiences.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
