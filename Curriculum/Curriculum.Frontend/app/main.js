@@ -85,8 +85,6 @@ define(['plugins/dialog', 'durandal/system', 'durandal/app', 'durandal/viewLocat
             return oldShow.call(dialog, obj, data, context || 'bootstrap');
         };
 
-        // setup knockout
-        // custom binding handlers
         ko.bindingHandlers.fileUpload = fileUploadBinding;
         ko.bindingHandlers.updateFileUpload = updateFileUploadBinding;
         ko.bindingHandlers.select2 = select2Binding;
@@ -123,31 +121,8 @@ define(['plugins/dialog', 'durandal/system', 'durandal/app', 'durandal/viewLocat
                     $(view).i18n();
                 };
 
-                //Show the app by setting the root view model for our application with a transition.
-
-                /*authenticationBroker.setup().done(
-                  function refreshSecurityContext(data) {
-                      if (data.identity.isAuthenticated === undefined || securityContext.isAuthenticated() === undefined || securityContext.isAuthenticated() === false) {
-                          securityContext.clear();
-                          app.setRoot('viewmodels/Authentication/login', 'entrance');
-                      }
-                      else {
-                          if (securityContext.isAaa() || securityContext.isAla() || securityContext.isDarh() || securityContext.isDgcrh()) {
-                              app.setRoot("viewmodels/shell12", "entrance");
-                          }
-                          else {
-                              app.setRoot("viewmodels/shell", "entrance");
-                          }
-                      }
-                  });*/
-
                 app.setRoot("viewmodels/shell", "entrance");
 
-                // override bad route behavior to write to 
-                // console log and show error toast
-                router.handleInvalidRoute = function (route, params) {
-                    logger.logError('No route found', route, 'main', true);
-                };
             });
 
             //var userLang = i18n.detectLanguage();

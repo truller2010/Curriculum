@@ -13,38 +13,12 @@
 
             routes = [
                 { route: '', title: 'Inicio', moduleId: 'viewmodels/welcome', nav: true },
-                { route: 'durandal', title: 'Durandal', moduleId: 'viewmodels/Durandal/durandal', nav: true, hash: '#durandal' },
-                { route: 'sharepoint', title: 'Sharepoint', moduleId: 'viewmodels/Sharepoin/Sharepoint', nav: true, hash: '#sharepoint' },
-                { route: 'csharp', title: 'C# .NET', moduleId: 'viewmodels/Csharp/Csharp', nav: true, hash: '#csharp' },
-                { route: 'about', title: 'Sobre mi', moduleId: 'viewmodels/About/About', nav: true, hash: '#about' },
-                { route: 'contact', title: 'Contacto', moduleId: 'viewmodels/Contact/Contact', nav: true, hash: '#contact' },
-                { route: 'posts', title: 'Posts', moduleId: 'viewmodels/Posts/Posts', nav: true, hash: '#posts' },
-                { route: 'showPost(/:id)(/:tag)', title: 'Posts', moduleId: 'viewmodels/Posts/showPost', nav: true, hash: '#showPost(/:id)(/:tag)' },
-                { route: 'tag(/:tag)', title: 'Posts', moduleId: 'viewmodels/tag/tag', nav: true, hash: '#tag(/:tag)' },
-                { route: 'category(/:cat)', title: 'Posts', moduleId: 'viewmodels/category/category', nav: true, hash: '#category(/:cat)' },
-                { route: 'archives(/:year)(/:month)', title: 'Posts', moduleId: 'viewmodels/archives/archives', nav: true, hash: '#archives(/:year)(/:month)' },
                 { route: '404', title: 'Posts', moduleId: 'viewmodels/404', nav: true, hash: '#404' },
             ];
 
             return router.map(routes).buildNavigationModel().activate();
         },
         attached: function () {
-            /*  Table of Contents 
-01. MENU ACTIVATION
-02. GALLERY JAVASCRIPT
-03. FITVIDES RESPONSIVE VIDEOS
-04. MOBILE SELECT MENU
-05. prettyPhoto Activation
-06. Form Validation
-07. Light Shortcodes
-08. Backstretch
-09. SCROLLTOFIXED
-10. Show/Hide Sidebar
-11. easyPieChart
-12. Skills Bar Animations
-13. Isotope
-*/
-
 
             jQuery(document).ready(function ($) {
 

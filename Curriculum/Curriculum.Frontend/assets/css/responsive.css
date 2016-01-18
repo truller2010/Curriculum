@@ -12,7 +12,7 @@
 =============================================== 01. RETINA STYLES ===============================================
 */
 @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
-	body nav select {background:#FAFAFA url(../images/select-arrow%402x.png) center right no-repeat; background-size:contain;}
+	body nav select {background:#FAFAFA url(../images/select-arrow2x.png) center right no-repeat; background-size:contain;}
 }
 /* IE7-IE8 Fixes*/
 .lt-ie9	body nav select {background: url(../images/select-arrow.png) center right no-repeat;}
