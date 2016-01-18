@@ -516,7 +516,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7051</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:44132/</IISUrl>
+          <IISUrl>http://localhost:1973</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
