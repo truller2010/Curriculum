@@ -3,6 +3,7 @@ using Curriculum.Backend.Models.ProfilesSkillsCode;
 using Curriculum.Backend.Models.ProfilesSkillsProfessionals;
 using Curriculum.Backend.Models.ProfilesSkillsSoftware;
 using FluentNHibernate.Mapping;
+using ProfilesSkillsSoftwareResponse = Curriculum.Backend.Mapping.ProfilesSkillsSoftware.ProfilesSkillsSoftwareResponse;
 
 namespace Curriculum.Backend.Models.SkillsPercentages {
     

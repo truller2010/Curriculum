@@ -390,11 +390,17 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\Authentication\ApplicationUser.cs" />
-    <Compile Include="Mapping\BlogArchives\BlogArchives.cs" />
-    <Compile Include="Mapping\BlogCategory\BlogCategoryProfile.cs" />
-    <Compile Include="Mapping\BlogPostTagMap\BlogPostTagMap.cs" />
-    <Compile Include="Mapping\BlogPost\BlogPostProfile.cs" />
-    <Compile Include="Mapping\BlogTag\BlogTagProfile.cs" />
+    <Compile Include="Mapping\Courses\Courses.cs" />
+    <Compile Include="Mapping\Education\Educations.cs" />
+    <Compile Include="Mapping\ProfilesSkillsCode\Profilesskillscode.cs" />
+    <Compile Include="Mapping\ProfilesSkillsProfessionals\Profilesskillsprofessionals.cs" />
+    <Compile Include="Mapping\ProfilesSkillsSoftware\ProfilesSkillsSoftware.cs" />
+    <Compile Include="Mapping\Profiles\Profiles.cs" />
+    <Compile Include="Mapping\SkillsCode\SkillsCode.cs" />
+    <Compile Include="Mapping\SkillsPercentages\Skillspercentages.cs" />
+    <Compile Include="Mapping\SkillsProfessionals\SkillsProfessionals.cs" />
+    <Compile Include="Mapping\SkillsSoftware\SkillsSoftware.cs" />
+    <Compile Include="Mapping\WorkExperiences\WorkExperiences.cs" />
     <Compile Include="Models\Authentication\AuthenticationUsers\AuthenticationUsers.cs" />
     <Compile Include="Models\Authentication\Enums\Enums.cs" />
     <Compile Include="Models\Courses\Courses.cs" />

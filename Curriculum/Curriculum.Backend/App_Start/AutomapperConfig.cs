@@ -33,11 +33,19 @@
 
 using AutoMapper;
 using Curriculum.Backend.Mapping.Authentication;
-using Curriculum.Backend.Mapping.BlogArchives;
-using Curriculum.Backend.Mapping.BlogCategory;
-using Curriculum.Backend.Mapping.BlogPost;
-using Curriculum.Backend.Mapping.BlogPostTagMap;
-using Curriculum.Backend.Mapping.BlogTag;
+using Curriculum.Backend.Mapping.Courses;
+using Curriculum.Backend.Mapping.Education;
+using Curriculum.Backend.Mapping.Profiles;
+using Curriculum.Backend.Mapping.ProfilesSkillsCode;
+using Curriculum.Backend.Mapping.ProfilesSkillsProfessionals;
+using Curriculum.Backend.Mapping.ProfilesSkillsSoftware;
+using Curriculum.Backend.Mapping.SkillsCode;
+using Curriculum.Backend.Mapping.SkillsPercentages;
+using Curriculum.Backend.Mapping.SkillsProfessionals;
+using Curriculum.Backend.Mapping.SkillsSoftware;
+using Curriculum.Backend.Mapping.WorkExperiences;
+
+
 
 #endregion
 
@@ -51,11 +59,17 @@ namespace Curriculum.Backend
             {
                 cfg.AddProfile<AuthenticationUsersProfile>();
 
-                cfg.AddProfile<BlogPostProfile>();
-                cfg.AddProfile<BlogCategoryProfile>();
-                cfg.AddProfile<BlogTagProfile>();
-                cfg.AddProfile<BlogPostTagMapProfile>();
-                cfg.AddProfile<BlogArchivesProfile>();
+                cfg.AddProfile<CoursesProfile>();
+                cfg.AddProfile<EducationsProfile>();
+                cfg.AddProfile<ProfilesProfile>();
+                cfg.AddProfile<ProfilesSkillsCodeProfile>();
+                cfg.AddProfile<ProfilesSkillsProfessionalsProfile>();
+                cfg.AddProfile<ProfilesSkillsSoftwareProfile>();
+                cfg.AddProfile<SkillsCodeProfile>();
+                cfg.AddProfile<SkillsPercentagesProfile>();
+                cfg.AddProfile<SkillsProfessionalsProfile>();
+                cfg.AddProfile<SkillsSoftwareProfile>();
+                cfg.AddProfile<WorkExperiencesProfile>();
             });
         }
     }

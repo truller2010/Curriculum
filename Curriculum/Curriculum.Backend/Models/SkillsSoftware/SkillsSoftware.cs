@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Curriculum.Backend.Models.ProfilesSkillsSoftware;
 using FluentNHibernate.Mapping;
+using ProfilesSkillsSoftwareResponse = Curriculum.Backend.Mapping.ProfilesSkillsSoftware.ProfilesSkillsSoftwareResponse;
 
 namespace Curriculum.Backend.Models.SkillsSoftware {
     
