@@ -1,0 +1,47 @@
+﻿<!-- Page Title
+====================================-->
+<div id="tf-page-header" class="text-center">
+    <div class="container">
+        <h5><em>posted on april</em></h5>
+        <hr>
+        <h2 class="text-uppercase">Archives</h2>
+    </div>
+</div>
+<!-- Blog Body
+====================================-->
+<div id="tf-content" class="category">
+    <div class="container">
+        <!-- Container -->
+        <div class="row">
+            <!-- Row -->
+            <div class="col-md-10 col-md-offset-1">
+                <div data-bind="foreach: currentPage().content">
+                    <!-- Left Content for Blog Posts -->
+                    <div class="post-block">
+                        <!-- Post #1-->
+                        <div class="post-detail">
+                            <a data-bind="attr: {href: '#showPost/'+$data.id+'/'+$data.title}" class="meta-date"><span class="bolder" data-bind="text: $data.day"></span><label data-bind="text: $data.month"></label></a>
+                            <h2>
+                                <a data-bind="attr: {href: '#showPost/'+$data.id+'/'+$data.title}"><span data-bind="text: $data.title"></span></a>
+                            </h2> <!-- Post Title-->
+                            <div class="img-wrap">
+                                <!-- Image Wrap -->
+                                <div class="metas">
+                                    <a data-bind="attr: {href: '#category/'+$data.category.name}" class="meta-cat"><span data-bind="text: $data.category.name"></span></a>
+                                    <a data-bind="attr: {href: '#showPost/'+$data.id+'/'+$data.title}" class="meta-author"><span>Read more</span></a>
+                                </div>
+                                <!-- ko if: ($data.photo !== null) -->
+                                <img data-bind="attr: {src: 'data:image/jpeg;base64,' + $data.photo}" class="img-responsive" alt="image">
+                                <!-- /ko -->
+                                <!-- ko ifnot: ($data.photo !== null) -->
+                                <img src="assets/img/blog/kotijko logo.png" class="img-responsive" alt="image">
+                                <!-- /ko -->
+                            </div>
+                            <p class="shortDescription" data-bind="html: $data.shortDescription"></p>
+                        </div>
+                    </div>
+                </div><!-- end Post #1-->
+            </div><!-- End of Posts/Blogrol -->
+        </div><!-- end Row -->
+    </div><!-- End Container -->
+</div>

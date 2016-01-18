@@ -1,0 +1,28 @@
+﻿{
+  "Title": "El blog de Kotiko",
+  "Errors": {
+    "AuthenticationError": "El nombre de usuario o contraseña no es correcto",
+    "FATAL_ALERT_TEXT": "¡Oops! Ha habido un problema, técnico. Gracias por encontrarlo, ponte en contacto con nosotros o vuelve a intentarlo un poco más tarde",
+    "HibernateOptimisticLockingFailureException": "¡Opps! Se te han adelantado, alguien ha modificado estos datos antes que tú, por favor recarga la página y vuelve a intentarlo",
+    "AccessDeniedException": "¡Oops! No tienes permiso para acceder a esa funcionalidad. Si cree que no se trata de un error, vuelva a autenticarse (sesión caducada)",
+    "BadCredentialsException": "¡Oops! Tu correo electrónico o tu contraseña no son válidos",
+    "SessionAuthenticationException": "¡Oops! Tu sesión ha caducado",
+    "Exception": "¡Oops! Se ha producido un error",
+    "UndeclaredThrowableException": "¡Oops! Se ha producido un error. No se han podido obtener los datos."
+  },
+  "Buttons": {
+    "Back": "Anterior",
+    "Next": "Siguiente"
+  },
+  "Pages": {
+    "Welcome": {
+      "Home": "Inicio",
+      "Posts": "Comentarios",
+      "AboutMe": "Sobre me",
+      "Contact": "Contact",
+      "Rights": "Todos los derechos reservados.",
+      "ReadMore": "Leer más ..."
+    }
+  }
+
+}

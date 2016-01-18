@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" default-autowire="constructor">
+
+  <object id="AuthenticationClientRepository" type="Curriculum.Repository.Authentication.AuthenticationClientRepository.AuthenticationClientRepository, Curriculum.Repository">
+    <property name="SessionFactory" ref="NHibernateSessionFactory" />
+  </object>
+  
+  <object id="AuthenticationUsersRepository" type="Curriculum.Repository.Authentication.AuthenticationUsersRepository.AuthenticationUsersRepository, Curriculum.Repository">
+    <property name="SessionFactory" ref="NHibernateSessionFactory" />
+  </object>
+
+  <object id="AuthenticationRefreshTokenRepository" type="Curriculum.Repository.Authentication.AuthenticationRefreshTokenRepository.AuthenticationRefreshTokenRepository, Curriculum.Repository">
+    <property name="SessionFactory" ref="NHibernateSessionFactory" />
+  </object>
+
+  <object id="BlogPostRepository" type="Curriculum.Repository.BlogPost.BlogPostRepository, Curriculum.Repository">
+    <property name="SessionFactory" ref="NHibernateSessionFactory" />
+  </object>
+
+  <object id="BlogCategoryRepository" type="Curriculum.Repository.BlogCategory.BlogCategoryRepository, Curriculum.Repository">
+    <property name="SessionFactory" ref="NHibernateSessionFactory" />
+  </object>
+
+  <object id="BlogTagRepository" type="Curriculum.Repository.BlogTag.BlogTagRepository, Curriculum.Repository">
+    <property name="SessionFactory" ref="NHibernateSessionFactory" />
+  </object>
+  
+</objects>

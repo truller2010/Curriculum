@@ -1,0 +1,94 @@
+﻿<div class="col-md-4">
+    <!-- Right content for sidebar and widget area-->
+    <div class="sidebar">
+        <!-- sidebar -->
+        <div class="widget search">
+            <!-- Search Widget -->
+            <div class="widget-wrap">
+                <form id="form_get_usuarios" class="" role="form" data-bind="submit: search">
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="name" name="texto"
+                               data-bind="attr: { placeholder: i18n.t('search.for')},value: nextFilter().texto">
+
+                        <span class="input-group-btn">
+
+                            <button class="btn btn-default" type="button" data-bind="click: clearFilter">
+                                <i class="fa fa-times"></i> <span data-i18n="button.clean" class="tipolabel"></span>
+                            </button>
+
+                            <button class="btn btn-default" type="submit">
+                                <i class="fa fa-search"></i> <span data-i18n="button.search" class="tipolabel"></span>
+                            </button>
+                        </span>
+
+                    </div><!-- /input-group -->
+                </form>
+            </div>
+        </div>
+        <div class="widget social">
+            <!-- Social Media Connection -->
+            <h4>Follow Us</h4>
+            <div class="widget-wrap">
+                <ul class="list-inline social">
+                    <!-- Social Share -->
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="widget recent">
+            <!-- Recent Post Widget -->
+            <h4>Recent Posts</h4>
+            <div class="widget-wrap">
+                <div class="thumb-post">
+                    <!-- Thumbnail Post #1 -->
+                    <a href="#"><img src="assets/img/blog/thumb01.jpg" class="img-responsive" alt="Image"></a>
+                    <h3 class="media-heading"><a href="#">Become The Best Fashion Designer</a></h3>
+                </div>
+                <div class="thumb-post">
+                    <!-- Thumbnail Post #2 -->
+                    <a href="#"><img src="assets/img/blog/thumb02.jpg" class="img-responsive" alt="Image"></a>
+                    <h3 class="media-heading"><a href="#">A Leader SHould be Willing To Take a Responsibility</a></h3>
+                </div>
+                <div class="thumb-post">
+                    <!-- Thumbnail Post #3 -->
+                    <a href="#"><img src="assets/img/blog/thumb03.jpg" class="img-responsive" alt="Image"></a>
+                    <h3 class="media-heading"><a href="#">A Guide To Taking Your Dreams</a></h3>
+                </div>
+            </div>
+        </div>
+        <div class="widget category">
+            <!-- Social Media Connection -->
+            <h4>Categories</h4>
+            <div class="widget-wrap">
+                <ul class="list-unstyled cat" data-bind="foreach: categoryArray()">
+                    <!-- Social Share -->
+                    <li><a data-bind="attr: {href: '#category/'+$data.name}"><span data-bind="text: $data.name"></span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="widget tags">
+            <!-- Tags -->
+            <h4>Tags</h4>
+            <div class="widget-wrap">
+                <ul class="list-inline tags" data-bind="foreach: tagArray()">
+                    <!-- Social Share -->
+                    <li><a data-bind="attr: {href: '#tag/'+$data.name}"><span data-bind="text: $data.name"></span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="widget archives">
+            <!-- Archives -->
+            <h4>Archives</h4>
+            <div class="widget-wrap">
+                <ul class="list-unstyled links" data-bind="foreach: archivesArray().archives">
+                    <li><a data-bind="attr: {href: '#archives/'+$data.month+'/'+$data.year}"><span class="text-uppercase" data-bind="text: $data.monthName + '  (' + $data.total + ')'"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- end sidebar -->
+</div><!-- end Right content for sidebar and widget area-->

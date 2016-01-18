@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" default-autowire="constructor">
+
+  <object name="AuthenticationClientService" type="Curriculum.Service.Authentication.AuthenticationClientService.AuthenticationClientService, Curriculum.Service">
+    <property name="AuthenticationClientRepository" ref="AuthenticationClientRepository" />
+  </object>
+
+  <object name="AuthenticationUsersService" type="Curriculum.Service.Authentication.AuthenticationUsersService.AuthenticationUsersService, Curriculum.Service">
+    <property name="AuthenticationUsersRepository" ref="AuthenticationUsersRepository" />
+  </object>
+
+  <object name="AuthenticationRefreshTokenService" type="Curriculum.Service.Authentication.AuthenticationRefreshTokenService.AuthenticationRefreshTokenService, Curriculum.Service">
+    <property name="AuthenticationRefreshTokenRepository" ref="AuthenticationRefreshTokenRepository" />
+  </object>
+
+  <object name="BlogPostService" type="Curriculum.Service.BlogPost.BlogPostService, Curriculum.Service">
+    <property name="BlogPostRepository" ref="BlogPostRepository" />
+  </object>
+
+  <object name="BlogCategoryService" type="Curriculum.Service.BlogCategory.BlogCategoryService, Curriculum.Service">
+    <property name="BlogCategoryRepository" ref="BlogCategoryRepository" />
+  </object>
+
+  <object name="BlogTagService" type="Curriculum.Service.BlogTag.BlogTagService, Curriculum.Service">
+    <property name="BlogTagRepository" ref="BlogTagRepository" />
+  </object>
+  
+</objects>

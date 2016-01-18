@@ -1,0 +1,61 @@
+﻿<div id="tf-page-header" class="text-center">
+    <div class="container">
+        <hr />
+        <h2 class="text-uppercase" data-bind="text: 'Showing posts under category: '+ parameter"></h2>
+        <hr />
+    </div>
+</div>
+<!-- Blog Body
+====================================-->
+<div id="tf-content">
+    <div class="container">
+        <!-- Container -->
+        <div class="row">
+            <!-- Row -->
+            <div class="col-md-8">
+                <div data-bind="foreach: currentPage().content">
+                    <div class="post-block">
+                        <!-- Post #1-->
+                        <div class="post-detail">
+                            <a data-bind="attr: {href: '#showPost/'+$data.id+'/'+$data.title}" class="meta-date"><span class="bolder" data-bind="text: $data.day"></span><label data-bind="text: $data.month"></label></a>
+                            <h2>
+                                <a data-bind="attr: {href: '#show/'+$data.id+'/'+$data.title}"><span data-bind="text: $data.title"></span></a>
+                            </h2> <!-- Post Title-->
+                            <div class="img-wrap">
+                                <!-- Image Wrap -->
+                                <div class="metas">
+                                    <a data-bind="attr: {href: '#category/'+$data.category.name}" class="meta-cat"><span data-bind="text: $data.category.name"></span></a>
+                                    <a href="#" class="meta-author"><span>Read more</span></a>
+                                </div>
+                                <!-- ko if: ($data.photo !== null) -->
+                                <img data-bind="attr: {src: 'data:image/jpeg;base64,' + $data.photo}" class="img-responsive" alt="image">
+                                <!-- /ko -->
+                                <!-- ko ifnot: ($data.photo !== null) -->
+                                <img src="assets/img/blog/kotijko logo.png" class="img-responsive" alt="image">
+                                <!-- /ko -->
+                            </div>
+                            <p class="shortDescription" data-bind="html: $data.shortDescription"></p>
+                            <hr />
+                            <div class="text-center">
+                                <ul class="list-inline tags" data-bind="foreach: $data.tags">
+                                    <li><a data-bind="attr: {href: '#tag/'+$data.blogTag.name}"><span data-bind="text: $data.blogTag.name"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!-- end Post #1-->
+                </div>
+                <div class="text-center">
+                    <div data-bind="visible: (currentPage().isEmpty())">
+                        <label data-i18n="app:VolumenesPendientesAprobacion.formDeclaracion.listadoVacio"></label>
+                    </div>
+                    <div data-bind="compose: 'pager.html',  visible: !(currentPage().isEmpty()) "></div>
+
+
+                </div><!-- end Pagination -->
+
+            </div><!-- End of Posts/Blogrol -->
+            <div data-bind="compose: 'sideBar.html'"></div>
+
+        </div><!-- end Row -->
+    </div><!-- End Container -->
+</div>

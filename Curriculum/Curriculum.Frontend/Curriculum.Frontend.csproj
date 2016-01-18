@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A1693EFE-4EEF-499F-B1C2-7968992D3C59}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Curriculum.Frontend</RootNamespace>
+    <AssemblyName>Curriculum.Frontend</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="404.html" />
+    <Content Include="apple-touch-icon-precomposed.png" />
+    <Content Include="app\bindings\bootstrapPopoverBinding.js" />
+    <Content Include="app\bindings\bootstrapTooltipBinding.js" />
+    <Content Include="app\bindings\clickAndStopBinding.js" />
+    <Content Include="app\bindings\currencyFormatBinding.js" />
+    <Content Include="app\bindings\dateFormatBinding.js" />
+    <Content Include="app\bindings\datePickerBinding.js" />
+    <Content Include="app\bindings\datePickerTextBinding.js" />
+    <Content Include="app\bindings\dateTimeFormatBinding.js" />
+    <Content Include="app\bindings\fileUploadBinding.js" />
+    <Content Include="app\bindings\finalizadoFormatBinding.js" />
+    <Content Include="app\bindings\imgBinding.js" />
+    <Content Include="app\bindings\momentBinding.js" />
+    <Content Include="app\bindings\percentFormatBinding.js" />
+    <Content Include="app\bindings\preventBubbleBinding.js" />
+    <Content Include="app\bindings\select2Binding.js" />
+    <Content Include="app\bindings\selectedOptionsObjectBinding.js" />
+    <Content Include="app\bindings\updateFileUploadBinding.js" />
+    <Content Include="app\bindings\validateBinding.js" />
+    <Content Include="app\bindings\zoomElevateBinding.js" />
+    <Content Include="app\core\authentication\authenticationBroker.js" />
+    <Content Include="app\core\authentication\securityContext.js" />
+    <Content Include="app\core\broker.js" />
+    <Content Include="app\core\cacheImpl.js" />
+    <Content Include="app\core\config.js" />
+    <Content Include="app\core\cordovaUtils.js" />
+    <Content Include="app\core\crud\exportImpl.js" />
+    <Content Include="app\core\crud\findRequestImpl.js" />
+    <Content Include="app\core\crud\numberOrderImpl.js" />
+    <Content Include="app\core\crud\orderImpl.js" />
+    <Content Include="app\core\crud\pageImpl.js" />
+    <Content Include="app\core\crud\pageRequestImpl.js" />
+    <Content Include="app\core\crud\pagerImpl.js" />
+    <Content Include="app\core\crud\sortBase.js" />
+    <Content Include="app\core\crud\stringOrderImpl.js" />
+    <Content Include="app\core\exceptionHandler.js" />
+    <Content Include="app\core\global.js" />
+    <Content Include="app\core\i18n.js" />
+    <Content Include="app\core\router.js" />
+    <Content Include="app\core\util\arrayUtils.js" />
+    <Content Include="app\core\util\binaryUtils.js" />
+    <Content Include="app\core\util\csrfUtils.js" />
+    <Content Include="app\core\util\stringUtils.js" />
+    <Content Include="app\core\util\urlUtils.js" />
+    <Content Include="app\core\util\validationUtils.js" />
+    <Content Include="app\database\connection.js" />
+    <Content Include="app\database\connectionData.js" />
+    <Content Include="app\domain\BlogCategory\BlogCategoryBroker.js" />
+    <Content Include="app\domain\BlogCategory\BlogCategoryFilterImpl.js" />
+    <Content Include="app\domain\BlogCategory\BlogCategoryImpl.js" />
+    <Content Include="app\domain\BlogCategory\BlogCategorySortImpl.js" />
+    <Content Include="app\domain\BlogPost\BlogPostBroker.js" />
+    <Content Include="app\domain\BlogPost\BlogPostFilterImpl.js" />
+    <Content Include="app\domain\BlogPost\BlogPostImpl.js" />
+    <Content Include="app\domain\BlogPost\BlogPostSortImpl.js" />
+    <Content Include="app\domain\BlogTag\BlogTagBroker.js" />
+    <Content Include="app\domain\BlogTag\BlogTagFilterImpl.js" />
+    <Content Include="app\domain\BlogTag\BlogTagImpl.js" />
+    <Content Include="app\domain\BlogTag\BlogTagSortImpl.js" />
+    <Content Include="app\domain\test\testBroker.js" />
+    <Content Include="app\domain\test\testFilterImpl.js" />
+    <Content Include="app\domain\test\testImpl.js" />
+    <Content Include="app\domain\test\testSortImpl.js" />
+    <Content Include="app\main.js" />
+    <Content Include="app\viewmodels\404.js" />
+    <Content Include="app\viewmodels\About\About.js" />
+    <Content Include="app\viewmodels\alerts.js" />
+    <Content Include="app\viewmodels\Archives\Archives.js" />
+    <Content Include="app\viewmodels\Category\Category.js" />
+    <Content Include="app\viewmodels\Contact\Contact.js" />
+    <Content Include="app\viewmodels\Posts\Posts.js" />
+    <Content Include="app\viewmodels\Posts\showPost.js" />
+    <Content Include="app\viewmodels\shell.js" />
+    <Content Include="app\viewmodels\Tag\Tag.js" />
+    <Content Include="app\viewmodels\welcome.js" />
+    <Content Include="app\views\404.html" />
+    <Content Include="app\views\About\About.html" />
+    <Content Include="app\views\alerts.html" />
+    <Content Include="app\views\Archives\Archives.html" />
+    <Content Include="app\views\Category\Category.html" />
+    <Content Include="app\views\Contact\Contact.html" />
+    <Content Include="app\views\pager.html" />
+    <Content Include="app\views\Posts\Posts.html" />
+    <Content Include="app\views\Posts\showPost.html" />
+    <Content Include="app\views\shell.html" />
+    <Content Include="app\views\sideBar.html" />
+    <Content Include="app\views\Tag\Tag.html" />
+    <Content Include="app\views\toast\validation.html" />
+    <Content Include="app\views\welcome.html" />
+    <Content Include="app\widgets\grid\view.html" />
+    <Content Include="app\widgets\grid\viewmodel.js" />
+    <Content Include="crossdomain.xml" />
+    <Content Include="css\bootstrap-editable.css" />
+    <Content Include="css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\glyphicons.css" />
+    <Content Include="css\jasny-bootstrap.css" />
+    <Content Include="css\jquery-ui-1.10.4.custom.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\multi-select.css" />
+    <Content Include="css\normalize.css" />
+    <Content Include="css\select2-bootstrap.css" />
+    <Content Include="css\select2.css" />
+    <Content Include="css\Snirh.css" />
+    <Content Include="css\template.css" />
+    <Content Include="css\toastr.css" />
+    <Content Include="css\_bootstrap.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome\index.html" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\index.html" />
+    <Content Include="humans.txt" />
+    <Content Include="img\.gitignore" />
+    <Content Include="img\admin.png" />
+    <Content Include="img\ajax-loader.gif" />
+    <Content Include="img\animated-overlay.gif" />
+    <Content Include="img\arh.png" />
+    <Content Include="img\cca.png" />
+    <Content Include="img\favicon.ico" />
+    <Content Include="img\fondo-header.jpg" />
+    <Content Include="img\glyphicons-halflings-white.png" />
+    <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="img\icons\078.png" />
+    <Content Include="img\icons\120px-Icono_bloquear.png" />
+    <Content Include="img\icons\120px-Nuvola_apps_korganizer.png" />
+    <Content Include="img\icons\680D5D1D9.png" />
+    <Content Include="img\icons\clip.png" />
+    <Content Include="img\icons\comentario.png" />
+    <Content Include="img\icons\eye-open-128.png" />
+    <Content Include="img\icons\eyeglasses.png" />
+    <Content Include="img\icons\hepatitis-clipart-eye-clipart-black-and-white-gtr97kyt.png" />
+    <Content Include="img\icons\icon-diagram-bar-cartoon-graphics-statistics.png" />
+    <Content Include="img\icons\icon-download.gif" />
+    <Content Include="img\icons\icon-download.png" />
+    <Content Include="img\icons\imprimir.png" />
+    <Content Include="img\icons\info.png" />
+    <Content Include="img\icons\mail_folder_outbox.png" />
+    <Content Include="img\icons\mashc3.jpg" />
+    <Content Include="img\icons\thick-framed-glasses-screenshots-1.png" />
+    <Content Include="img\icons\write.png" />
+    <Content Include="img\ios-startup-image-landscape.png" />
+    <Content Include="img\ios-startup-image-portrait.png" />
+    <Content Include="img\linea-horizontal.gif" />
+    <Content Include="img\linea-vertical.gif" />
+    <Content Include="img\list-down.gif" />
+    <Content Include="img\list-right.gif" />
+    <Content Include="img\logo-ANA-blanco.png" />
+    <Content Include="img\logo-SNIRH-blanco-s.png" />
+    <Content Include="img\logo-SNIRH-blanco.png" />
+    <Content Include="img\logoana.png" />
+    <Content Include="img\select2-spinner.gif" />
+    <Content Include="img\select2.png" />
+    <Content Include="img\splash-loader.gif" />
+    <Content Include="img\switch.png" />
+    <Content Include="img\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="img\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="img\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="img\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="img\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="img\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="img\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="img\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="img\ui-icons_222222_256x240.png" />
+    <Content Include="img\ui-icons_2e83ff_256x240.png" />
+    <Content Include="img\ui-icons_454545_256x240.png" />
+    <Content Include="img\ui-icons_888888_256x240.png" />
+    <Content Include="img\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="img\_splash-loader.gif" />
+    <Content Include="index.html" />
+    <Content Include="js\additional-methods.js" />
+    <Content Include="js\almond-custom.js" />
+    <Content Include="js\amplify-1.1.0.js" />
+    <Content Include="js\amplify-request-deferred-0.0.0.js" />
+    <Content Include="js\durandal\activator.js" />
+    <Content Include="js\durandal\app.js" />
+    <Content Include="js\durandal\binder.js" />
+    <Content Include="js\durandal\composition.js" />
+    <Content Include="js\durandal\events.js" />
+    <Content Include="js\durandal\plugins\dialog.js" />
+    <Content Include="js\durandal\plugins\history.js" />
+    <Content Include="js\durandal\plugins\http.js" />
+    <Content Include="js\durandal\plugins\observable.js" />
+    <Content Include="js\durandal\plugins\router.js" />
+    <Content Include="js\durandal\plugins\serializer.js" />
+    <Content Include="js\durandal\plugins\toastr.js" />
+    <Content Include="js\durandal\plugins\widget.js" />
+    <Content Include="js\durandal\system.js" />
+    <Content Include="js\durandal\transitions\entrance.js" />
+    <Content Include="js\durandal\viewEngine.js" />
+    <Content Include="js\durandal\viewLocator.js" />
+    <Content Include="js\html5-boilerplate-plugins-4.3.0.js" />
+    <Content Include="js\i18next-builder.js" />
+    <Content Include="js\i18next.js" />
+    <Content Include="js\jasny-bootstrap.min.js" />
+    <None Include="js\jquery-2.0.3.intellisense.js" />
+    <Content Include="js\jquery-cookie-1.3.1.js" />
+    <Content Include="js\jquery-ui-1.10.4.custom.js" />
+    <Content Include="js\jquery-ui-i18n.js" />
+    <Content Include="js\jquery.binary.js" />
+    <Content Include="js\jquery.elevatezoom.js" />
+    <Content Include="js\jquery.fileDownload.js" />
+    <Content Include="js\jquery.fileupload-process.js" />
+    <Content Include="js\jquery.fileupload-ui.js" />
+    <Content Include="js\jquery.fileupload-validate.js" />
+    <Content Include="js\jquery.fileupload.js" />
+    <Content Include="js\jquery.h5validate.js" />
+    <Content Include="js\jquery.iframe-transport.js" />
+    <Content Include="js\jquery.multi-select.js" />
+    <Content Include="js\jquery.ui.widget.js" />
+    <Content Include="js\jquery.validate.js" />
+    <Content Include="js\knockout-2.3.0.debug.js" />
+    <Content Include="js\knockout-2.3.0.js" />
+    <Content Include="js\knockout-bootstrap.js" />
+    <Content Include="js\knockout-mapping-2.4.1.js" />
+    <Content Include="js\knockout-require-templates-1.0.0.js" />
+    <Content Include="js\languages.js" />
+    <Content Include="js\modernizr-2.6.2.min.js" />
+    <Content Include="js\moment-2.1.0.js" />
+    <Content Include="js\numeral.js" />
+    <Content Include="js\require-i18next.js" />
+    <Content Include="js\require.js" />
+    <Content Include="js\select2.js" />
+    <Content Include="js\text.js" />
+    <Content Include="js\toastr.js" />
+    <Content Include="js\underscore-1.6.0.js" />
+    <Content Include="packages.config" />
+    <Content Include=".htaccess" />
+    <Content Include="app\nls\es\app.json" />
+    <Content Include="doc\crossdomain.md" />
+    <Content Include="doc\css.md" />
+    <Content Include="doc\extend.md" />
+    <Content Include="doc\faq.md" />
+    <Content Include="doc\html.md" />
+    <Content Include="doc\js.md" />
+    <Content Include="doc\misc.md" />
+    <Content Include="doc\TOC.md" />
+    <Content Include="doc\usage.md" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="robots.txt" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5435</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5435/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

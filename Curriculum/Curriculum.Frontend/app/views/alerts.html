@@ -1,0 +1,28 @@
+﻿<div id="alerts" data-bind="foreach: alerts" data-toggle="collapse"
+    data-target="#alerts" class="collapse in">
+    <div
+        data-bind="css: {
+    'alert-1': $index() % 4 === 1,
+    'alert-2': $index() % 4 === 2,
+    'alert-3': $index() % 4 === 3
+}">
+        <div data-bind="css: $data.alertClass"
+            class="alert fade in animated">
+            <button type="button"
+                data-bind="click: function (event) { $root.removeAlert($index()) }, clickBubble: false"
+                data-dismiss="alert" class="close">
+                &times;</button>
+            <strong data-bind="if: $data.summary, text: $data.summary"></strong>
+            <div data-bind="if: $data.detail && !(_.isArray($data.detail))">
+                <span data-bind="text: $data.label, css: $data.labelClass"></span><span
+                    data-bind="text: $data.detail"></span>
+            </div>
+            <div data-bind="if: $data.detail && _.isArray($data.detail)">
+                <ul data-bind="foreach: $data.detail">
+                    <li data-bind="text: $data"><span
+                        class="label label-important pull-right"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
