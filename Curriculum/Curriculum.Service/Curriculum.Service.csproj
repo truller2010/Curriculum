@@ -94,12 +94,8 @@
     <Compile Include="Authentication\AuthenticationRefreshTokenService\IAuthenticationRefreshTokenService.cs" />
     <Compile Include="Authentication\AuthenticationUsersService\AuthenticationUsersService.cs" />
     <Compile Include="Authentication\AuthenticationUsersService\IAuthenticationUsersService.cs" />
-    <Compile Include="BlogCategory\BlogCategoryService.cs" />
-    <Compile Include="BlogCategory\IBlogCategoryService.cs" />
-    <Compile Include="BlogPost\BlogPostService.cs" />
-    <Compile Include="BlogPost\IBlogPostService.cs" />
-    <Compile Include="BlogTag\BlogTagService.cs" />
-    <Compile Include="BlogTag\IBlogTagService.cs" />
+    <Compile Include="Profiles\ProfileService.cs" />
+    <Compile Include="Profiles\IProfileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

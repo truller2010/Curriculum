@@ -9,15 +9,15 @@
  * @requires system
  * @requires jquery
  */
-define(['durandal/system', 'jquery'], function (system, $) {
+define(["durandal/system", "jquery"], function(system, $) {
     var parseMarkup;
 
     if ($.parseHTML) {
-        parseMarkup = function (html) {
+        parseMarkup = function(html) {
             return $.parseHTML(html);
         };
     } else {
-        parseMarkup = function (html) {
+        parseMarkup = function(html) {
             return $(html).get();
         };
     }
@@ -32,20 +32,20 @@ define(['durandal/system', 'jquery'], function (system, $) {
          * @property {string} viewExtension
          * @default .html
          */
-        viewExtension: '.html',
+        viewExtension: ".html",
         /**
          * The name of the RequireJS loader plugin used by the viewLocator to obtain the view source. (Use requirejs to map the plugin's full path).
          * @property {string} viewPlugin
          * @default text
          */
-        viewPlugin: 'text',
+        viewPlugin: "text",
         /**
          * Determines if the url is a url for a view, according to the view engine.
          * @method isViewUrl
          * @param {string} url The potential view url.
          * @return {boolean} True if the url is a view url, false otherwise.
          */
-        isViewUrl: function (url) {
+        isViewUrl: function(url) {
             return url.indexOf(this.viewExtension, url.length - this.viewExtension.length) !== -1;
         },
         /**
@@ -54,7 +54,7 @@ define(['durandal/system', 'jquery'], function (system, $) {
          * @param {string} url The url to convert.
          * @return {string} The view id.
          */
-        convertViewUrlToViewId: function (url) {
+        convertViewUrlToViewId: function(url) {
             return url.substring(0, url.length - this.viewExtension.length);
         },
         /**
@@ -63,8 +63,8 @@ define(['durandal/system', 'jquery'], function (system, $) {
          * @param {string} viewId The view id to convert.
          * @return {string} The require path.
          */
-        convertViewIdToRequirePath: function (viewId) {
-            return this.viewPlugin + '!' + viewId + this.viewExtension;
+        convertViewIdToRequirePath: function(viewId) {
+            return this.viewPlugin + "!" + viewId + this.viewExtension;
         },
         /**
          * Parses the view engine recognized markup and returns DOM elements.
@@ -79,7 +79,7 @@ define(['durandal/system', 'jquery'], function (system, $) {
          * @param {string} markup The markup to process.
          * @return {DOMElement} The view.
          */
-        processMarkup: function (markup) {
+        processMarkup: function(markup) {
             var allElements = this.parseMarkup(markup);
             return this.ensureSingleElement(allElements);
         },
@@ -89,7 +89,7 @@ define(['durandal/system', 'jquery'], function (system, $) {
          * @param {DOMElement[]} allElements The elements.
          * @return {DOMElement} A single element.
          */
-        ensureSingleElement:function(allElements){
+        ensureSingleElement: function(allElements) {
             if (allElements.length == 1) {
                 return allElements[0];
             }
@@ -129,14 +129,14 @@ define(['durandal/system', 'jquery'], function (system, $) {
             return system.defer(function(dfd) {
                 system.acquire(requirePath).then(function(markup) {
                     var element = that.processMarkup(markup);
-                    element.setAttribute('data-view', viewId);
+                    element.setAttribute("data-view", viewId);
                     dfd.resolve(element);
-                }).fail(function(err){
-                        that.createFallbackView(viewId, requirePath, err).then(function(element){
-                            element.setAttribute('data-view', viewId);
-                            dfd.resolve(element);
-                        });
+                }).fail(function(err) {
+                    that.createFallbackView(viewId, requirePath, err).then(function(element) {
+                        element.setAttribute("data-view", viewId);
+                        dfd.resolve(element);
                     });
+                });
             }).promise();
         },
         /**
@@ -147,12 +147,12 @@ define(['durandal/system', 'jquery'], function (system, $) {
          * @param {Error} requirePath The error that was returned from the attempt to locate the default view.
          * @return {Promise} A promise for the fallback view.
          */
-        createFallbackView: function (viewId, requirePath, err) {
+        createFallbackView: function(viewId, requirePath, err) {
             var that = this,
                 message = 'View Not Found. Searched for "' + viewId + '" via path "' + requirePath + '".';
 
             return system.defer(function(dfd) {
-                dfd.resolve(that.processMarkup('<div class="durandal-view-404">' + message + '</div>'));
+                dfd.resolve(that.processMarkup('<div class="durandal-view-404">' + message + "</div>"));
             }).promise();
         }
     };

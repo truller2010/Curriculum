@@ -8,10 +8,10 @@ define(["core/crud/orderImpl"], function stringOrderImpl(orderImpl) {
         var stringOrder = orderImpl(property, direction);
 
         function getIconClassSuffixByType() {
-                return "-alpha";
+            return "-alpha";
         }
 
-      
+
         stringOrder.getIconClassSuffixByType = getIconClassSuffixByType;
 
         return stringOrder;

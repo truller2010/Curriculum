@@ -1,3 +1,36 @@
+#region KotikoBlog Header License
+
+// // Solution: Curriculum
+// // Project: Curriculum.Models
+// //
+// // This file is included in the Curriculum solution.
+// //
+// // File created on 18/01/2016   19:34
+// //
+// // File Modified on 18/01/2016/   19:34
+// 
+// // Permission is hereby granted, free of charge, to any person obtaining a copy
+// // of this software and associated documentation files (the "Software"), to deal
+// // in the Software without restriction, including without limitation the rights
+// // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// // copies of the Software, and to permit persons to whom the Software is
+// // furnished to do so, subject to the following conditions:
+// //
+// // The above copyright notice and this permission notice shall be included in all
+// // copies or substantial portions of the Software.
+// //
+// // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// // SOFTWARE.
+
+#endregion
+
+#region
+
 using System;
 using System.Collections.Generic;
 using Curriculum.Models.Courses;
@@ -8,19 +41,22 @@ using Curriculum.Models.ProfilesSkillsSoftware;
 using Curriculum.Models.WorkExperiences;
 using FluentNHibernate.Mapping;
 
-namespace Curriculum.Models.Profiles {
-    
-    public partial class ProfilesModel
+#endregion
+
+namespace Curriculum.Models.Profiles
+{
+    public class ProfilesModel
     {
         public ProfilesModel()
         {
-			Courses = new List<CoursesModel>();
-			Educations = new List<EducationsModel>();
-			ProfilesSkillsCode = new List<ProfilesSkillsCodeModel>();
-			ProfilesSkillsProfessionals = new List<ProfilesSkillsProfessionalsModel>();
-			ProfilesSkillsSoftware = new List<ProfilesSkillsSoftwareModel>();
-			WorkExperiences = new List<WorkExperiencesModel>();
+            Courses = new List<CoursesModel>();
+            Educations = new List<EducationsModel>();
+            ProfilesSkillsCode = new List<ProfilesSkillsCodeModel>();
+            ProfilesSkillsProfessionals = new List<ProfilesSkillsProfessionalsModel>();
+            ProfilesSkillsSoftware = new List<ProfilesSkillsSoftwareModel>();
+            WorkExperiences = new List<WorkExperiencesModel>();
         }
+
         public virtual int ID { get; set; }
         public virtual string Name { get; set; }
         public virtual string FirstSurname { get; set; }
@@ -42,15 +78,14 @@ namespace Curriculum.Models.Profiles {
         public virtual string DeletedBy { get; set; }
         public virtual IList<CoursesModel> Courses { get; set; }
         public virtual IList<EducationsModel> Educations { get; set; }
-        public virtual IList<ProfilesSkillsCode.ProfilesSkillsCodeModel> ProfilesSkillsCode { get; set; }
+        public virtual IList<ProfilesSkillsCodeModel> ProfilesSkillsCode { get; set; }
         public virtual IList<ProfilesSkillsProfessionalsModel> ProfilesSkillsProfessionals { get; set; }
         public virtual IList<ProfilesSkillsSoftwareModel> ProfilesSkillsSoftware { get; set; }
         public virtual IList<WorkExperiencesModel> WorkExperiences { get; set; }
     }
 
-    public partial class ProfilesModelMap : ClassMap<ProfilesModel>
+    public class ProfilesModelMap : ClassMap<ProfilesModel>
     {
-
         public ProfilesModelMap()
         {
             Table("Profiles");

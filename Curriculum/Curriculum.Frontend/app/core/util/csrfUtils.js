@@ -7,11 +7,15 @@ define([
 ], function csrfUtils(securityContext, $) {
     "use strict";
 
-    var utils = {}, xsrfHeader = "X-Xsrf-Token", csrfHeader = "X-Csrf-Token", xsrfCookiePrefix =
-        "xsrf-3", cookiePath = "/";
+    var utils = {},
+        xsrfHeader = "X-Xsrf-Token",
+        csrfHeader = "X-Csrf-Token",
+        xsrfCookiePrefix =
+            "xsrf-3",
+        cookiePath = "/";
 
     function getXsrfToken() {
-        return '0000-0000-0000-0000';
+        return "0000-0000-0000-0000";
     }
 
     function getXsrfCookie() {
@@ -28,7 +32,7 @@ define([
         var name = xsrfCookiePrefix + getXsrfToken();
 
         $.cookie(name, null, {
-            path : cookiePath
+            path: cookiePath
         });
 
         return name;
@@ -43,7 +47,7 @@ define([
         if (cookie) {
             $.cookie.json = false;
             $.cookie(cookie, token, {
-                path : cookiePath
+                path: cookiePath
             });
         }
     }

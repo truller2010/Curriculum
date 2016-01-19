@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
 // // Project: Curriculum.Service
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:52
+// // File created on 16/01/2016   23:12
 // //
-// // File Modified on 14/01/2016/   14:52
+// // File Modified on 16/01/2016/   23:12
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@
 #region
 
 using System.Collections.Generic;
-using Curriculum.Core.Pager;
+using Curriculum.CoreUtils.Pager;
 using Curriculum.Models.Authentication.AuthenticationRefreshToken;
 using Curriculum.Repository.Authentication.AuthenticationRefreshTokenRepository;
 using Spring.Transaction.Interceptor;
@@ -42,18 +42,15 @@ using Spring.Transaction.Interceptor;
 namespace Curriculum.Service.Authentication.AuthenticationRefreshTokenService
 {
     /// <summary>
-    /// 
     /// </summary>
     [Transaction(ReadOnly = true)]
     public class AuthenticationRefreshTokenService : IAuthenticationRefreshTokenService
     {
         /// <summary>
-        /// 
         /// </summary>
         private IAuthenticationRefreshTokenRepository AuthenticationRefreshTokenRepository;
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -64,7 +61,6 @@ namespace Curriculum.Service.Authentication.AuthenticationRefreshTokenService
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="entity"></param>
         [Transaction(ReadOnly = false)]
@@ -74,7 +70,6 @@ namespace Curriculum.Service.Authentication.AuthenticationRefreshTokenService
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="entity"></param>
         [Transaction(ReadOnly = false)]
@@ -84,7 +79,6 @@ namespace Curriculum.Service.Authentication.AuthenticationRefreshTokenService
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -94,7 +88,6 @@ namespace Curriculum.Service.Authentication.AuthenticationRefreshTokenService
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         public IList<AuthenticationRefreshToken> GetAll()
@@ -103,7 +96,6 @@ namespace Curriculum.Service.Authentication.AuthenticationRefreshTokenService
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="pageRequest"></param>
         /// <returns></returns>
@@ -113,7 +105,6 @@ namespace Curriculum.Service.Authentication.AuthenticationRefreshTokenService
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="entity"></param>
         [Transaction(ReadOnly = false)]

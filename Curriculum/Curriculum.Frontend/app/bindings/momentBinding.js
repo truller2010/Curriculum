@@ -15,7 +15,7 @@ define(function momentBinding() {
         var valueUnwrapped = ko.utils.unwrapObservable(value);
 
         // Date formats: http://momentjs.com/docs/#/displaying/format/
-        var pattern = allBindings.format || 'L';
+        var pattern = allBindings.format || "L";
         var patternFrom = allBindings.formatFrom || undefined;
 
         element.textContent = moment(value, patternFrom).format(pattern);

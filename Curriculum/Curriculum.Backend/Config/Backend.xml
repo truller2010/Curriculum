@@ -14,16 +14,8 @@
     <property name="AuthenticationUsersService" ref="AuthenticationUsersService" />
   </object>
   
-  <object type="Curriculum.Backend.Controllers.BlogPost.BlogPostController, Curriculum.Backend" singleton="false">
-    <property name="BlogPostService" ref="BlogPostService" />
-  </object>
-
-  <object type="Curriculum.Backend.Controllers.BlogCategory.BlogCategoryController, Curriculum.Backend" singleton="false">
-    <property name="BlogCategoryService" ref="BlogCategoryService" />
-  </object>
-
-  <object type="Curriculum.Backend.Controllers.BlogTag.BlogTagController, Curriculum.Backend" singleton="false">
-    <property name="BlogTagService" ref="BlogTagService" />
+  <object type="Curriculum.Backend.Controllers.Profiles.ProfilesController, Curriculum.Backend" singleton="false">
+    <property name="ProfilesService" ref="ProfilesService" />
   </object>
 
 </objects>

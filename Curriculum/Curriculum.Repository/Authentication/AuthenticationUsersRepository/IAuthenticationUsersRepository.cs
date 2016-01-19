@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
 // // Project: Curriculum.Repository
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:54
+// // File created on 16/01/2016   23:12
 // //
-// // File Modified on 14/01/2016/   14:54
+// // File Modified on 16/01/2016/   23:12
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@
 
 #region
 
-using Curriculum.Core.Filter;
+using Curriculum.CoreUtils.Filter;
 using Curriculum.Models.Authentication.AuthenticationUsers;
 using Curriculum.Repository.Abstract;
 
@@ -40,7 +40,6 @@ using Curriculum.Repository.Abstract;
 namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
 {
     /// <summary>
-    /// 
     /// </summary>
     public interface IAuthenticationUsersRepository :
         ISupportsSave<AuthenticationUsers, long>,
@@ -49,7 +48,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         ISearchableDao<AuthenticationUsers, long, SearchFilter>
     {
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="username"></param>
         /// <param name="hashedPassword"></param>
@@ -57,14 +55,12 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         AuthenticationUsers GetByUsernameAndPassword(string username, string hashedPassword);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
         AuthenticationUsers GetByEmail(string email);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="CUCurriculum"></param>
         /// <param name="passOld"></param>
@@ -73,7 +69,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         bool ActualizarContrasenia(long CUCurriculum, string passOld, string passNew);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="locked"></param>
         /// <returns></returns>

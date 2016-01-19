@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
 // // Project: Curriculum.Repository
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:54
+// // File created on 16/01/2016   23:12
 // //
-// // File Modified on 14/01/2016/   14:54
+// // File Modified on 16/01/2016/   23:12
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@
 #region
 
 using System.Collections.Generic;
-using Curriculum.Core.Pager;
+using Curriculum.CoreUtils.Pager;
 using Curriculum.Models.Authentication.AuthenticationClient;
 using Curriculum.Repository.Abstract;
 
@@ -41,12 +41,10 @@ using Curriculum.Repository.Abstract;
 namespace Curriculum.Repository.Authentication.AuthenticationClientRepository
 {
     /// <summary>
-    /// 
     /// </summary>
     public class AuthenticationClientRepository : HibernateDao, IAuthenticationClientRepository
     {
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -56,7 +54,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationClientRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="entity"></param>
         public void Save(IList<AuthenticationClient> entity)
@@ -65,7 +62,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationClientRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="entity"></param>
         public void Update(AuthenticationClient entity)
@@ -74,7 +70,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationClientRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -84,7 +79,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationClientRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         public IList<AuthenticationClient> GetAll()
@@ -93,7 +87,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationClientRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="pageRequest"></param>
         /// <returns></returns>

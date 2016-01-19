@@ -50,17 +50,18 @@
      * @returns {String} The contents of the file
      */
     function loadFile(path) {
-        if (typeof process !== "undefined" && process.versions 
-                && !!process.versions.node && !process.versions["node-webkit"]) {
+        if (typeof process !== "undefined" && process.versions
+            && !!process.versions.node && !process.versions["node-webkit"]) {
             var file = fs.readFileSync(path, "utf8");
             if (file.indexOf("\uFEFF") === 0) {
                 return file.substring(1);
             }
             return file;
         } else {
-            var stringBuffer, line,
-                file = new java.io.File(path), 
-                lineSeparator = java.lang.System.getProperty("line.separator"), 
+            var stringBuffer,
+                line,
+                file = new java.io.File(path),
+                lineSeparator = java.lang.System.getProperty("line.separator"),
                 input = new java.io.BufferedReader(new java.io.InputStreamReader(new java.io.FileInputStream(file), "utf-8"));
             try {
                 stringBuffer = new java.lang.StringBuffer();
@@ -107,11 +108,13 @@
             // Currently, inlining resources is only supported for single file builds 
             if (config.modules.length > 1) {
                 throw new Error("The i18next plugin doesn't support inlining resources for " +
-                        "multiple module builds. To proceed, remove the inlineI18next " +
-                        "property in the build options.");
+                    "multiple module builds. To proceed, remove the inlineI18next " +
+                    "property in the build options.");
             }
 
-            var languages, url, content,
+            var languages,
+                url,
+                content,
                 parsedName = parseName(name),
                 namespaces = parsedName.namespaces,
                 module = parsedName.module;
@@ -132,7 +135,7 @@
             }
 
             // Fix module ending slash
-            module += module.substr(module.length-1) !== "/" ? "/" : "";
+            module += module.substr(module.length - 1) !== "/" ? "/" : "";
 
             // Load all needed resources
             options.resStore = options.resStore || {};
@@ -141,8 +144,8 @@
                 each(nss, function(ns) {
                     if (namespaces.indexOf(ns) !== -1) {
                         url = req.toUrl(module + options.resGetPath
-                                .replace(options.interpolationPrefix + "ns" + options.interpolationSuffix, ns)
-                                .replace(options.interpolationPrefix + "lng" + options.interpolationSuffix, lng));
+                            .replace(options.interpolationPrefix + "ns" + options.interpolationSuffix, ns)
+                            .replace(options.interpolationPrefix + "lng" + options.interpolationSuffix, lng));
                         content = JSON.parse(loadFile(url));
                         options.resStore[lng][ns] = options.resStore[lng][ns] || {};
                         extend(options.resStore[lng][ns], content);
@@ -160,15 +163,15 @@
                 data.resStore = options.resStore;
                 delete data.supportedLngs;
                 write.asModule("i18next-init",
-                        "define(['i18next'], function(i18next) {\n" +
-                            "\ti18next.init(" + JSON.stringify(data) + ");\n" +
-                            "\treturn i18next;\n" +
-                        "});");
+                    "define(['i18next'], function(i18next) {\n" +
+                    "\ti18next.init(" + JSON.stringify(data) + ");\n" +
+                    "\treturn i18next;\n" +
+                    "});");
             }
             write.asModule(pluginName + "!" + moduleName,
-                    "define(['i18next-init'], function(i18next) {\n" +
-                        "\treturn i18next;\n" +
-                    "});");
+                "define(['i18next-init'], function(i18next) {\n" +
+                "\treturn i18next;\n" +
+                "});");
         }
     });
 })();

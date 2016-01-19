@@ -5,9 +5,9 @@ define(["jquery", "knockout"], function selectedOptionsObject($, ko) {
     var binding = {};
 
     function init(element, valueAccessor, allBindingsAccessor) {
-        ko.utils.registerEventHandler(element, "change", function () {
+        ko.utils.registerEventHandler(element, "change", function() {
             var value = valueAccessor(), valueToWrite = [];
-            ko.utils.arrayForEach(element.getElementsByTagName("option"), function (node) {
+            ko.utils.arrayForEach(element.getElementsByTagName("option"), function(node) {
                 if (node.selected)
                     valueToWrite.push(ko.selectExtensions.readValue(node));
             });
@@ -19,9 +19,11 @@ define(["jquery", "knockout"], function selectedOptionsObject($, ko) {
         if (ko.utils.u(element) !== "select")
             throw new Error("values binding applies only to SELECT elements");
 
-        var newValue = ko.utils.unwrapObservable(valueAccessor()), arrayOptionsName = _.find($(element).data("bind").split(","), function items(item) {
-            return item.indexOf("selectedOptionsObject") !== -1;
-        }).split(":")[1].split("."), arrayOptionsValue = viewModel;
+        var newValue = ko.utils.unwrapObservable(valueAccessor()),
+            arrayOptionsName = _.find($(element).data("bind").split(","), function items(item) {
+                return item.indexOf("selectedOptionsObject") !== -1;
+            }).split(":")[1].split("."),
+            arrayOptionsValue = viewModel;
         _.each(arrayOptionsName, function items(item) {
             arrayOptionsValue = item.indexOf("()") !== -1 ? arrayOptionsValue[item.trim().split("()")[0]]() : arrayOptionsValue[item.trim()];
         });
@@ -32,7 +34,7 @@ define(["jquery", "knockout"], function selectedOptionsObject($, ko) {
             }) !== undefined);
         }));
         if (newValue && typeof newValue.length === "number") {
-            ko.utils.arrayForEach(element.getElementsByTagName("option"), function (node) {
+            ko.utils.arrayForEach(element.getElementsByTagName("option"), function(node) {
                 var isSelected = _.find(newValue, function items(item) {
                     return (typeof item === "number") ? item === ko.selectExtensions.readValue(node) : item[allBindingsAccessor().optionsValue] === ko.selectExtensions.readValue(node);
                 }) !== undefined;

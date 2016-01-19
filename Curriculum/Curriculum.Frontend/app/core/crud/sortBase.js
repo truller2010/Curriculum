@@ -24,12 +24,12 @@ define(function sortBase() {
         function setFirstOrderByProperty(property) {
             var i = 0;
 
-            while (i<orders.length && orders[i].property !== property) {
+            while (i < orders.length && orders[i].property !== property) {
                 i = i + 1;
             }
-            
-            if(i<orders.length){
-            	orders.splice(0, 0, orders.splice(i, 1)[0]);
+
+            if (i < orders.length) {
+                orders.splice(0, 0, orders.splice(i, 1)[0]);
             }
         }
 

@@ -10,7 +10,7 @@
  * @requires composition
  * @requires jquery
  */
-define(['durandal/system', 'durandal/composition', 'jquery'], function(system, composition, $) {
+define(["durandal/system", "durandal/composition", "jquery"], function(system, composition, $) {
     var fadeOutDuration = 100;
     var endValues = {
         marginRight: 0,
@@ -18,10 +18,10 @@ define(['durandal/system', 'durandal/composition', 'jquery'], function(system, c
         opacity: 1
     };
     var clearValues = {
-        marginLeft: '',
-        marginRight: '',
-        opacity: '',
-        display: ''
+        marginLeft: "",
+        marginRight: "",
+        opacity: "",
+        display: ""
     };
 
     /**
@@ -51,10 +51,10 @@ define(['durandal/system', 'durandal/composition', 'jquery'], function(system, c
                     context.triggerAttach();
 
                     var startValues = {
-                        marginLeft: fadeOnly ? '0' : '20px',
-                        marginRight: fadeOnly ? '0' : '-20px',
+                        marginLeft: fadeOnly ? "0" : "20px",
+                        marginRight: fadeOnly ? "0" : "-20px",
                         opacity: 0,
-                        display: 'block'
+                        display: "block"
                     };
 
                     var $child = $(context.child);
@@ -62,8 +62,8 @@ define(['durandal/system', 'durandal/composition', 'jquery'], function(system, c
                     $child.css(startValues);
                     $child.animate(endValues, {
                         duration: duration,
-                        easing: 'swing',
-                        always: function () {
+                        easing: "swing",
+                        always: function() {
                             $child.css(clearValues);
                             endTransition();
                         }

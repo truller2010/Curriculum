@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
 // // Project: Curriculum.Backend
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:38
+// // File created on 18/01/2016   11:48
 // //
-// // File Modified on 14/01/2016/   14:38
+// // File Modified on 18/01/2016/   11:48
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -41,17 +41,14 @@ using System.Web.Http.Filters;
 namespace Curriculum.Backend.Filters
 {
     /// <summary>
-    /// 
     /// </summary>
     public class ValidateModelAttribute : ActionFilterAttribute
     {
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="actionContext"></param>
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            
             if (actionContext.ModelState.IsValid == false)
             {
                 actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest,

@@ -378,9 +378,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\Authentication\AuthenticationUsersController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
-    <Compile Include="Controllers\BlogCategory\BlogCategoryController.cs" />
-    <Compile Include="Controllers\BlogPost\BlogPostController.cs" />
-    <Compile Include="Controllers\BlogTag\BlogTagController.cs" />
+    <Compile Include="Controllers\Profiles\ProfilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Filters\ErrorHandlerAttribute.cs" />

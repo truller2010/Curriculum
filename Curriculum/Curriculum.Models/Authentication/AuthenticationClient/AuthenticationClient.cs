@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
 // // Project: Curriculum.Models
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:52
+// // File created on 16/01/2016   23:11
 // //
-// // File Modified on 14/01/2016/   14:52
+// // File Modified on 16/01/2016/   23:11
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -31,15 +31,14 @@
 
 #region
 
-using FluentNHibernate.Mapping;
 using Curriculum.Models.Authentication.Enums;
+using FluentNHibernate.Mapping;
 
 #endregion
 
 namespace Curriculum.Models.Authentication.AuthenticationClient
 {
     /// <summary>
-    /// 
     /// </summary>
     public class AuthenticationClient
     {
@@ -53,12 +52,10 @@ namespace Curriculum.Models.Authentication.AuthenticationClient
     }
 
     /// <summary>
-    /// 
     /// </summary>
     public class AuthenticationClientMap : ClassMap<AuthenticationClient>
     {
         /// <summary>
-        /// 
         /// </summary>
         public AuthenticationClientMap()
         {

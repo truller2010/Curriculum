@@ -12,13 +12,13 @@
 /*jslint nomen: true, unparam: true, regexp: true */
 /*global define, window */
 
-(function (factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
+(function(factory) {
+    "use strict";
+    if (typeof define === "function" && define.amd) {
         // Register as an anonymous AMD module:
         define([
-            'jquery',
-            './jquery.fileupload-process'
+            "jquery",
+            "./jquery.fileupload-process"
         ], factory);
     } else {
         // Browser globals:
@@ -26,28 +26,28 @@
             window.jQuery
         );
     }
-}(function ($) {
-    'use strict';
+}(function($) {
+    "use strict";
 
     // Append to the default processQueue:
     $.blueimp.fileupload.prototype.options.processQueue.push(
         {
-            action: 'validate',
+            action: "validate",
             // Always trigger this action,
             // even if the previous action was rejected:
             always: true,
             // Options taken from the global options map:
-            acceptFileTypes: '@',
-            maxFileSize: '@',
-            minFileSize: '@',
-            maxNumberOfFiles: '@',
-            disabled: '@disableValidation'
+            acceptFileTypes: "@",
+            maxFileSize: "@",
+            minFileSize: "@",
+            maxNumberOfFiles: "@",
+            disabled: "@disableValidation"
         }
     );
 
     // The File Upload Validation plugin extends the fileupload widget
     // with file validation functionality:
-    $.widget('blueimp.fileupload', $.blueimp.fileupload, {
+    $.widget("blueimp.fileupload", $.blueimp.fileupload, {
         options: {
             /*
             // The regular expression for allowed file types, matches
@@ -67,35 +67,35 @@
 
             // Error and info messages:
             messages: {
-                maxNumberOfFiles: 'Maximum number of files exceeded',
-                acceptFileTypes: 'File type not allowed',
-                maxFileSize: 'File is too large',
-                minFileSize: 'File is too small'
+                maxNumberOfFiles: "Maximum number of files exceeded",
+                acceptFileTypes: "File type not allowed",
+                maxFileSize: "File is too large",
+                minFileSize: "File is too small"
             }
         },
 
         processActions: {
-            validate: function (data, options) {
+            validate: function(data, options) {
                 if (options.disabled) {
                     return data;
                 }
                 var dfd = $.Deferred(),
                     settings = this.options,
                     file = data.files[data.index];
-                if ($.type(options.maxNumberOfFiles) === 'number' &&
-                        (settings.getNumberOfFiles() || 0) + data.files.length >
-                            options.maxNumberOfFiles) {
-                    file.error = settings.i18n('maxNumberOfFiles');
+                if ($.type(options.maxNumberOfFiles) === "number" &&
+                    (settings.getNumberOfFiles() || 0) + data.files.length >
+                    options.maxNumberOfFiles) {
+                    file.error = settings.i18n("maxNumberOfFiles");
                 } else if (options.acceptFileTypes &&
-                        !(options.acceptFileTypes.test(file.type) ||
+                    !(options.acceptFileTypes.test(file.type) ||
                         options.acceptFileTypes.test(file.name))) {
-                    file.error = settings.i18n('acceptFileTypes');
+                    file.error = settings.i18n("acceptFileTypes");
                 } else if (options.maxFileSize && file.size >
-                        options.maxFileSize) {
-                    file.error = settings.i18n('maxFileSize');
-                } else if ($.type(file.size) === 'number' &&
-                        file.size < options.minFileSize) {
-                    file.error = settings.i18n('minFileSize');
+                    options.maxFileSize) {
+                    file.error = settings.i18n("maxFileSize");
+                } else if ($.type(file.size) === "number" &&
+                    file.size < options.minFileSize) {
+                    file.error = settings.i18n("minFileSize");
                 } else {
                     delete file.error;
                 }

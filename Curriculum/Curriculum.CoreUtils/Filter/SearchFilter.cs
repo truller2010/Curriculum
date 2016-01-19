@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
-// // Project: Curriculum.Core
+// // Project: Curriculum.CoreUtils
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   15:54
+// // File created on 16/01/2016   23:10
 // //
-// // File Modified on 14/01/2016/   15:54
+// // File Modified on 16/01/2016/   23:10
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -29,45 +29,37 @@
 
 #endregion
 
-namespace Curriculum.Core.Filter
+namespace Curriculum.CoreUtils.Filter
 {
     /// <summary>
-    /// 
     /// </summary>
     public class SearchFilter
     {
         /// <summary>
-        /// 
         /// </summary>
         public string Texto { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public string Category { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public string Tag { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public int ID { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public string Month { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public string Year { get; set; }
     }

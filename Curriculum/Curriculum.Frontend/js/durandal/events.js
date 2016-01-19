@@ -9,9 +9,9 @@
  * @module events
  * @requires system
  */
-define(['durandal/system'], function (system) {
+define(["durandal/system"], function(system) {
     var eventSplitter = /\s+/;
-    var Events = function() { };
+    var Events = function() {};
 
     /**
      * Represents an event subscription.
@@ -29,10 +29,10 @@ define(['durandal/system'], function (system) {
      * @param {object} [context] An object to use as `this` when invoking the `callback`.
      * @chainable
      */
-    Subscription.prototype.then = function (callback, context) {
+    Subscription.prototype.then = function(callback, context) {
         this.callback = callback || this.callback;
         this.context = context || this.context;
-        
+
         if (!this.callback) {
             return this;
         }
@@ -55,7 +55,7 @@ define(['durandal/system'], function (system) {
      * @method off
      * @chainable
      */
-    Subscription.prototype.off = function () {
+    Subscription.prototype.off = function() {
         this.owner.off(this.events, this.callback, this.context);
         return this;
     };

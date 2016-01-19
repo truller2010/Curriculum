@@ -9,7 +9,7 @@
  * @requires jquery
  * @requires knockout
  */
-define(['jquery', 'knockout'], function($, ko) {
+define(["jquery", "knockout"], function($, ko) {
     /**
      * @class HTTPModule
      * @static
@@ -20,7 +20,7 @@ define(['jquery', 'knockout'], function($, ko) {
          * @property {string} callbackParam
          * @default callback
          */
-        callbackParam:'callback',
+        callbackParam: "callback",
         /**
          * Makes an HTTP GET request.
          * @method get
@@ -28,7 +28,7 @@ define(['jquery', 'knockout'], function($, ko) {
          * @param {object} [query] An optional key/value object to transform into query string parameters.
          * @return {Promise} A promise of the get response data.
          */
-        get:function(url, query) {
+        get: function(url, query) {
             return $.ajax(url, { data: query });
         },
         /**
@@ -39,23 +39,23 @@ define(['jquery', 'knockout'], function($, ko) {
          * @param {string} [callbackParam] The name of the callback parameter the api expects (overrides the default callbackParam).
          * @return {Promise} A promise of the response data.
          */
-        jsonp: function (url, query, callbackParam) {
-            if (url.indexOf('=?') == -1) {
+        jsonp: function(url, query, callbackParam) {
+            if (url.indexOf("=?") == -1) {
                 callbackParam = callbackParam || this.callbackParam;
 
-                if (url.indexOf('?') == -1) {
-                    url += '?';
+                if (url.indexOf("?") == -1) {
+                    url += "?";
                 } else {
-                    url += '&';
+                    url += "&";
                 }
 
-                url += callbackParam + '=?';
+                url += callbackParam + "=?";
             }
 
             return $.ajax({
                 url: url,
-                dataType:'jsonp',
-                data:query
+                dataType: "jsonp",
+                data: query
             });
         },
         /**
@@ -65,13 +65,13 @@ define(['jquery', 'knockout'], function($, ko) {
          * @param {object} data The data to post. It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
          * @return {Promise} A promise of the response data.
          */
-        post:function(url, data) {
+        post: function(url, data) {
             return $.ajax({
                 url: url,
                 data: ko.toJSON(data),
-                type: 'POST',
-                contentType: 'application/json',
-                dataType: 'json'
+                type: "POST",
+                contentType: "application/json",
+                dataType: "json"
             });
         }
     };

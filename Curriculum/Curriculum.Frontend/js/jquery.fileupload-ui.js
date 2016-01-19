@@ -12,23 +12,23 @@
 /*jslint browser: true */
 /*global jQuery, FileReader, URL */
 
-(function ($) {
+(function($) {
 
-    var undef = 'undefined',
-        func = 'function',
+    var undef = "undefined",
+        func = "function",
         UploadHandler,
         methods,
 
-        LocalImage = function (file, imageTypes) {
+        LocalImage = function(file, imageTypes) {
             var img,
                 fileReader;
             if (!imageTypes.test(file.type)) {
                 return null;
             }
-            img = document.createElement('img');
+            img = document.createElement("img");
             if (typeof URL !== undef && typeof URL.createObjectURL === func) {
                 img.src = URL.createObjectURL(file);
-                img.onload = function () {
+                img.onload = function() {
                     URL.revokeObjectURL(this.src);
                 };
                 return img;
@@ -36,7 +36,7 @@
             if (typeof FileReader !== undef) {
                 fileReader = new FileReader();
                 if (typeof fileReader.readAsDataURL === func) {
-                    fileReader.onload = function (e) {
+                    fileReader.onload = function(e) {
                         img.src = e.target.result;
                     };
                     fileReader.readAsDataURL(file);
@@ -45,30 +45,30 @@
             }
             return null;
         };
-        
-    UploadHandler = function (container, options) {
+
+    UploadHandler = function(container, options) {
         var uploadHandler = this,
             dragOverTimeout,
             isDropZoneEnlarged;
-        
+
         this.dropZone = container;
         this.imageTypes = /^image\/(gif|jpeg|png)$/;
-        this.previewSelector = '.file_upload_preview';
-        this.progressSelector = '.file_upload_progress div';
-        this.cancelSelector = '.file_upload_cancel button';
-        this.cssClassSmall = 'file_upload_small';
-        this.cssClassLarge = 'file_upload_large';
-        this.cssClassHighlight = 'file_upload_highlight';
-        this.dropEffect = 'highlight';
+        this.previewSelector = ".file_upload_preview";
+        this.progressSelector = ".file_upload_progress div";
+        this.cancelSelector = ".file_upload_cancel button";
+        this.cssClassSmall = "file_upload_small";
+        this.cssClassLarge = "file_upload_large";
+        this.cssClassHighlight = "file_upload_highlight";
+        this.dropEffect = "highlight";
         this.uploadTable = this.downloadTable = null;
-        
-        this.buildUploadRow = this.buildDownloadRow = function () {
+
+        this.buildUploadRow = this.buildDownloadRow = function() {
             return null;
         };
 
-        this.addNode = function (parentNode, node, callBack) {
+        this.addNode = function(parentNode, node, callBack) {
             if (node) {
-                node.css('display', 'none').appendTo(parentNode).fadeIn(function () {
+                node.css("display", "none").appendTo(parentNode).fadeIn(function() {
                     if (typeof callBack === func) {
                         try {
                             callBack();
@@ -84,9 +84,9 @@
             }
         };
 
-        this.removeNode = function (node, callBack) {
+        this.removeNode = function(node, callBack) {
             if (node) {
-                node.fadeOut(function () {
+                node.fadeOut(function() {
                     $(this).remove();
                     if (typeof callBack === func) {
                         try {
@@ -103,11 +103,11 @@
             }
         };
 
-        this.onAbort = function (event, files, index, xhr, handler) {
+        this.onAbort = function(event, files, index, xhr, handler) {
             handler.removeNode(handler.uploadRow);
         };
-        
-        this.cancelUpload = function (event, files, index, xhr, handler) {
+
+        this.cancelUpload = function(event, files, index, xhr, handler) {
             var readyState = xhr.readyState;
             xhr.abort();
             // If readyState is below 2, abort() has no effect:
@@ -115,32 +115,32 @@
                 handler.onAbort(event, files, index, xhr, handler);
             }
         };
-        
-        this.initProgressBar = function (node, value) {
+
+        this.initProgressBar = function(node, value) {
             if (typeof node.progressbar === func) {
                 return node.progressbar({
                     value: value
                 });
             } else {
                 var progressbar = $('<progress value="' + value + '" max="100"/>').appendTo(node);
-                progressbar.progressbar = function (key, value) {
-                    progressbar.attr('value', value);
+                progressbar.progressbar = function(key, value) {
+                    progressbar.attr("value", value);
                 };
                 return progressbar;
             }
         };
-        
-        this.initUploadRow = function (event, files, index, xhr, handler, callBack) {
+
+        this.initUploadRow = function(event, files, index, xhr, handler, callBack) {
             var uploadRow = handler.uploadRow = handler.buildUploadRow(files, index, handler);
             if (uploadRow) {
                 handler.progressbar = handler.initProgressBar(
                     uploadRow.find(handler.progressSelector),
                     (xhr.upload ? 0 : 100)
                 );
-                uploadRow.find(handler.cancelSelector).click(function (e) {
+                uploadRow.find(handler.cancelSelector).click(function(e) {
                     handler.cancelUpload(e, files, index, xhr, handler);
                 });
-                uploadRow.find(handler.previewSelector).each(function () {
+                uploadRow.find(handler.previewSelector).each(function() {
                     $(this).append(new LocalImage(files[index], handler.imageTypes));
                 });
             }
@@ -150,9 +150,9 @@
                 callBack
             );
         };
-        
-        this.initUpload = function (event, files, index, xhr, handler, callBack) {
-            handler.initUploadRow(event, files, index, xhr, handler, function () {
+
+        this.initUpload = function(event, files, index, xhr, handler, callBack) {
+            handler.initUploadRow(event, files, index, xhr, handler, function() {
                 if (typeof handler.beforeSend === func) {
                     handler.beforeSend(event, files, index, xhr, handler, callBack);
                 } else {
@@ -160,17 +160,17 @@
                 }
             });
         };
-        
-        this.onProgress = function (event, files, index, xhr, handler) {
+
+        this.onProgress = function(event, files, index, xhr, handler) {
             if (handler.progressbar) {
                 handler.progressbar.progressbar(
-                    'value',
+                    "value",
                     parseInt(event.loaded / event.total * 100, 10)
                 );
             }
         };
-        
-        this.parseResponse = function (xhr) {
+
+        this.parseResponse = function(xhr) {
             if (typeof xhr.responseText !== undef) {
                 return $.parseJSON(xhr.responseText);
             } else {
@@ -178,8 +178,8 @@
                 return $.parseJSON(xhr.contents().text());
             }
         };
-        
-        this.initDownloadRow = function (event, files, index, xhr, handler, callBack) {
+
+        this.initDownloadRow = function(event, files, index, xhr, handler, callBack) {
             var json, downloadRow;
             try {
                 json = handler.response = handler.parseResponse(xhr);
@@ -198,10 +198,10 @@
                 }
             }
         };
-        
-        this.onLoad = function (event, files, index, xhr, handler) {
-            handler.removeNode(handler.uploadRow, function () {
-                handler.initDownloadRow(event, files, index, xhr, handler, function () {
+
+        this.onLoad = function(event, files, index, xhr, handler) {
+            handler.removeNode(handler.uploadRow, function() {
+                handler.initDownloadRow(event, files, index, xhr, handler, function() {
                     if (typeof handler.onComplete === func) {
                         handler.onComplete(event, files, index, xhr, handler);
                     }
@@ -209,7 +209,7 @@
             });
         };
 
-        this.dropZoneEnlarge = function () {
+        this.dropZoneEnlarge = function() {
             if (!isDropZoneEnlarged) {
                 if (typeof uploadHandler.dropZone.switchClass === func) {
                     uploadHandler.dropZone.switchClass(
@@ -223,8 +223,8 @@
                 isDropZoneEnlarged = true;
             }
         };
-        
-        this.dropZoneReduce = function () {
+
+        this.dropZoneReduce = function() {
             if (typeof uploadHandler.dropZone.switchClass === func) {
                 uploadHandler.dropZone.switchClass(
                     uploadHandler.cssClassLarge,
@@ -237,29 +237,29 @@
             isDropZoneEnlarged = false;
         };
 
-        this.onDocumentDragEnter = function (event) {
+        this.onDocumentDragEnter = function(event) {
             uploadHandler.dropZoneEnlarge();
         };
-        
-        this.onDocumentDragOver = function (event) {
+
+        this.onDocumentDragOver = function(event) {
             if (dragOverTimeout) {
                 clearTimeout(dragOverTimeout);
             }
-            dragOverTimeout = setTimeout(function () {
+            dragOverTimeout = setTimeout(function() {
                 uploadHandler.dropZoneReduce();
             }, 200);
         };
-        
-        this.onDragEnter = this.onDragLeave = function (event) {
+
+        this.onDragEnter = this.onDragLeave = function(event) {
             uploadHandler.dropZone.toggleClass(uploadHandler.cssClassHighlight);
         };
-        
-        this.onDrop = function (event) {
+
+        this.onDrop = function(event) {
             if (dragOverTimeout) {
                 clearTimeout(dragOverTimeout);
             }
             if (uploadHandler.dropEffect && typeof uploadHandler.dropZone.effect === func) {
-                uploadHandler.dropZone.effect(uploadHandler.dropEffect, function () {
+                uploadHandler.dropZone.effect(uploadHandler.dropEffect, function() {
                     uploadHandler.dropZone.removeClass(uploadHandler.cssClassHighlight);
                     uploadHandler.dropZoneReduce();
                 });
@@ -273,36 +273,36 @@
     };
 
     methods = {
-        init : function (options) {
-            return this.each(function () {
+        init: function(options) {
+            return this.each(function() {
                 $(this).fileUpload(new UploadHandler($(this), options));
             });
         },
-        
-        option: function (option, value, namespace) {
-            if (typeof option === undef || (typeof option === 'string' && typeof value === undef)) {
-                return $(this).fileUpload('option', option, value, namespace);
+
+        option: function(option, value, namespace) {
+            if (typeof option === undef || (typeof option === "string" && typeof value === undef)) {
+                return $(this).fileUpload("option", option, value, namespace);
             }
-            return this.each(function () {
-                $(this).fileUpload('option', option, value, namespace);
+            return this.each(function() {
+                $(this).fileUpload("option", option, value, namespace);
             });
         },
-            
-        destroy : function (namespace) {
-            return this.each(function () {
-                $(this).fileUpload('destroy', namespace);
+
+        destroy: function(namespace) {
+            return this.each(function() {
+                $(this).fileUpload("destroy", namespace);
             });
         }
     };
-    
-    $.fn.fileUploadUI = function (method) {
+
+    $.fn.fileUploadUI = function(method) {
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-        } else if (typeof method === 'object' || !method) {
+        } else if (typeof method === "object" || !method) {
             return methods.init.apply(this, arguments);
         } else {
-            $.error('Method ' + method + ' does not exist on jQuery.fileUploadUI');
+            $.error("Method " + method + " does not exist on jQuery.fileUploadUI");
         }
     };
-    
+
 }(jQuery));

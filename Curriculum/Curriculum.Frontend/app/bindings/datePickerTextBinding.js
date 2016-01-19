@@ -1,23 +1,23 @@
 ﻿/* global define: false, ko: false, moment: false */
 define(function datePickerBinding() {
-	"use strict";
+    "use strict";
 
-	var binding = {};
+    var binding = {};
 
-	function update(element, valueAccessor, allBindings, viewModel,
-			bindingContext) {
+    function update(element, valueAccessor, allBindings, viewModel,
+        bindingContext) {
 
-		// Update the control only when clear the form
-		var value = valueAccessor();
-		
-		if(value()){
-			element.value= moment(value(), ["YYYYMMDD", "YYYY-MM-DD", "DD/MM/YYYY"]).format("DD/MM/YYYY");
-		}else{
-			element.value= value();
-		}
-	}
+        // Update the control only when clear the form
+        var value = valueAccessor();
 
-	binding.update = update;
+        if (value()) {
+            element.value = moment(value(), ["YYYYMMDD", "YYYY-MM-DD", "DD/MM/YYYY"]).format("DD/MM/YYYY");
+        } else {
+            element.value = value();
+        }
+    }
 
-	return binding;
+    binding.update = update;
+
+    return binding;
 });

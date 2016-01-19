@@ -8,7 +8,7 @@
  * @module serializer
  * @requires system
  */
-define(['durandal/system'], function(system) {
+define(["durandal/system"], function(system) {
     /**
      * @class SerializerModule
      * @static
@@ -19,13 +19,13 @@ define(['durandal/system'], function(system) {
          * @property {string} typeAttribute
          * @default type
          */
-        typeAttribute: 'type',
+        typeAttribute: "type",
         /**
          * The amount of space to use for indentation when writing out JSON.
          * @property {string|number} space
          * @default undefined
          */
-        space:undefined,
+        space: undefined,
         /**
          * The default replacer function used during serialization. By default properties starting with '_' or '$' are removed from the serialized object.
          * @method replacer
@@ -34,9 +34,9 @@ define(['durandal/system'], function(system) {
          * @return {object} The value to serialize.
          */
         replacer: function(key, value) {
-            if(key){
+            if (key) {
                 var first = key[0];
-                if(first === '_' || first === '$'){
+                if (first === "_" || first === "$") {
                     return undefined;
                 }
             }
@@ -53,7 +53,7 @@ define(['durandal/system'], function(system) {
         serialize: function(object, settings) {
             settings = (settings === undefined) ? {} : settings;
 
-            if(system.isString(settings) || system.isNumber(settings)) {
+            if (system.isString(settings) || system.isNumber(settings)) {
                 settings = { space: settings };
             }
 

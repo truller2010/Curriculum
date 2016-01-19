@@ -5,12 +5,27 @@ define(["core/config"], function pagerImpl(config) {
     "use strict";
 
     return function pagerImpl(currentPage) {
-        var pager = {}, minPage = 0, maxPage = currentPage ? currentPage.totalPages - 1 : 0, maxPagesParam =
-            config.NUM_MAX_PAGES, maxPages = maxPagesParam % 2 === 0 ? maxPagesParam + 1 : maxPagesParam, maxPagesBefore =
-            (maxPages - 1) / 2, maxPagesAfter = maxPagesBefore, firstPage =
-            currentPage ? currentPage.number : 0, lastPage = currentPage ? currentPage.number : 0, pages =
-            [], remainingPages = maxPages - 1, i = 0, imax = maxPagesBefore, j = 0, jmax =
-            maxPagesAfter, exports = ko.observableArray([]);
+        var pager = {},
+            minPage = 0,
+            maxPage = currentPage ? currentPage.totalPages - 1 : 0,
+            maxPagesParam =
+                config.NUM_MAX_PAGES,
+            maxPages = maxPagesParam % 2 === 0 ? maxPagesParam + 1 : maxPagesParam,
+            maxPagesBefore =
+            (maxPages - 1) / 2,
+            maxPagesAfter = maxPagesBefore,
+            firstPage =
+                currentPage ? currentPage.number : 0,
+            lastPage = currentPage ? currentPage.number : 0,
+            pages =
+            [],
+            remainingPages = maxPages - 1,
+            i = 0,
+            imax = maxPagesBefore,
+            j = 0,
+            jmax =
+                maxPagesAfter,
+            exports = ko.observableArray([]);
 
         function setup() {
             if (maxPages % 2 === 0) {
@@ -63,9 +78,9 @@ define(["core/config"], function pagerImpl(config) {
         pager.getLastPage = getLastPage;
         pager.hasPrevPages = hasPrevPages;
         pager.hasNextPages = hasNextPages;
-        
+
         //exports
-        pager.exports=exports;
+        pager.exports = exports;
 
         return pager;
     };

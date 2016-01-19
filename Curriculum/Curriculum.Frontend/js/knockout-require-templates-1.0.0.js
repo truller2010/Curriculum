@@ -13,7 +13,7 @@
     };
 
     ko.utils.extend(ko.templateSources.stringTemplate.prototype, {
-        data : function(key, value) {
+        data: function(key, value) {
             data[this.templateName] = data[this.templateName] || {};
 
             if (arguments.length === 1) {
@@ -22,7 +22,7 @@
 
             data[this.templateName][key] = value;
         },
-        text : function(value) {
+        text: function(value) {
             if (arguments.length === 0) {
                 return templates[this.templateName];
             }

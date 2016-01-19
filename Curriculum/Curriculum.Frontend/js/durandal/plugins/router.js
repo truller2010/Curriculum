@@ -15,7 +15,7 @@
  * @requires knockout
  * @requires jquery
  */
-define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/events', 'durandal/composition', 'plugins/history', 'knockout', 'jquery'], function(system, app, activator, events, composition, history, ko, $) {
+define(["durandal/system", "durandal/app", "durandal/activator", "durandal/events", "durandal/composition", "plugins/history", "knockout", "jquery"], function(system, app, activator, events, composition, history, ko, $) {
     var optionalParam = /\((.*?)\)/g;
     var namedParam = /(\(\?)?:\w+/g;
     var splatParam = /\*\w+/g;
@@ -24,18 +24,18 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
     var trailingSlash = /\/$/;
 
     function routeStringToRegExp(routeString) {
-        routeString = routeString.replace(escapeRegExp, '\\$&')
-            .replace(optionalParam, '(?:$1)?')
+        routeString = routeString.replace(escapeRegExp, "\\$&")
+            .replace(optionalParam, "(?:$1)?")
             .replace(namedParam, function(match, optional) {
-                return optional ? match : '([^\/]+)';
+                return optional ? match : "([^\/]+)";
             })
-            .replace(splatParam, '(.*?)');
+            .replace(splatParam, "(.*?)");
 
-        return new RegExp('^' + routeString + '$');
+        return new RegExp("^" + routeString + "$");
     }
 
     function stripParametersFromRoute(route) {
-        var colonIndex = route.indexOf(':');
+        var colonIndex = route.indexOf(":");
         var length = colonIndex > 0 ? colonIndex - 1 : route.length;
         return route.substring(0, length);
     }
@@ -45,7 +45,7 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
     }
 
     function compareArrays(first, second) {
-        if (!first || !second){
+        if (!first || !second) {
             return false;
         }
 
@@ -167,20 +167,20 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
                     && current.router
                     && current.router != router
                     && current.router.isNavigating() ? true : false;
-                return  processing || currentRouterIsProcesing;
+                return processing || currentRouterIsProcesing;
             }),
             /**
              * An observable surfacing the active routing instruction that is currently being processed or has recently finished processing.
              * The instruction object has `config`, `fragment`, `queryString`, `params` and `queryParams` properties.
              * @property {KnockoutObservable} activeInstruction
              */
-            activeInstruction:ko.observable(null),
-            __router__:true
+            activeInstruction: ko.observable(null),
+            __router__: true
         };
 
         events.includeIn(router);
 
-        activeItem.settings.areSameItem = function (currentItem, newItem, currentActivationData, newActivationData) {
+        activeItem.settings.areSameItem = function(currentItem, newItem, currentActivationData, newActivationData) {
             if (currentItem == newItem) {
                 return compareArrays(currentActivationData, newActivationData);
             }
@@ -194,16 +194,16 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
 
         function setCurrentInstructionRouteIsActive(flag) {
             if (currentInstruction && currentInstruction.config.isActive) {
-                currentInstruction.config.isActive(flag)
+                currentInstruction.config.isActive(flag);
             }
         }
 
         function completeNavigation(instance, instruction) {
-            system.log('Navigation Complete', instance, instruction);
+            system.log("Navigation Complete", instance, instruction);
 
             var fromModuleId = system.getModuleId(currentActivation);
             if (fromModuleId) {
-                router.trigger('router:navigation:from:' + fromModuleId);
+                router.trigger("router:navigation:from:" + fromModuleId);
             }
 
             currentActivation = instance;
@@ -214,7 +214,7 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
 
             var toModuleId = system.getModuleId(currentActivation);
             if (toModuleId) {
-                router.trigger('router:navigation:to:' + toModuleId);
+                router.trigger("router:navigation:to:" + toModuleId);
             }
 
             if (!hasChildRouter(instance)) {
@@ -223,11 +223,11 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
 
             rootRouter.explicitNavigation = false;
             rootRouter.navigatingBack = false;
-            router.trigger('router:navigation:complete', instance, instruction, router);
+            router.trigger("router:navigation:complete", instance, instruction, router);
         }
 
         function cancelNavigation(instance, instruction) {
-            system.log('Navigation Cancelled');
+            system.log("Navigation Cancelled");
 
             router.activeInstruction(currentInstruction);
 
@@ -238,11 +238,11 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
             isProcessing(false);
             rootRouter.explicitNavigation = false;
             rootRouter.navigatingBack = false;
-            router.trigger('router:navigation:cancelled', instance, instruction, router);
+            router.trigger("router:navigation:cancelled", instance, instruction, router);
         }
 
         function redirect(url) {
-            system.log('Navigation Redirecting');
+            system.log("Navigation Redirecting");
 
             isProcessing(false);
             rootRouter.explicitNavigation = false;
@@ -252,7 +252,7 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
 
         function activateRoute(activator, instance, instruction) {
             rootRouter.navigatingBack = !rootRouter.explicitNavigation && currentActivation != instruction.fragment;
-            router.trigger('router:route:activating', instance, instruction, router);
+            router.trigger("router:route:activating", instance, instruction, router);
 
             activator.activateItem(instance, instruction.params).then(function(succeeded) {
                 if (succeeded) {
@@ -272,9 +272,9 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
                         router.attached();
                         router.compositionComplete();
                     }
-                } else if(activator.settings.lifecycleData && activator.settings.lifecycleData.redirect){
+                } else if (activator.settings.lifecycleData && activator.settings.lifecycleData.redirect) {
                     redirect(activator.settings.lifecycleData.redirect);
-                }else{
+                } else {
                     cancelNavigation(instance, instruction);
                 }
 
@@ -282,7 +282,7 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
                     startDeferred.resolve();
                     startDeferred = null;
                 }
-            }).fail(function(err){
+            }).fail(function(err) {
                 system.error(err);
             });;
         }
@@ -334,7 +334,7 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
                 && currentInstruction.config.moduleId == instruction.config.moduleId
                 && currentActivation
                 && ((currentActivation.canReuseForRoute && currentActivation.canReuseForRoute.apply(currentActivation, instruction.params))
-                || (!currentActivation.canReuseForRoute && currentActivation.router && currentActivation.router.loadUrl));
+                    || (!currentActivation.canReuseForRoute && currentActivation.router && currentActivation.router.loadUrl));
         }
 
         function dequeueInstruction() {
@@ -358,9 +358,9 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
                 system.acquire(instruction.config.moduleId).then(function(module) {
                     var instance = system.resolveObject(module);
                     ensureActivation(activeItem, instance, instruction);
-                }).fail(function(err){
-                        system.error('Failed to load routed module (' + instruction.config.moduleId + '). Details: ' + err.message);
-                    });
+                }).fail(function(err) {
+                    system.error("Failed to load routed module (" + instruction.config.moduleId + "). Details: " + err.message);
+                });
             }
         }
 
@@ -386,56 +386,56 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
             }
 
             return {
-                params:params,
-                queryParams:queryParams
+                params: params,
+                queryParams: queryParams
             };
         }
 
-        function configureRoute(config){
-            router.trigger('router:route:before-config', config, router);
+        function configureRoute(config) {
+            router.trigger("router:route:before-config", config, router);
 
             if (!system.isRegExp(config)) {
                 config.title = config.title || router.convertRouteToTitle(config.route);
                 config.moduleId = config.moduleId || router.convertRouteToModuleId(config.route);
                 config.hash = config.hash || router.convertRouteToHash(config.route);
                 config.routePattern = routeStringToRegExp(config.route);
-            }else{
+            } else {
                 config.routePattern = config.route;
             }
 
             config.isActive = config.isActive || ko.observable(false);
-            router.trigger('router:route:after-config', config, router);
+            router.trigger("router:route:after-config", config, router);
             router.routes.push(config);
 
             router.route(config.routePattern, function(fragment, queryString) {
                 var paramInfo = createParams(config.routePattern, fragment, queryString);
                 queueInstruction({
                     fragment: fragment,
-                    queryString:queryString,
+                    queryString: queryString,
                     config: config,
                     params: paramInfo.params,
-                    queryParams:paramInfo.queryParams
+                    queryParams: paramInfo.queryParams
                 });
             });
         };
 
         function mapRoute(config) {
-            if(system.isArray(config.route)){
+            if (system.isArray(config.route)) {
                 var isActive = config.isActive || ko.observable(false);
 
-                for(var i = 0, length = config.route.length; i < length; i++){
+                for (var i = 0, length = config.route.length; i < length; i++) {
                     var current = system.extend({}, config);
 
                     current.route = config.route[i];
                     current.isActive = isActive;
 
-                    if(i > 0){
+                    if (i > 0) {
                         delete current.nav;
                     }
 
                     configureRoute(current);
                 }
-            }else{
+            } else {
                 configureRoute(config);
             }
 
@@ -448,14 +448,14 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
          * @param {string} queryString The query string to parse.
          * @return {object} An object keyed according to the query string parameters.
          */
-        router.parseQueryString = function (queryString) {
+        router.parseQueryString = function(queryString) {
             var queryObject, pairs;
 
             if (!queryString) {
                 return null;
             }
 
-            pairs = queryString.split('&');
+            pairs = queryString.split("&");
 
             if (pairs.length == 0) {
                 return null;
@@ -465,12 +465,12 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
 
             for (var i = 0; i < pairs.length; i++) {
                 var pair = pairs[i];
-                if (pair === '') {
+                if (pair === "") {
                     continue;
                 }
 
-                var parts = pair.split('=');
-                queryObject[parts[0]] = parts[1] && decodeURIComponent(parts[1].replace(/\+/g, ' '));
+                var parts = pair.split("=");
+                queryObject[parts[0]] = parts[1] && decodeURIComponent(parts[1].replace(/\+/g, " "));
             }
 
             return queryObject;
@@ -496,29 +496,29 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
             var handlers = router.handlers,
                 queryString = null,
                 coreFragment = fragment,
-                queryIndex = fragment.indexOf('?');
+                queryIndex = fragment.indexOf("?");
 
             if (queryIndex != -1) {
                 coreFragment = fragment.substring(0, queryIndex);
                 queryString = fragment.substr(queryIndex + 1);
             }
 
-            if(router.relativeToParentRouter){
+            if (router.relativeToParentRouter) {
                 var instruction = this.parent.activeInstruction();
-                coreFragment = instruction.params.join('/');
+                coreFragment = instruction.params.join("/");
 
-                if(coreFragment && coreFragment.charAt(0) == '/'){
+                if (coreFragment && coreFragment.charAt(0) == "/") {
                     coreFragment = coreFragment.substr(1);
                 }
 
-                if(!coreFragment){
-                    coreFragment = '';
+                if (!coreFragment) {
+                    coreFragment = "";
                 }
 
-                coreFragment = coreFragment.replace('//', '/').replace('//', '/');
+                coreFragment = coreFragment.replace("//", "/").replace("//", "/");
             }
 
-            coreFragment = coreFragment.replace(trailingSlash, '');
+            coreFragment = coreFragment.replace(trailingSlash, "");
 
             for (var i = 0; i < handlers.length; i++) {
                 var current = handlers[i];
@@ -528,11 +528,11 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
                 }
             }
 
-            system.log('Route Not Found');
-            router.trigger('router:route:not-found', fragment, router);
+            system.log("Route Not Found");
+            router.trigger("router:route:not-found", fragment, router);
 
             if (currentInstruction) {
-                history.navigate(currentInstruction.fragment, { trigger:false, replace:true });
+                history.navigate(currentInstruction.fragment, { trigger: false, replace: true });
             }
 
             rootRouter.explicitNavigation = false;
@@ -572,7 +572,7 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
          * @return {boolean} Returns true/false from loading the url.
          */
         router.navigate = function(fragment, options) {
-            if(fragment && fragment.indexOf('://') != -1){
+            if (fragment && fragment.indexOf("://") != -1) {
                 window.location.href = fragment;
                 return true;
             }
@@ -590,12 +590,12 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
         };
 
         router.attached = function() {
-            router.trigger('router:navigation:attached', currentActivation, currentInstruction, router);
+            router.trigger("router:navigation:attached", currentActivation, currentInstruction, router);
         };
 
-        router.compositionComplete = function(){
+        router.compositionComplete = function() {
             isProcessing(false);
-            router.trigger('router:navigation:composition-complete', currentActivation, currentInstruction, router);
+            router.trigger("router:navigation:composition-complete", currentActivation, currentInstruction, router);
             dequeueInstruction();
         };
 
@@ -606,19 +606,19 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
          * @return {string} The hash.
          */
         router.convertRouteToHash = function(route) {
-            if(router.relativeToParentRouter){
+            if (router.relativeToParentRouter) {
                 var instruction = router.parent.activeInstruction(),
-                    hash = instruction.config.hash + '/' + route;
+                    hash = instruction.config.hash + "/" + route;
 
-                if(history._hasPushState){
-                    hash = '/' + hash;
+                if (history._hasPushState) {
+                    hash = "/" + hash;
                 }
 
-                hash = hash.replace('//', '/').replace('//', '/');
+                hash = hash.replace("//", "/").replace("//", "/");
                 return hash;
             }
 
-            if(history._hasPushState){
+            if (history._hasPushState) {
                 return route;
             }
 
@@ -723,7 +723,7 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
             var catchAllRoute = "*catchall";
             var catchAllPattern = routeStringToRegExp(catchAllRoute);
 
-            router.route(catchAllPattern, function (fragment, queryString) {
+            router.route(catchAllPattern, function(fragment, queryString) {
                 var paramInfo = createParams(catchAllPattern, fragment, queryString);
                 var instruction = {
                     fragment: fragment,
@@ -740,15 +740,15 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
                     instruction.config.moduleId = fragment;
                 } else if (system.isString(config)) {
                     instruction.config.moduleId = config;
-                    if(replaceRoute){
-                        history.navigate(replaceRoute, { trigger:false, replace:true });
+                    if (replaceRoute) {
+                        history.navigate(replaceRoute, { trigger: false, replace: true });
                     }
                 } else if (system.isFunction(config)) {
                     var result = config(instruction);
                     if (result && result.then) {
                         result.then(function() {
-                            router.trigger('router:route:before-config', instruction.config, router);
-                            router.trigger('router:route:after-config', instruction.config, router);
+                            router.trigger("router:route:before-config", instruction.config, router);
+                            router.trigger("router:route:after-config", instruction.config, router);
                             queueInstruction(instruction);
                         });
                         return;
@@ -759,8 +759,8 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
                     instruction.config.routePattern = catchAllPattern;
                 }
 
-                router.trigger('router:route:before-config', instruction.config, router);
-                router.trigger('router:route:after-config', instruction.config, router);
+                router.trigger("router:route:before-config", instruction.config, router);
+                router.trigger("router:route:after-config", instruction.config, router);
                 queueInstruction(instruction);
             });
 
@@ -787,35 +787,35 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
          * @param {string|object} settings If string, the value is used as the base for routes and module ids. If an object, you can specify `route` and `moduleId` separately. In place of specifying route, you can set `fromParent:true` to make routes automatically relative to the parent router's active route.
          * @chainable
          */
-        router.makeRelative = function(settings){
-            if(system.isString(settings)){
+        router.makeRelative = function(settings) {
+            if (system.isString(settings)) {
                 settings = {
-                    moduleId:settings,
-                    route:settings
+                    moduleId: settings,
+                    route: settings
                 };
             }
 
-            if(settings.moduleId && !endsWith(settings.moduleId, '/')){
-                settings.moduleId += '/';
+            if (settings.moduleId && !endsWith(settings.moduleId, "/")) {
+                settings.moduleId += "/";
             }
 
-            if(settings.route && !endsWith(settings.route, '/')){
-                settings.route += '/';
+            if (settings.route && !endsWith(settings.route, "/")) {
+                settings.route += "/";
             }
 
-            if(settings.fromParent){
+            if (settings.fromParent) {
                 router.relativeToParentRouter = true;
             }
 
-            router.on('router:route:before-config').then(function(config){
-                if(settings.moduleId){
+            router.on("router:route:before-config").then(function(config) {
+                if (settings.moduleId) {
                     config.moduleId = settings.moduleId + config.moduleId;
                 }
 
-                if(settings.route){
-                    if(config.route === ''){
+                if (settings.route) {
+                    if (config.route === "") {
                         config.route = settings.route.substring(0, settings.route.length - 1);
-                    }else{
+                    } else {
                         config.route = settings.route + config.route;
                     }
                 }
@@ -853,13 +853,15 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
      * @return {boolean} True if the event's target is the current window, false otherwise.
      */
     rootRouter.targetIsThisWindow = function(event) {
-        var targetWindow = $(event.target).attr('target');
-        
+        var targetWindow = $(event.target).attr("target");
+
         if (!targetWindow ||
             targetWindow === window.name ||
-            targetWindow === '_self' ||
-            (targetWindow === 'top' && window === window.top)) { return true; }
-        
+            targetWindow === "_self" ||
+            (targetWindow === "top" && window === window.top)) {
+            return true;
+        }
+
         return false;
     };
 
@@ -875,19 +877,19 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
 
             history.activate(rootRouter.options);
 
-            if(history._hasPushState){
+            if (history._hasPushState) {
                 var routes = rootRouter.routes,
                     i = routes.length;
 
-                while(i--){
+                while (i--) {
                     var current = routes[i];
-                    current.hash = current.hash.replace('#', '');
+                    current.hash = current.hash.replace("#", "");
                 }
             }
 
-            $(document).delegate("a", 'click', function(evt){
-                if(history._hasPushState){
-                    if(!evt.altKey && !evt.ctrlKey && !evt.metaKey && !evt.shiftKey && rootRouter.targetIsThisWindow(evt)){
+            $(document).delegate("a", "click", function(evt) {
+                if (history._hasPushState) {
+                    if (!evt.altKey && !evt.ctrlKey && !evt.metaKey && !evt.shiftKey && rootRouter.targetIsThisWindow(evt)) {
                         var href = $(this).attr("href");
 
                         // Ensure the protocol is not part of URL, meaning its relative.
@@ -898,12 +900,12 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
                             history.navigate(href);
                         }
                     }
-                }else{
+                } else {
                     rootRouter.explicitNavigation = true;
                 }
             });
 
-            if(history.options.silent && startDeferred){
+            if (history.options.silent && startDeferred) {
                 startDeferred.resolve();
                 startDeferred = null;
             }
@@ -922,7 +924,7 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
      * Installs the router's custom ko binding handler.
      * @method install
      */
-    rootRouter.install = function(){
+    rootRouter.install = function() {
         ko.bindingHandlers.router = {
             init: function() {
                 return { controlsDescendantBindings: true };
@@ -932,9 +934,9 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
 
                 if (settings.__router__) {
                     settings = {
-                        model:settings.activeItem(),
-                        attached:settings.attached,
-                        compositionComplete:settings.compositionComplete,
+                        model: settings.activeItem(),
+                        attached: settings.attached,
+                        compositionComplete: settings.compositionComplete,
                         activate: false
                     };
                 } else {

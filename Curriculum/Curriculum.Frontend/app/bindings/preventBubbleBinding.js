@@ -1,29 +1,29 @@
 ﻿/* global define: false, ko: false, moment: false */
 define(function preventBubbleBinding() {
-	"use strict";
+    "use strict";
 
-	var binding = {};
+    var binding = {};
 
-	function init(element, valueAccessor, allBindings, viewModel,
-			bindingContext) {
+    function init(element, valueAccessor, allBindings, viewModel,
+        bindingContext) {
 
-		var eventName = ko.utils.unwrapObservable(valueAccessor());
+        var eventName = ko.utils.unwrapObservable(valueAccessor());
         ko.utils.registerEventHandler(element, eventName, function(event) {
-           event.cancelBubble = true;
-           if (event.stopPropagation) {
+            event.cancelBubble = true;
+            if (event.stopPropagation) {
                 event.stopPropagation();
-           }                
+            }
         });
-        
-	}
 
-	function update(element, valueAccessor, allBindings, viewModel,
-			bindingContext) {
-		
-	}
+    }
 
-	binding.init = init;
-	binding.update = update;
+    function update(element, valueAccessor, allBindings, viewModel,
+        bindingContext) {
 
-	return binding;
+    }
+
+    binding.init = init;
+    binding.update = update;
+
+    return binding;
 });

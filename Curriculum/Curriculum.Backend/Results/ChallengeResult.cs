@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
 // // Project: Curriculum.Backend
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:38
+// // File created on 18/01/2016   10:52
 // //
-// // File Modified on 14/01/2016/   14:38
+// // File Modified on 18/01/2016/   10:52
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -44,7 +44,6 @@ namespace Curriculum.Backend.Results
     public class ChallengeResult : IHttpActionResult
     {
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="loginProvider"></param>
         /// <param name="controller"></param>
@@ -55,17 +54,14 @@ namespace Curriculum.Backend.Results
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public string LoginProvider { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public HttpRequestMessage Request { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>

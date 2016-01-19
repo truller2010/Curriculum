@@ -9,7 +9,7 @@
  * @requires system
  * @requires jquery
  */
-define(['durandal/system', 'jquery'], function (system, $) {
+define(["durandal/system", "jquery"], function(system, $) {
     // Cached regex for stripping a leading hash/slash and trailing space.
     var routeStripper = /^[#\/]|\s+$/g;
 
@@ -26,11 +26,11 @@ define(['durandal/system', 'jquery'], function (system, $) {
     // a new one to the browser history.
     function updateHash(location, fragment, replace) {
         if (replace) {
-            var href = location.href.replace(/(javascript:|#).*$/, '');
-            location.replace(href + '#' + fragment);
+            var href = location.href.replace(/(javascript:|#).*$/, "");
+            location.replace(href + "#" + fragment);
         } else {
             // Some browsers require that `hash` contains a leading #.
-            location.hash = '#' + fragment;
+            location.hash = "#" + fragment;
         }
     };
 
@@ -51,9 +51,9 @@ define(['durandal/system', 'jquery'], function (system, $) {
          */
         active: false
     };
-    
+
     // Ensure that `History` can be used outside of the browser.
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
         history.location = window.location;
         history.history = window.history;
     }
@@ -66,9 +66,9 @@ define(['durandal/system', 'jquery'], function (system, $) {
      */
     history.getHash = function(window) {
         var match = (window || history).location.href.match(/#(.*)$/);
-        return match ? match[1] : '';
+        return match ? match[1] : "";
     };
-    
+
     /**
      * Get the cross-browser normalized URL fragment, either from the URL, the hash, or the override.
      * @method getFragment
@@ -80,7 +80,7 @@ define(['durandal/system', 'jquery'], function (system, $) {
         if (fragment == null) {
             if (history._hasPushState || !history._wantsHashChange || forcePushState) {
                 fragment = history.location.pathname + history.location.search;
-                var root = history.root.replace(trailingSlash, '');
+                var root = history.root.replace(trailingSlash, "");
                 if (!fragment.indexOf(root)) {
                     fragment = fragment.substr(root.length);
                 }
@@ -88,8 +88,8 @@ define(['durandal/system', 'jquery'], function (system, $) {
                 fragment = history.getHash();
             }
         }
-        
-        return fragment.replace(routeStripper, '');
+
+        return fragment.replace(routeStripper, "");
     };
 
     /**
@@ -107,7 +107,7 @@ define(['durandal/system', 'jquery'], function (system, $) {
 
         // Figure out the initial configuration. Do we need an iframe?
         // Is pushState desired ... is it available?
-        history.options = system.extend({}, { root: '/' }, history.options, options);
+        history.options = system.extend({}, { root: "/" }, history.options, options);
         history.root = history.options.root;
         history._wantsHashChange = history.options.hashChange !== false;
         history._wantsPushState = !!history.options.pushState;
@@ -118,19 +118,19 @@ define(['durandal/system', 'jquery'], function (system, $) {
         var oldIE = (isExplorer.exec(navigator.userAgent.toLowerCase()) && (!docMode || docMode <= 7));
 
         // Normalize root to always include a leading and trailing slash.
-        history.root = ('/' + history.root + '/').replace(rootStripper, '/');
+        history.root = ("/" + history.root + "/").replace(rootStripper, "/");
 
         if (oldIE && history._wantsHashChange) {
-            history.iframe = $('<iframe src="javascript:0" tabindex="-1" />').hide().appendTo('body')[0].contentWindow;
+            history.iframe = $('<iframe src="javascript:0" tabindex="-1" />').hide().appendTo("body")[0].contentWindow;
             history.navigate(fragment, false);
         }
 
         // Depending on whether we're using pushState or hashes, and whether
         // 'onhashchange' is supported, determine how we check the URL state.
         if (history._hasPushState) {
-            $(window).on('popstate', history.checkUrl);
-        } else if (history._wantsHashChange && ('onhashchange' in window) && !oldIE) {
-            $(window).on('hashchange', history.checkUrl);
+            $(window).on("popstate", history.checkUrl);
+        } else if (history._wantsHashChange && ("onhashchange" in window) && !oldIE) {
+            $(window).on("hashchange", history.checkUrl);
         } else if (history._wantsHashChange) {
             history._checkUrlInterval = setInterval(history.checkUrl, history.interval);
         }
@@ -139,7 +139,7 @@ define(['durandal/system', 'jquery'], function (system, $) {
         // opened by a non-pushState browser.
         history.fragment = fragment;
         var loc = history.location;
-        var atRoot = loc.pathname.replace(/[^\/]$/, '$&/') === history.root;
+        var atRoot = loc.pathname.replace(/[^\/]$/, "$&/") === history.root;
 
         // Transition from hashChange to pushState or vice versa if both are requested.
         if (history._wantsHashChange && history._wantsPushState) {
@@ -147,14 +147,14 @@ define(['durandal/system', 'jquery'], function (system, $) {
             // browser, but we're currently in a browser that doesn't support it...
             if (!history._hasPushState && !atRoot) {
                 history.fragment = history.getFragment(null, true);
-                history.location.replace(history.root + history.location.search + '#' + history.fragment);
+                history.location.replace(history.root + history.location.search + "#" + history.fragment);
                 // Return immediately as browser will do redirect to new url
                 return true;
 
-            // Or if we've started out with a hash-based route, but we're currently
-            // in a browser where it could be `pushState`-based instead...
+                // Or if we've started out with a hash-based route, but we're currently
+                // in a browser where it could be `pushState`-based instead...
             } else if (history._hasPushState && atRoot && loc.hash) {
-                this.fragment = history.getHash().replace(routeStripper, '');
+                this.fragment = history.getHash().replace(routeStripper, "");
                 this.history.replaceState({}, document.title, history.root + history.fragment + loc.search);
             }
         }
@@ -169,7 +169,7 @@ define(['durandal/system', 'jquery'], function (system, $) {
      * @method deactivate
      */
     history.deactivate = function() {
-        $(window).off('popstate', history.checkUrl).off('hashchange', history.checkUrl);
+        $(window).off("popstate", history.checkUrl).off("hashchange", history.checkUrl);
         clearInterval(history._checkUrlInterval);
         history.active = false;
     };
@@ -192,10 +192,10 @@ define(['durandal/system', 'jquery'], function (system, $) {
         if (history.iframe) {
             history.navigate(current, false);
         }
-        
+
         history.loadUrl();
     };
-    
+
     /**
      * Attempts to load the current URL fragment. A pass-through to options.routeHandler.
      * @method loadUrl
@@ -226,17 +226,17 @@ define(['durandal/system', 'jquery'], function (system, $) {
             return false;
         }
 
-        if(options === undefined) {
+        if (options === undefined) {
             options = {
                 trigger: true
             };
-        }else if(system.isBoolean(options)) {
+        } else if (system.isBoolean(options)) {
             options = {
                 trigger: options
             };
         }
 
-        fragment = history.getFragment(fragment || '');
+        fragment = history.getFragment(fragment || "");
 
         if (history.fragment === fragment) {
             return;
@@ -247,19 +247,19 @@ define(['durandal/system', 'jquery'], function (system, $) {
         var url = history.root + fragment;
 
         // Don't include a trailing slash on the root.
-        if(fragment === '' && url !== '/') {
+        if (fragment === "" && url !== "/") {
             url = url.slice(0, -1);
         }
 
         // If pushState is available, we use it to set the fragment as a real URL.
         if (history._hasPushState) {
-            history.history[options.replace ? 'replaceState' : 'pushState']({}, document.title, url);
+            history.history[options.replace ? "replaceState" : "pushState"]({}, document.title, url);
 
             // If hash changes haven't been explicitly disabled, update the hash
             // fragment to store history.
         } else if (history._wantsHashChange) {
             updateHash(history.location, fragment, options.replace);
-            
+
             if (history.iframe && (fragment !== history.getFragment(history.getHash(history.iframe)))) {
                 // Opening and closing the iframe tricks IE7 and earlier to push a
                 // history entry on hash-tag change.  When replace is true, we don't
@@ -267,7 +267,7 @@ define(['durandal/system', 'jquery'], function (system, $) {
                 if (!options.replace) {
                     history.iframe.document.open().close();
                 }
-                
+
                 updateHash(history.iframe.location, fragment, options.replace);
             }
 

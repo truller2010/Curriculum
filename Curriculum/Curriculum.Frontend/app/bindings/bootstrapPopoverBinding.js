@@ -1,29 +1,29 @@
 ﻿/* global define: false, ko: false, moment: false */
 define(function bootstrapPopoverBinding() {
-	"use strict";
+    "use strict";
 
-	var binding = {};
+    var binding = {};
 
-	function init(element, valueAccessor, allBindings, viewModel,
-			bindingContext) {
-		
-        ko.utils.registerEventHandler(element, 'click', function(event) {
-           event.cancelBubble = true;
-           if (event.stopPropagation) {
+    function init(element, valueAccessor, allBindings, viewModel,
+        bindingContext) {
+
+        ko.utils.registerEventHandler(element, "click", function(event) {
+            event.cancelBubble = true;
+            if (event.stopPropagation) {
                 event.stopPropagation();
-           }                
+            }
         });
-        
-        ko.bindingHandlers.popover.init(element, valueAccessor, allBindings, viewModel, bindingContext); 
-	}
 
-	function update(element, valueAccessor, allBindings, viewModel,
-			bindingContext) {
-		
-	}
+        ko.bindingHandlers.popover.init(element, valueAccessor, allBindings, viewModel, bindingContext);
+    }
 
-	binding.init = init;
-	binding.update = update;
+    function update(element, valueAccessor, allBindings, viewModel,
+        bindingContext) {
 
-	return binding;
+    }
+
+    binding.init = init;
+    binding.update = update;
+
+    return binding;
 });

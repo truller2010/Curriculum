@@ -98,12 +98,8 @@
     <Compile Include="Authentication\AuthenticationRefreshTokenRepository\IAuthenticationRefreshTokenRepository.cs" />
     <Compile Include="Authentication\AuthenticationUsersRepository\AuthenticationUsersRepository.cs" />
     <Compile Include="Authentication\AuthenticationUsersRepository\IAuthenticationUsersRepository.cs" />
-    <Compile Include="BlogCategory\BlogCategoryRepository.cs" />
-    <Compile Include="BlogCategory\IBlogCategoryRepository.cs" />
-    <Compile Include="BlogPost\BlogPostRepository.cs" />
-    <Compile Include="BlogPost\IBlogPostRepository.cs" />
-    <Compile Include="BlogTag\BlogTagRepository.cs" />
-    <Compile Include="BlogTag\IBlogTagRepository.cs" />
+    <Compile Include="Profiles\ProfilesRepository.cs" />
+    <Compile Include="Profiles\IProfilesRepository.cs" />
     <Compile Include="Config\AddDaysGenerator.cs" />
     <Compile Include="Config\CustomDialect.cs" />
     <Compile Include="Config\ExtendedLinqtoHqlGeneratorsRegistry.cs" />

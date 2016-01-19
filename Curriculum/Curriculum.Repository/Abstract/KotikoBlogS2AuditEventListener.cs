@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
 // // Project: Curriculum.Repository
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:54
+// // File created on 16/01/2016   23:12
 // //
-// // File Modified on 14/01/2016/   14:54
+// // File Modified on 16/01/2016/   23:12
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -45,18 +45,15 @@ using NHibernate.Event;
 namespace Curriculum.Repository.Abstract
 {
     /// <summary>
-    /// 
     /// </summary>
     public class CurriculumAuditEventListener : AuditEventListener, IPreUpdateEventListener, IPreInsertEventListener,
         IPreDeleteEventListener, IPreCollectionRecreateEventListener
     {
         /// <summary>
-        /// 
         /// </summary>
         private const string MODEL_NAMESPACE = "Curriculum.Models";
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="evt"></param>
         public void OnPreRecreateCollection(PreCollectionRecreateEvent evt)
@@ -64,7 +61,6 @@ namespace Curriculum.Repository.Abstract
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="evt"></param>
         /// <returns></returns>
@@ -74,7 +70,6 @@ namespace Curriculum.Repository.Abstract
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="evt"></param>
         /// <returns></returns>
@@ -110,7 +105,6 @@ namespace Curriculum.Repository.Abstract
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="evt"></param>
         /// <returns></returns>
@@ -137,7 +131,6 @@ namespace Curriculum.Repository.Abstract
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="evt"></param>
         public override void OnPreUpdateCollection(PreCollectionUpdateEvent evt)
@@ -145,7 +138,6 @@ namespace Curriculum.Repository.Abstract
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="evt"></param>
         public override void OnPreRemoveCollection(PreCollectionRemoveEvent evt)
@@ -153,7 +145,6 @@ namespace Curriculum.Repository.Abstract
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="properties"></param>
         /// <returns></returns>

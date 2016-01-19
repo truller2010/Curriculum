@@ -1,9 +1,9 @@
 /* global define: false */
-define([ "i18next", "jquery" ], function i18nDecorator(i18n, $) {
+define(["i18next", "jquery"], function i18nDecorator(i18n, $) {
     // TODO qunit i18nDecorator
 
     "use strict";
-    var REGULAR_EXPRESSIONS = [ /\{0\}/gm, /\{1\}/gm, /\{2\}/gm ], HTML_5_DATE_PATTERN = "YYYY-MM-DD", HTML_5_DATETIME_PATTERN = "YYYY-MM-DD hh:mm";
+    var REGULAR_EXPRESSIONS = [/\{0\}/gm, /\{1\}/gm, /\{2\}/gm], HTML_5_DATE_PATTERN = "YYYY-MM-DD", HTML_5_DATETIME_PATTERN = "YYYY-MM-DD hh:mm";
 
     function format() {
         var pattern = arguments[0], i, imax = arguments.length - 1;

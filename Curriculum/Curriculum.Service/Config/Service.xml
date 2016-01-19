@@ -13,16 +13,9 @@
     <property name="AuthenticationRefreshTokenRepository" ref="AuthenticationRefreshTokenRepository" />
   </object>
 
-  <object name="BlogPostService" type="Curriculum.Service.BlogPost.BlogPostService, Curriculum.Service">
-    <property name="BlogPostRepository" ref="BlogPostRepository" />
+  <object name="ProfilesService" type="Curriculum.Service.Profiles.ProfilesService, Curriculum.Service">
+    <property name="ProfilesRepository" ref="ProfilesRepository" />
   </object>
 
-  <object name="BlogCategoryService" type="Curriculum.Service.BlogCategory.BlogCategoryService, Curriculum.Service">
-    <property name="BlogCategoryRepository" ref="BlogCategoryRepository" />
-  </object>
-
-  <object name="BlogTagService" type="Curriculum.Service.BlogTag.BlogTagService, Curriculum.Service">
-    <property name="BlogTagRepository" ref="BlogTagRepository" />
-  </object>
   
 </objects>

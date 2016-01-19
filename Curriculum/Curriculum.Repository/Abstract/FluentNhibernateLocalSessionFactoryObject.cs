@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
 // // Project: Curriculum.Repository
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:54
+// // File created on 16/01/2016   23:12
 // //
-// // File Modified on 14/01/2016/   14:54
+// // File Modified on 16/01/2016/   23:12
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -32,8 +32,8 @@
 #region
 
 using System.Reflection;
-using FluentNHibernate;
 using Curriculum.Repository.Abstract;
+using FluentNHibernate;
 using NHibernate.Caches.SysCache;
 using NHibernate.Cfg;
 using NHibernate.Envers.Configuration.Attributes;
@@ -45,7 +45,6 @@ using Spring.Data.NHibernate;
 namespace Curriculum.Repository
 {
     /// <summary>
-    /// 
     /// </summary>
     public class FluentNhibernateLocalSessionFactoryObject : LocalSessionFactoryObject
     {
@@ -56,7 +55,6 @@ namespace Curriculum.Repository
         public string[] FluentNhibernateMappingAssemblies { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="config"></param>
         protected override void PostProcessConfiguration(Configuration config)
@@ -70,7 +68,7 @@ namespace Curriculum.Repository
             }
 
             config.Properties.Add("nhibernate.envers.Curriculum_with_modified_flag", "true");
-                //log property data for revisions
+            //log property data for revisions
             config.IntegrateWithEnvers(new AttributeConfiguration());
             config.SetListener(ListenerType.PreInsert, new CurriculumAuditEventListener());
             config.SetListener(ListenerType.PreUpdate, new CurriculumAuditEventListener());

@@ -1,5 +1,6 @@
 ﻿/* global _: false, define: false, ko: false */
-define(["jquery","core/util/csrfUtils", "core/exceptionHandler", "core/util/validationUtils"
+define([
+    "jquery", "core/util/csrfUtils", "core/exceptionHandler", "core/util/validationUtils"
 ], function fileUploadBinding($, csrfUtils, exceptionHandler, validationUtils) {
     "use strict";
 
@@ -23,14 +24,15 @@ define(["jquery","core/util/csrfUtils", "core/exceptionHandler", "core/util/vali
 
         function fail(event, data) {
 
-            if(viewModel)
-                viewModel.app.showMessage(data._response.jqXHR.responseJSON.m_StringValue, viewModel.i18n.t('app:ERROR_MESSAGE_BOX_TITLE'), [
-                                           viewModel.i18n.t('app:CLOSE_BUTTON_TITLE') ]);
+            if (viewModel)
+                viewModel.app.showMessage(data._response.jqXHR.responseJSON.m_StringValue, viewModel.i18n.t("app:ERROR_MESSAGE_BOX_TITLE"), [
+                    viewModel.i18n.t("app:CLOSE_BUTTON_TITLE")
+                ]);
             $progress.hide();
         }
 
         function processfail() {
-           
+
         }
 
         function progressall(event, data) {
@@ -41,7 +43,7 @@ define(["jquery","core/util/csrfUtils", "core/exceptionHandler", "core/util/vali
             $progress.show();
 
             if ($progress.length) {
-                $progress.css('width', parseInt(data.loaded / data.total * 100, 10) + '%');
+                $progress.css("width", parseInt(data.loaded / data.total * 100, 10) + "%");
             }
         }
 
@@ -55,17 +57,16 @@ define(["jquery","core/util/csrfUtils", "core/exceptionHandler", "core/util/vali
                 progressall: progressall,
                 done: done,
                 fail: fail,
-                beforeSend: function (event, files, index, xhr, handler, callBack) {
-                   // files.data.append("idBrand", valueAccessor().idBrand());
+                beforeSend: function(event, files, index, xhr, handler, callBack) {
+                    // files.data.append("idBrand", valueAccessor().idBrand());
                     csrfUtils.appendXsrfToXhr(event);
                 }
             });
 
-            
 
         }, 0);
 
-        
+
     }
 
     binding.init = init;

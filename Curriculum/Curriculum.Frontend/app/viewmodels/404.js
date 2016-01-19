@@ -1,7 +1,7 @@
 ﻿/* global _: false, define: false, ko: false */
 define(
     [
-        "jquery", "core/config", "core/i18n" 
+        "jquery", "core/config", "core/i18n"
     ],
     function testViewModel($, config, i18n) {
         var viewModel = {};

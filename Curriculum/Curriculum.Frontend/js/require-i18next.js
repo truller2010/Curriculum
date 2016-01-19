@@ -79,10 +79,10 @@ define(["i18next"], function(i18next) {
         },
 
         load: function(name, req, onload, config) {
-            var parsedName = plugin.parseName(name), 
-                options = f.extend({}, config.i18next), 
-                namespaces = parsedName.namespaces, 
-                module = parsedName.module, 
+            var parsedName = plugin.parseName(name),
+                options = f.extend({}, config.i18next),
+                namespaces = parsedName.namespaces,
+                module = parsedName.module,
                 supportedLngs = options.supportedLngs;
 
             // Check for scoped supported languages value
@@ -123,8 +123,8 @@ define(["i18next"], function(i18next) {
                 }
 
                 // Define resource url
-                var url = req.toUrl(module + (module.substr(module.length - 1) !== "/" ? "/" : "") + 
-                        f.applyReplacement(opts.resGetPath, {lng : lng, ns : ns}));
+                var url = req.toUrl(module + (module.substr(module.length - 1) !== "/" ? "/" : "") +
+                    f.applyReplacement(opts.resGetPath, { lng: lng, ns: ns }));
 
                 // Make the request
                 f.ajax({

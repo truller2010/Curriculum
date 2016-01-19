@@ -1,13 +1,13 @@
 #region KotikoBlog Header License
 
-// // Solution: KotikoBlog
-// // Project: KotikoBlog.Backend
+// // Solution: Curriculum
+// // Project: Curriculum.Backend
 // //
-// // This file is included in the KotikoBlog solution.
+// // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:38
+// // File created on 18/01/2016   11:48
 // //
-// // File Modified on 14/01/2016/   14:38
+// // File Modified on 18/01/2016/   11:48
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -36,8 +36,8 @@ using System.Collections.Generic;
 using System.Web.Http;
 using AutoMapper;
 using Curriculum.Backend.Models.Authentication.AuthenticationUsers;
-using Curriculum.Core.Filter;
-using Curriculum.Core.Pager;
+using Curriculum.CoreUtils.Filter;
+using Curriculum.CoreUtils.Pager;
 using Curriculum.Models.Authentication.AuthenticationUsers;
 using Curriculum.Service.Authentication.AuthenticationUsersService;
 
@@ -46,17 +46,14 @@ using Curriculum.Service.Authentication.AuthenticationUsersService;
 namespace Curriculum.Backend.Controllers.Authentication
 {
     /// <summary>
-    /// 
     /// </summary>
     public class AuthenticationUsersController : BaseApiController
     {
         /// <summary>
-        /// 
         /// </summary>
         private IAuthenticationUsersService AuthenticationUsersService { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -67,7 +64,6 @@ namespace Curriculum.Backend.Controllers.Authentication
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -80,7 +76,6 @@ namespace Curriculum.Backend.Controllers.Authentication
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -92,7 +87,6 @@ namespace Curriculum.Backend.Controllers.Authentication
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
@@ -105,7 +99,6 @@ namespace Curriculum.Backend.Controllers.Authentication
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="email"></param>
         /// <param name="password"></param>
@@ -119,7 +112,6 @@ namespace Curriculum.Backend.Controllers.Authentication
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -132,7 +124,6 @@ namespace Curriculum.Backend.Controllers.Authentication
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -145,7 +136,6 @@ namespace Curriculum.Backend.Controllers.Authentication
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
@@ -158,7 +148,6 @@ namespace Curriculum.Backend.Controllers.Authentication
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="locked"></param>
         /// <returns></returns>

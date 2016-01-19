@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
 // // Project: Curriculum.Repository
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:54
+// // File created on 16/01/2016   23:12
 // //
-// // File Modified on 14/01/2016/   14:54
+// // File Modified on 16/01/2016/   23:12
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Curriculum.Core.Pager;
+using Curriculum.CoreUtils.Pager;
 
 #endregion
 
@@ -146,7 +146,6 @@ namespace Curriculum.Repository.Abstract
     }
 
     /// <summary>
-    /// 
     /// </summary>
     /// <typeparam name="Tentity"></typeparam>
     /// <typeparam name="TId"></typeparam>
@@ -156,7 +155,6 @@ namespace Curriculum.Repository.Abstract
     }
 
     /// <summary>
-    /// 
     /// </summary>
     /// <typeparam name="Tentity"></typeparam>
     /// <typeparam name="TId"></typeparam>

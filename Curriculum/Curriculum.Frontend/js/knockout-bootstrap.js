@@ -9,13 +9,13 @@ function s4() {
 
 function guid() {
     "use strict";
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    return s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-" + s4() + s4() + s4();
 }
 
 // Outer HTML
-(function ($) {
+(function($) {
     "use strict";
-    $.fn.outerHtml = function () {
+    $.fn.outerHtml = function() {
         if (this.length === 0) {
             return false;
         }
@@ -23,7 +23,7 @@ function guid() {
         if (elem.outerHTML) {
             return elem.outerHTML;
         }
-        var attrs = $.map(elem.attributes, function (i) { return i.name + '="' + i.value + '"'; });
+        var attrs = $.map(elem.attributes, function(i) { return i.name + '="' + i.value + '"'; });
         return "<" + name + (attrs.length > 0 ? " " + attrs.join(" ") : "") + ">" + elem.innerHTML + "</" + name + ">";
     };
 })(jQuery);
@@ -32,7 +32,7 @@ function setupKoBootstrap(koObject, $) {
     "use strict";
     // Bind twitter typeahead
     koObject.bindingHandlers.typeahead = {
-        init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+        init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
             var $element = $(element);
             var allBindings = allBindingsAccessor();
             var typeaheadOpts = { source: koObject.utils.unwrapObservable(valueAccessor()) };
@@ -49,16 +49,16 @@ function setupKoBootstrap(koObject, $) {
 
     // Bind Twitter Progress
     koObject.bindingHandlers.progress = {
-        init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+        init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
             var $element = $(element);
 
-            var bar = $('<div/>', {
-                'class': 'bar',
-                'data-bind': 'style: { width:' + valueAccessor() + ' }'
+            var bar = $("<div/>", {
+                'class': "bar",
+                'data-bind': "style: { width:" + valueAccessor() + " }"
             });
 
-            $element.attr('id', guid())
-                .addClass('progress progress-info')
+            $element.attr("id", guid())
+                .addClass("progress progress-info")
                 .append(bar);
 
             koObject.applyBindingsToDescendants(viewModel, $element[0]);
@@ -67,19 +67,19 @@ function setupKoBootstrap(koObject, $) {
 
     // Bind Twitter Alert
     koObject.bindingHandlers.alert = {
-        init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+        init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
             var $element = $(element);
             var alertInfo = koObject.utils.unwrapObservable(valueAccessor());
 
-            var dismissBtn = $('<button/>', {
-                'type': 'button',
-                'class': 'close',
-                'data-dismiss': 'alert'
-            }).html('&times;');
+            var dismissBtn = $("<button/>", {
+                'type': "button",
+                'class': "close",
+                'data-dismiss': "alert"
+            }).html("&times;");
 
-            var alertMessage = $('<p/>').html(alertInfo.message);
+            var alertMessage = $("<p/>").html(alertInfo.message);
 
-            $element.addClass('alert alert-' + alertInfo.priority)
+            $element.addClass("alert alert-" + alertInfo.priority)
                 .append(dismissBtn)
                 .append(alertMessage);
         }
@@ -87,7 +87,7 @@ function setupKoBootstrap(koObject, $) {
 
     // Bind Twitter Tooltip
     koObject.bindingHandlers.tooltip = {
-        update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+        update: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
             var $element, options, tooltip;
             options = koObject.utils.unwrapObservable(valueAccessor());
             $element = $(element);
@@ -96,26 +96,26 @@ function setupKoBootstrap(koObject, $) {
             if (koObject.isObservable(options.title)) {
                 var isToolTipVisible = false;
 
-                $element.on('show.bs.tooltip', function () {
+                $element.on("show.bs.tooltip", function() {
                     isToolTipVisible = true;
                 });
-                $element.on('hide.bs.tooltip', function () {
+                $element.on("hide.bs.tooltip", function() {
                     isToolTipVisible = false;
                 });
 
                 // "true" is the bootstrap default.
                 var origAnimation = options.animation || true;
-                options.title.subscribe(function () {
+                options.title.subscribe(function() {
                     if (isToolTipVisible) {
-                        $element.data('bs.tooltip').options.animation = false; // temporarily disable animation to avoid flickering of the tooltip
-                        $element.tooltip('fixTitle') // call this method to update the title
-                            .tooltip('show');
-                        $element.data('bs.tooltip').options.animation = origAnimation;
+                        $element.data("bs.tooltip").options.animation = false; // temporarily disable animation to avoid flickering of the tooltip
+                        $element.tooltip("fixTitle") // call this method to update the title
+                            .tooltip("show");
+                        $element.data("bs.tooltip").options.animation = origAnimation;
                     }
                 });
             }
 
-            tooltip = $element.data('bs.tooltip');
+            tooltip = $element.data("bs.tooltip");
             if (tooltip) {
                 $.extend(tooltip.options, options);
             } else {
@@ -139,7 +139,7 @@ function setupKoBootstrap(koObject, $) {
             // set popover title - will use default title attr if none given
             if (popoverBindingValues.title) {
                 tmpOptions.title = popoverBindingValues.title;
-            }else{
+            } else {
                 //if title is empty, then fix template
                 tmpOptions.template = '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>';
             }
@@ -175,7 +175,7 @@ function setupKoBootstrap(koObject, $) {
 
                 // get template html
                 if (!data) {
-                    tmplHtml = $('#' + tmplId).html();
+                    tmplHtml = $("#" + tmplId).html();
                 } else {
                     tmplHtml = function() {
                         var container = $('<div data-bind="template: { name: template, if: data, data: data }"></div>');
@@ -189,7 +189,7 @@ function setupKoBootstrap(koObject, $) {
                 }
 
                 // create DOM object to use for popover content
-                tmplDom = $('<div/>', {
+                tmplDom = $("<div/>", {
                     "class": "ko-popover",
                     "id": domId
                 }).html(tmplHtml);
@@ -201,7 +201,7 @@ function setupKoBootstrap(koObject, $) {
                 }
 
                 // create DOM object to use for popover content
-                tmplDom = $('<div/>', {
+                tmplDom = $("<div/>", {
                     "class": "ko-popover",
                     "id": domId
                 }).html(tmplHtml);
@@ -220,41 +220,41 @@ function setupKoBootstrap(koObject, $) {
             if (popoverOptions.addCloseButtonToTitle) {
                 var closeHtml = popoverOptions.closeButtonHtml;
                 if (closeHtml === undefined) {
-                    closeHtml = ' &times ';
+                    closeHtml = " &times ";
                 }
                 if (popoverOptions.title === undefined) {
-                        popoverOptions.title = ' ';
+                    popoverOptions.title = " ";
                 }
 
                 var titleHtml = popoverOptions.title;
-                var buttonHtml = '  <button type="button" class="close" data-dismiss="popover">' + closeHtml + '</button>';
+                var buttonHtml = '  <button type="button" class="close" data-dismiss="popover">' + closeHtml + "</button>";
                 popoverOptions.title = titleHtml + buttonHtml;
             }
 
             // Build up the list of eventTypes if it is defined
             var eventType = "";
             if (popoverBindingValues.trigger) {
-                var triggers = popoverBindingValues.trigger.split(' ');
+                var triggers = popoverBindingValues.trigger.split(" ");
 
                 for (var i = 0; i < triggers.length; i++) {
                     var trigger = triggers[i];
 
-                    if (trigger !== 'manual') {
+                    if (trigger !== "manual") {
                         if (i > 0) {
-                            eventType += ' ';
+                            eventType += " ";
                         }
 
-                        if (trigger === 'click') {
-                            eventType += 'click';
-                        } else if (trigger === 'hover') {
-                            eventType += 'mouseenter mouseleave';
-                        } else if (trigger === 'focus') {
-                            eventType += 'focus blur';
+                        if (trigger === "click") {
+                            eventType += "click";
+                        } else if (trigger === "hover") {
+                            eventType += "mouseenter mouseleave";
+                        } else if (trigger === "focus") {
+                            eventType += "focus blur";
                         }
                     }
                 }
             } else {
-                eventType = 'click';
+                eventType = "click";
             }
 
             var lastEventType = "";
@@ -262,15 +262,15 @@ function setupKoBootstrap(koObject, $) {
             $element.on(eventType, function(e) {
                 e.stopPropagation();
 
-                var popoverAction = 'toggle';
+                var popoverAction = "toggle";
                 var popoverTriggerEl = $(this);
 
                 // Check state before we toggle it so the animation gives us the correct state
-                var popoverPrevStateVisible = $('#' + domId).is(':visible');
+                var popoverPrevStateVisible = $("#" + domId).is(":visible");
 
                 // if set eventType to "click focus", then both events were fired in chrome,
                 // in safari only click was fired, and focus/blur will be missed for a lot of tags.
-                if(lastEventType === 'focus' && e.type === 'click' && popoverPrevStateVisible ){
+                if (lastEventType === "focus" && e.type === "click" && popoverPrevStateVisible) {
                     lastEventType = e.type;
                     return;
                 }
@@ -281,26 +281,26 @@ function setupKoBootstrap(koObject, $) {
                 popoverTriggerEl.popover(popoverOptions).popover(popoverAction);
 
                 // hide other popovers - other than the one we are manipulating
-                var popoverInnerEl = $('#' + domId);
-                var $oldPopovers = $('.ko-popover').not(popoverInnerEl).parents('.popover');
-                $oldPopovers.each(function () {
+                var popoverInnerEl = $("#" + domId);
+                var $oldPopovers = $(".ko-popover").not(popoverInnerEl).parents(".popover");
+                $oldPopovers.each(function() {
                     // popover is attached to the previous element or its parent if a container was specified
                     var $this = $(this);
 
                     var popoverFound = false;
                     var $parent = $this.parent();
-                    var parentData = $parent.data('bs.popover');
+                    var parentData = $parent.data("bs.popover");
                     if (parentData) {
                         popoverFound = true;
-                        $parent.popover('destroy');
+                        $parent.popover("destroy");
                     }
 
                     if (!popoverFound) {
                         var $prev = $(this).prev();
-                        var prevData = $prev.data('bs.popover');
+                        var prevData = $prev.data("bs.popover");
                         if (prevData) {
                             popoverFound = true;
-                            $prev.popover('destroy');
+                            $prev.popover("destroy");
                         }
                     }
                 });
@@ -322,23 +322,23 @@ function setupKoBootstrap(koObject, $) {
                     var triggerElementHeight = $(element).outerHeight();
                     var triggerElementWidth = $(element).outerWidth();
 
-                    var popover = $(popoverInnerEl).parents('.popover');
+                    var popover = $(popoverInnerEl).parents(".popover");
                     var popoverHeight = popover.outerHeight();
                     var popoverWidth = popover.outerWidth();
                     var arrowSize = 10;
 
                     switch (popoverOptions.offset && popoverOptions.placement) {
-                        case 'left':
-                            popover.offset({ top: triggerElementPosition - popoverHeight / 2 + triggerElementHeight / 2, left: triggerElementLeft - arrowSize - popoverWidth });
-                            break;
-                        case 'right':
-                            popover.offset({ top: triggerElementPosition - popoverHeight / 2 + triggerElementHeight / 2 });
-                            break;
-                        case 'top':
-                            popover.offset({ top: triggerElementPosition - popoverHeight - arrowSize, left: triggerElementLeft - popoverWidth / 2 + triggerElementWidth / 2 });
-                            break;
-                        case 'bottom':
-                            popover.offset({ top: triggerElementPosition + triggerElementHeight + arrowSize, left: triggerElementLeft - popoverWidth / 2 + triggerElementWidth / 2 });
+                    case "left":
+                        popover.offset({ top: triggerElementPosition - popoverHeight / 2 + triggerElementHeight / 2, left: triggerElementLeft - arrowSize - popoverWidth });
+                        break;
+                    case "right":
+                        popover.offset({ top: triggerElementPosition - popoverHeight / 2 + triggerElementHeight / 2 });
+                        break;
+                    case "top":
+                        popover.offset({ top: triggerElementPosition - popoverHeight - arrowSize, left: triggerElementLeft - popoverWidth / 2 + triggerElementWidth / 2 });
+                        break;
+                    case "bottom":
+                        popover.offset({ top: triggerElementPosition + triggerElementHeight + arrowSize, left: triggerElementLeft - popoverWidth / 2 + triggerElementWidth / 2 });
                     }
 
                     // bind close button to remove popover
@@ -348,8 +348,8 @@ function setupKoBootstrap(koObject, $) {
                     } else {
                         popoverParent = popoverTriggerEl.parent();
                     }
-                    popoverParent.on('click', 'button[data-dismiss="popover"]', function () {
-                        popoverTriggerEl.popover('hide');
+                    popoverParent.on("click", 'button[data-dismiss="popover"]', function() {
+                        popoverTriggerEl.popover("hide");
                     });
                 }
 
@@ -368,13 +368,13 @@ function setupKoBootstrap(koObject, $) {
     };
 }
 
-(function (factory) {
+(function(factory) {
     "use strict";
     // Support multiple loading scenarios
-    if (typeof define === 'function' && define.amd) {
+    if (typeof define === "function" && define.amd) {
         // AMD anonymous module
 
-        define(["require", "exports", "knockout","jquery"], function (require, exports, knockout, $) {
+        define(["require", "exports", "knockout", "jquery"], function(require, exports, knockout, $) {
             factory(knockout, $);
         });
     } else {

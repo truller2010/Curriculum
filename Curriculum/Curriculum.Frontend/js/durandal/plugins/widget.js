@@ -11,18 +11,18 @@
  * @requires jquery
  * @requires knockout
  */
-define(['durandal/system', 'durandal/composition', 'jquery', 'knockout'], function(system, composition, $, ko) {
+define(["durandal/system", "durandal/composition", "jquery", "knockout"], function(system, composition, $, ko) {
     var kindModuleMaps = {},
         kindViewMaps = {},
-        bindableSettings = ['model', 'view', 'kind'],
-        widgetDataKey = 'durandal-widget-data';
+        bindableSettings = ["model", "view", "kind"],
+        widgetDataKey = "durandal-widget-data";
 
-    function extractParts(element, settings){
+    function extractParts(element, settings) {
         var data = ko.utils.domData.get(element, widgetDataKey);
 
-        if(!data){
+        if (!data) {
             data = {
-                parts:composition.cloneNodes(ko.virtualElements.childNodes(element))
+                parts: composition.cloneNodes(ko.virtualElements.childNodes(element))
             };
 
             ko.virtualElements.emptyNode(element);
@@ -73,7 +73,7 @@ define(['durandal/system', 'durandal/composition', 'jquery', 'knockout'], functi
             };
 
             ko.virtualElements.allowedBindings[kind] = true;
-            composition.composeBindings.push(kind + ':');
+            composition.composeBindings.push(kind + ":");
         },
         /**
          * Maps views and module to the kind identifier if a non-standard pattern is desired.
@@ -107,7 +107,7 @@ define(['durandal/system', 'durandal/composition', 'jquery', 'knockout'], functi
          * @return {string} The module path.
          */
         convertKindToModulePath: function(kind) {
-            return 'widgets/' + kind + '/viewmodel';
+            return "widgets/" + kind + "/viewmodel";
         },
         /**
          * Maps a kind name to it's view id. First it looks up a custom mapped kind, then falls back to `convertKindToViewPath`.
@@ -125,7 +125,7 @@ define(['durandal/system', 'durandal/composition', 'jquery', 'knockout'], functi
          * @return {string} The view id.
          */
         convertKindToViewPath: function(kind) {
-            return 'widgets/' + kind + '/view';
+            return "widgets/" + kind + "/view";
         },
         createCompositionSettings: function(element, settings) {
             if (!settings.model) {
@@ -139,7 +139,7 @@ define(['durandal/system', 'durandal/composition', 'jquery', 'knockout'], functi
             settings.preserveContext = true;
             settings.activate = true;
             settings.activationData = settings;
-            settings.mode = 'templated';
+            settings.mode = "templated";
 
             return settings;
         },
@@ -151,7 +151,7 @@ define(['durandal/system', 'durandal/composition', 'jquery', 'knockout'], functi
          * @param {object} [bindingContext] The current binding context.
          */
         create: function(element, settings, bindingContext, fromBinding) {
-            if(!fromBinding){
+            if (!fromBinding) {
                 settings = widget.getSettings(function() { return settings; }, element);
             }
 
@@ -164,13 +164,13 @@ define(['durandal/system', 'durandal/composition', 'jquery', 'knockout'], functi
          * @method install
          * @param {object} config The module config. Add a `kinds` array with the names of widgets to automatically register. You can also specify a `bindingName` if you wish to use another name for the widget binding, such as "control" for example.
          */
-        install:function(config){
-            config.bindingName = config.bindingName || 'widget';
+        install: function(config) {
+            config.bindingName = config.bindingName || "widget";
 
-            if(config.kinds){
+            if (config.kinds) {
                 var toRegister = config.kinds;
 
-                for(var i = 0; i < toRegister.length; i++){
+                for (var i = 0; i < toRegister.length; i++) {
                     widget.registerKind(toRegister[i]);
                 }
             }
@@ -186,7 +186,7 @@ define(['durandal/system', 'durandal/composition', 'jquery', 'knockout'], functi
                 }
             };
 
-            composition.composeBindings.push(config.bindingName + ':');
+            composition.composeBindings.push(config.bindingName + ":");
             ko.virtualElements.allowedBindings[config.bindingName] = true;
         }
     };

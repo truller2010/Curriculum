@@ -9,7 +9,7 @@
  * @requires require
  * @requires jquery
  */
-define(['require', 'jquery'], function(require, $) {
+define(["require", "jquery"], function(require, $) {
     var isDebugging = false,
         nativeKeys = Object.keys,
         hasOwnProperty = Object.prototype.hasOwnProperty,
@@ -21,9 +21,9 @@ define(['require', 'jquery'], function(require, $) {
 
     //see http://patik.com/blog/complete-cross-browser-console-log/
     // Tell IE9 to use its built-in console
-    if (Function.prototype.bind && (typeof console === 'object' || typeof console === 'function') && typeof console.log == 'object') {
+    if (Function.prototype.bind && (typeof console === "object" || typeof console === "function") && typeof console.log == "object") {
         try {
-            ['log', 'info', 'warn', 'error', 'assert', 'dir', 'clear', 'profile', 'profileEnd']
+            ["log", "info", "warn", "error", "assert", "dir", "clear", "profile", "profileEnd"]
                 .forEach(function(method) {
                     console[method] = this.call(console[method], console);
                 }, Function.prototype.bind);
@@ -48,46 +48,47 @@ define(['require', 'jquery'], function(require, $) {
     }
 
     // callback for require.js loader
-    if (typeof requirejs !== 'undefined') {
+    if (typeof requirejs !== "undefined") {
         requirejs.onResourceLoad = function(context, map, depArray) {
             system.setModuleId(context.defined[map.id], map.id);
         };
     }
 
-    var noop = function() { };
+    var noop = function() {};
 
     var log = function() {
-    	//>>excludeStart("exp", pragmas.exp);
+        //>>excludeStart("exp", pragmas.exp);
         try {
             // Modern browsers
-            if (typeof console != 'undefined' && typeof console.log == 'function') {
+            if (typeof console != "undefined" && typeof console.log == "function") {
                 // Opera 11
                 if (window.opera) {
                     var i = 0;
                     while (i < arguments.length) {
-                        console.log('Item ' + (i + 1) + ': ' + arguments[i]);
+                        console.log("Item " + (i + 1) + ": " + arguments[i]);
                         i++;
                     }
                 }
                 // All other modern browsers
-                else if ((slice.call(arguments)).length == 1 && typeof slice.call(arguments)[0] == 'string') {
+                else if ((slice.call(arguments)).length == 1 && typeof slice.call(arguments)[0] == "string") {
                     console.log((slice.call(arguments)).toString());
                 } else {
                     console.log.apply(console, slice.call(arguments));
                 }
             }
             // IE8
-            else if ((!Function.prototype.bind || treatAsIE8) && typeof console != 'undefined' && typeof console.log == 'object') {
+            else if ((!Function.prototype.bind || treatAsIE8) && typeof console != "undefined" && typeof console.log == "object") {
                 Function.prototype.call.call(console.log, console, slice.call(arguments));
             }
 
             // IE7 and lower, and other old browsers
-        } catch (ignore) { }
+        } catch (ignore) {
+        }
         //>>excludeEnd("exp");
     };
 
     var logError = function(error) {
-        if(error instanceof Error){
+        if (error instanceof Error) {
             throw error;
         }
         console.trace();
@@ -120,11 +121,11 @@ define(['require', 'jquery'], function(require, $) {
                 return null;
             }
 
-            if (typeof obj == 'function') {
+            if (typeof obj == "function") {
                 return obj.prototype.__moduleId__;
             }
 
-            if (typeof obj == 'string') {
+            if (typeof obj == "string") {
                 return null;
             }
 
@@ -141,12 +142,12 @@ define(['require', 'jquery'], function(require, $) {
                 return;
             }
 
-            if (typeof obj == 'function') {
+            if (typeof obj == "function") {
                 obj.prototype.__moduleId__ = id;
                 return;
             }
 
-            if (typeof obj == 'string') {
+            if (typeof obj == "string") {
                 return;
             }
 
@@ -177,9 +178,9 @@ define(['require', 'jquery'], function(require, $) {
                 if (isDebugging) {
                     this.log = log;
                     this.error = logError;
-                    this.log('Debug:Enabled');
+                    this.log("Debug:Enabled");
                 } else {
-                    this.log('Debug:Disabled');
+                    this.log("Debug:Disabled");
                     this.log = noop;
                     this.error = noop;
                 }
@@ -205,9 +206,9 @@ define(['require', 'jquery'], function(require, $) {
          * @param {boolean} condition The condition to check.
          * @param {string} message The message to report in the error if the condition check fails.
          */
-        assert: function (condition, message) {
+        assert: function(condition, message) {
             if (!condition) {
-                system.error(new Error(message || 'Assert:Failed'));
+                system.error(new Error(message || "Assert:Failed"));
             }
         },
         /**
@@ -225,8 +226,8 @@ define(['require', 'jquery'], function(require, $) {
          * @return {string} The guid.
          */
         guid: function() {
-            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+                var r = Math.random() * 16 | 0, v = c == "x" ? r : (r & 0x3 | 0x8);
                 return v.toString(16);
             });
         },
@@ -241,10 +242,10 @@ define(['require', 'jquery'], function(require, $) {
                 first = arguments[0],
                 arrayRequest = false;
 
-            if(system.isArray(first)){
+            if (system.isArray(first)) {
                 modules = first;
                 arrayRequest = true;
-            }else{
+            } else {
                 modules = slice.call(arguments, 0);
             }
 
@@ -252,13 +253,13 @@ define(['require', 'jquery'], function(require, $) {
                 require(modules, function() {
                     var args = arguments;
                     setTimeout(function() {
-                        if(args.length > 1 || arrayRequest){
+                        if (args.length > 1 || arrayRequest) {
                             dfd.resolve(slice.call(args, 0));
-                        }else{
+                        } else {
                             dfd.resolve(args[0]);
                         }
                     }, 1);
-                }, function(err){
+                }, function(err) {
                     dfd.reject(err);
                 });
             }).promise();
@@ -305,7 +306,7 @@ define(['require', 'jquery'], function(require, $) {
      */
     system.keys = nativeKeys || function(obj) {
         if (obj !== Object(obj)) {
-            throw new TypeError('Invalid object');
+            throw new TypeError("Invalid object");
         }
 
         var keys = [];
@@ -336,7 +337,7 @@ define(['require', 'jquery'], function(require, $) {
      * @return {boolean} True if matches the type, false otherwise.
      */
     system.isArray = nativeIsArray || function(obj) {
-        return toString.call(obj) == '[object Array]';
+        return toString.call(obj) == "[object Array]";
     };
 
     /**
@@ -412,11 +413,11 @@ define(['require', 'jquery'], function(require, $) {
      */
 
     //isArguments, isFunction, isString, isNumber, isDate, isRegExp.
-    var isChecks = ['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp'];
+    var isChecks = ["Arguments", "Function", "String", "Number", "Date", "RegExp"];
 
     function makeIsFunction(name) {
-        var value = '[object ' + name + ']';
-        system['is' + name] = function(obj) {
+        var value = "[object " + name + "]";
+        system["is" + name] = function(obj) {
             return toString.call(obj) == value;
         };
     }

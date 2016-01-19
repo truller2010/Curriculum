@@ -1,23 +1,23 @@
 /* global define: false, location: false */
 define([
-    "plugins/router", 'core/util/urlUtils'
+    "plugins/router", "core/util/urlUtils"
 ], function routerDecorator(router, urlUtils) {
     // TODO qunit routerDecorator
 
     "use strict";
-    var TEST = "test";	
+    var TEST = "test";
 
     function reloadCurrentLocation() {
         return location.reload();
     }
-	
+
     function navigateToIndex() {
-        router.navigate('');
+        router.navigate("");
         return location.reload();
     }
 
     function navigateToRoot() {
-        router.navigate('');
+        router.navigate("");
     }
 
     function navigateToTest() {
@@ -25,36 +25,34 @@ define([
     }
 
     function navigateToDetalleUsuario(idUsuario) {
-        return router.navigate(urlUtils.joinPath('Usuario',idUsuario));
+        return router.navigate(urlUtils.joinPath("Usuario", idUsuario));
     }
 
     function navigateToListadoLaboratorios(idLab) {
-        return router.navigate(urlUtils.joinPath('BuscadorLaboratorios'));
+        return router.navigate(urlUtils.joinPath("BuscadorLaboratorios"));
     }
 
     function navigateToDetalleLaboratorio(idLab) {
-        return router.navigate(urlUtils.joinPath('Laboratorio', idLab));
+        return router.navigate(urlUtils.joinPath("Laboratorio", idLab));
     }
 
     function navigateToModalidadDePago() {
-        return router.navigate(urlUtils.joinPath('RegistrarModalidadesPago'));
+        return router.navigate(urlUtils.joinPath("RegistrarModalidadesPago"));
     }
 
-    function navigateToRecibosPendientesDePago()
-    {
-        return router.navigate(urlUtils.joinPath('CYDRecibosPendientesPago'));
+    function navigateToRecibosPendientesDePago() {
+        return router.navigate(urlUtils.joinPath("CYDRecibosPendientesPago"));
     }
 
-    function navigateToVolumenesPendientesHistorico()
-    {
-        return router.navigate(urlUtils.joinPath('VolumenesPendientesHistorico'));
+    function navigateToVolumenesPendientesHistorico() {
+        return router.navigate(urlUtils.joinPath("VolumenesPendientesHistorico"));
     }
 
     function navigateToRetribucionesEconomicas() {
         return router.navigate("#retribuciones-economicas");
     }
-	
-    router.reloadCurrentLocation = reloadCurrentLocation;	
+
+    router.reloadCurrentLocation = reloadCurrentLocation;
     router.navigateToIndex = navigateToIndex;
     router.navigateToRecibosPendientesDePago = navigateToRecibosPendientesDePago;
     router.navigateToDetalleUsuario = navigateToDetalleUsuario;

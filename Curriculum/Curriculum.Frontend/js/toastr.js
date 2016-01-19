@@ -11,17 +11,18 @@
  * Project: https://github.com/CodeSeven/toastr
  */
 /* global define */
-; (function (define) {
-    define(['jquery'], function ($) {
-        return (function () {
+;
+(function(define) {
+    define(["jquery"], function($) {
+        return (function() {
             var $container;
             var listener;
             var toastId = 0;
             var toastType = {
-                error: 'error',
-                info: 'info',
-                success: 'success',
-                warning: 'warning'
+                error: "error",
+                info: "info",
+                success: "success",
+                warning: "warning"
             };
 
             var toastr = {
@@ -33,7 +34,7 @@
                 options: {},
                 subscribe: subscribe,
                 success: success,
-                version: '2.1.1',
+                version: "2.1.1",
                 warning: warning
             };
 
@@ -54,8 +55,10 @@
             }
 
             function getContainer(options, create) {
-                if (!options) { options = getOptions(); }
-                $container = $('#' + options.containerId);
+                if (!options) {
+                    options = getOptions();
+                }
+                $container = $("#" + options.containerId);
                 if ($container.length) {
                     return $container;
                 }
@@ -101,7 +104,9 @@
 
             function clear($toastElement, clearOptions) {
                 var options = getOptions();
-                if (!$container) { getContainer(options); }
+                if (!$container) {
+                    getContainer(options);
+                }
                 if (!clearToast($toastElement, options, clearOptions)) {
                     clearContainer(options);
                 }
@@ -109,8 +114,10 @@
 
             function remove($toastElement) {
                 var options = getOptions();
-                if (!$container) { getContainer(options); }
-                if ($toastElement && $(':focus', $toastElement).length === 0) {
+                if (!$container) {
+                    getContainer(options);
+                }
+                if ($toastElement && $(":focus", $toastElement).length === 0) {
                     removeToast($toastElement);
                     return;
                 }
@@ -130,11 +137,11 @@
 
             function clearToast($toastElement, options, clearOptions) {
                 var force = clearOptions && clearOptions.force ? clearOptions.force : false;
-                if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
+                if ($toastElement && (force || $(":focus", $toastElement).length === 0)) {
                     $toastElement[options.hideMethod]({
                         duration: options.hideDuration,
                         easing: options.hideEasing,
-                        complete: function () { removeToast($toastElement); }
+                        complete: function() { removeToast($toastElement); }
                     });
                     return true;
                 }
@@ -142,11 +149,11 @@
             }
 
             function createContainer(options) {
-                $container = $('<div/>')
-                    .attr('id', options.containerId)
+                $container = $("<div/>")
+                    .attr("id", options.containerId)
                     .addClass(options.positionClass)
-                    .attr('aria-live', 'polite')
-                    .attr('role', 'alert');
+                    .attr("aria-live", "polite")
+                    .attr("role", "alert");
 
                 $container.appendTo($(options.target));
                 return $container;
@@ -155,32 +162,32 @@
             function getDefaults() {
                 return {
                     tapToDismiss: true,
-                    toastClass: 'toast',
-                    containerId: 'toast-container',
+                    toastClass: "toast",
+                    containerId: "toast-container",
                     debug: false,
 
-                    showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
+                    showMethod: "fadeIn", //fadeIn, slideDown, and show are built into jQuery
                     showDuration: 300,
-                    showEasing: 'swing', //swing and linear are built into jQuery
+                    showEasing: "swing", //swing and linear are built into jQuery
                     onShown: undefined,
-                    hideMethod: 'fadeOut',
+                    hideMethod: "fadeOut",
                     hideDuration: 1000,
-                    hideEasing: 'swing',
+                    hideEasing: "swing",
                     onHidden: undefined,
 
                     extendedTimeOut: 1000,
                     iconClasses: {
-                        error: 'toast-error',
-                        info: 'toast-info',
-                        success: 'toast-success',
-                        warning: 'toast-warning'
+                        error: "toast-error",
+                        info: "toast-info",
+                        success: "toast-success",
+                        warning: "toast-warning"
                     },
-                    iconClass: 'toast-info',
-                    positionClass: 'toast-top-right',
+                    iconClass: "toast-info",
+                    positionClass: "toast-top-right",
                     timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
-                    titleClass: 'toast-title',
-                    messageClass: 'toast-message',
-                    target: 'body',
+                    titleClass: "toast-title",
+                    messageClass: "toast-message",
+                    target: "body",
                     closeHtml: '<button type="button">&times;</button>',
                     newestOnTop: true,
                     preventDuplicates: false,
@@ -189,7 +196,9 @@
             }
 
             function publish(args) {
-                if (!listener) { return; }
+                if (!listener) {
+                    return;
+                }
                 listener(args);
             }
 
@@ -197,22 +206,24 @@
                 var options = getOptions();
                 var iconClass = map.iconClass || options.iconClass;
 
-                if (typeof (map.optionsOverride) !== 'undefined') {
+                if (typeof (map.optionsOverride) !== "undefined") {
                     options = $.extend(options, map.optionsOverride);
                     iconClass = map.optionsOverride.iconClass || iconClass;
                 }
 
-                if (shouldExit(options, map)) { return; }
+                if (shouldExit(options, map)) {
+                    return;
+                }
 
                 toastId++;
 
                 $container = getContainer(options, true);
 
                 var intervalId = null;
-                var $toastElement = $('<div/>');
-                var $titleElement = $('<div/>');
-                var $messageElement = $('<div/>');
-                var $progressElement = $('<div/>');
+                var $toastElement = $("<div/>");
+                var $titleElement = $("<div/>");
+                var $messageElement = $("<div/>");
+                var $progressElement = $("<div/>");
                 var $closeElement = $(options.closeHtml);
                 var progressBar = {
                     intervalId: null,
@@ -221,7 +232,7 @@
                 };
                 var response = {
                     toastId: toastId,
-                    state: 'visible',
+                    state: "visible",
                     startTime: new Date(),
                     options: options,
                     map: map
@@ -257,7 +268,7 @@
                     }
 
                     if (options.closeButton && $closeElement) {
-                        $closeElement.click(function (event) {
+                        $closeElement.click(function(event) {
                             if (event.stopPropagation) {
                                 event.stopPropagation();
                             } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
@@ -268,7 +279,7 @@
                     }
 
                     if (options.onclick) {
-                        $toastElement.click(function () {
+                        $toastElement.click(function() {
                             options.onclick();
                             hideToast();
                         });
@@ -322,14 +333,14 @@
 
                 function setCloseButton() {
                     if (options.closeButton) {
-                        $closeElement.addClass('toast-close-button').attr('role', 'button');
+                        $closeElement.addClass("toast-close-button").attr("role", "button");
                         $toastElement.prepend($closeElement);
                     }
                 }
 
                 function setProgressBar() {
                     if (options.progressBar) {
-                        $progressElement.addClass('toast-progress');
+                        $progressElement.addClass("toast-progress");
                         $toastElement.prepend($progressElement);
                     }
                 }
@@ -346,19 +357,19 @@
                 }
 
                 function hideToast(override) {
-                    if ($(':focus', $toastElement).length && !override) {
+                    if ($(":focus", $toastElement).length && !override) {
                         return;
                     }
                     clearTimeout(progressBar.intervalId);
                     return $toastElement[options.hideMethod]({
                         duration: options.hideDuration,
                         easing: options.hideEasing,
-                        complete: function () {
+                        complete: function() {
                             removeToast($toastElement);
-                            if (options.onHidden && response.state !== 'hidden') {
+                            if (options.onHidden && response.state !== "hidden") {
                                 options.onHidden();
                             }
-                            response.state = 'hidden';
+                            response.state = "hidden";
                             response.endTime = new Date();
                             publish(response);
                         }
@@ -383,7 +394,7 @@
 
                 function updateProgress() {
                     var percentage = ((progressBar.hideEta - (new Date().getTime())) / progressBar.maxHideTime) * 100;
-                    $progressElement.width(percentage + '%');
+                    $progressElement.width(percentage + "%");
                 }
             }
 
@@ -392,8 +403,10 @@
             }
 
             function removeToast($toastElement) {
-                if (!$container) { $container = getContainer(); }
-                if ($toastElement.is(':visible')) {
+                if (!$container) {
+                    $container = getContainer();
+                }
+                if ($toastElement.is(":visible")) {
                     return;
                 }
                 $toastElement.remove();
@@ -406,10 +419,10 @@
 
         })();
     });
-}(typeof define === 'function' && define.amd ? define : function (deps, factory) {
-    if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('jquery'));
+}(typeof define === "function" && define.amd ? define : function(deps, factory) {
+    if (typeof module !== "undefined" && module.exports) { //Node
+        module.exports = factory(require("jquery"));
     } else {
-        window['toastr'] = factory(window['jQuery']);
+        window["toastr"] = factory(window["jQuery"]);
     }
 }));

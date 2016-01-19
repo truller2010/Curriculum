@@ -1,15 +1,14 @@
 ﻿/* global define: false */
 define([
-    'i18next',
-    'jquery'
+    "i18next",
+    "jquery"
 ], function WelcomeViewModel(
     i18n,
     $,
     dialog
-    ) {
+) {
     "use strict";
-    var self = this;
-    ;
+    var self = this;;
 
     var viewModel = {};
 

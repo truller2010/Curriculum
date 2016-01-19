@@ -10,7 +10,7 @@ define(function datePickerBinding() {
         $(element).datetimepicker(options);
 
         //when a user changes the date, update the view model
-        ko.utils.registerEventHandler(element, "changeDate", function (event) {
+        ko.utils.registerEventHandler(element, "changeDate", function(event) {
             var value = valueAccessor();
             if (ko.isObservable(value)) {
                 value(event.date);
@@ -20,15 +20,15 @@ define(function datePickerBinding() {
         // Register change callbacks to update the model
         // if the control changes.
         /*ko.utils.registerEventHandler(element, "change",
-				function() {
-					var value = valueAccessor();
-					if (element.value) {
-						var formated = moment(element.value, ["L", "YYYY-MM-DD"]).format("DD/MM/YYYY");
-						value(formated);
-					}else{
-						value(null);
-					}
-				});*/
+                function() {
+                    var value = valueAccessor();
+                    if (element.value) {
+                        var formated = moment(element.value, ["L", "YYYY-MM-DD"]).format("DD/MM/YYYY");
+                        value(formated);
+                    }else{
+                        value(null);
+                    }
+                });*/
     }
 
     function update(element, valueAccessor) {
@@ -40,10 +40,10 @@ define(function datePickerBinding() {
         }
         /*var value = valueAccessor();
 
-		// Always Update
-		if (typeof value() !== "undefined") {
-			element.value = value();
-		}*/
+        // Always Update
+        if (typeof value() !== "undefined") {
+            element.value = value();
+        }*/
     }
 
     binding.init = init;

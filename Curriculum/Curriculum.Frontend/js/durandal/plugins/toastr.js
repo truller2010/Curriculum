@@ -1,14 +1,14 @@
 ﻿/**
  * Toastr plugin https://github.com/CodeSeven/toastr
  */
-define(['durandal/app', 'jquery', 'toastr'], function(app, $, toastr) {
+define(["durandal/app", "jquery", "toastr"], function(app, $, toastr) {
 
     var toastrPlugin = {},
         types = {
-            SUCCESS: 'success',
-            ERROR: 'error',
-            WARNING: 'warning',
-            INFO: 'info'
+            SUCCESS: "success",
+            ERROR: "error",
+            WARNING: "warning",
+            INFO: "info"
         };
 
     function showToast(type, message, title, options) {
@@ -34,13 +34,13 @@ define(['durandal/app', 'jquery', 'toastr'], function(app, $, toastr) {
             "hideMethod": "fadeOut"
         };
 
-        app.showToast = function (type, message, title, options) {
+        app.showToast = function(type, message, title, options) {
             return toastrPlugin.showToast(type, message, title, options);
         };
 
         app.toast = {
             types: types
-        }
+        };
     }
 
     toastrPlugin.types = types;
@@ -50,6 +50,3 @@ define(['durandal/app', 'jquery', 'toastr'], function(app, $, toastr) {
     return toastrPlugin;
 
 });
-
-
-

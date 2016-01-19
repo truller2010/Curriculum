@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
 // // Project: Curriculum.Backend
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:38
+// // File created on 18/01/2016   11:48
 // //
-// // File Modified on 14/01/2016/   14:38
+// // File Modified on 18/01/2016/   11:48
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Curriculum.Backend.Models.Authentication.Enums;
-using Curriculum.Core.Helper;
+using Curriculum.CoreUtils.Helper;
 using Curriculum.Models.Authentication.AuthenticationClient;
 using Curriculum.Models.Authentication.AuthenticationUsers;
 using Curriculum.Service.Authentication.AuthenticationClientService;
@@ -50,12 +50,10 @@ using Spring.Context.Support;
 namespace Curriculum.Backend.Providers
 {
     /// <summary>
-    /// 
     /// </summary>
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
         /// <summary>
-        /// 
         /// </summary>
         private IAuthenticationUsersService AuthenticationUsersService
         {
@@ -63,7 +61,6 @@ namespace Curriculum.Backend.Providers
         }
 
         /// <summary>
-        /// 
         /// </summary>
         private IAuthenticationClientService AuthenticationClientService
         {
@@ -71,7 +68,6 @@ namespace Curriculum.Backend.Providers
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
@@ -129,7 +125,6 @@ namespace Curriculum.Backend.Providers
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
@@ -189,7 +184,6 @@ namespace Curriculum.Backend.Providers
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
@@ -213,7 +207,6 @@ namespace Curriculum.Backend.Providers
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>

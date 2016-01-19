@@ -5,299 +5,272 @@
  */
 
 .modalBlockout {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    -moz-transition: opacity 0.1s linear;
+    -o-transition: opacity 0.1s linear;
+    -webkit-backface-visibility: hidden;
+    -webkit-transition: opacity 0.1s linear;
     background: black;
+    height: 100%;
+    left: 0;
+    
     opacity: 0;
     
     pointer-events: auto;
     
-    -webkit-backface-visibility: hidden;
-    
-    -webkit-transition: opacity 0.1s linear; 
-	-moz-transition: opacity 0.1s linear; 
-	-o-transition: opacity 0.1s linear;
-	transition: opacity 0.1s linear; 
+    position: fixed;
+    top: 0;
+    transition: opacity 0.1s linear;
+    width: 100%;
 }
 
 .modalHost {
-    top: 50%;
-    left: 50%;
-    position: fixed;
-    opacity: 0;
-    
+    -moz-transition: opacity 0.1s linear;
+    -o-transition: opacity 0.1s linear;
     -webkit-backface-visibility: hidden;
-
     -webkit-transition: opacity 0.1s linear; 
-	-moz-transition: opacity 0.1s linear; 
-	-o-transition: opacity 0.1s linear;
-	transition: opacity 0.1s linear;
+    
+    left: 50%;
+
+    opacity: 0;
+    position: fixed;
+    top: 50%;
+    transition: opacity 0.1s linear;
 }
 
 .messageBox {
+    -moz-background-clip: padding-box;
+    -moz-border-radius: 6px;
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: padding-box;
+    -webkit-border-radius: 6px;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    background-clip: padding-box;
     background-color: white;
     border: 1px solid #999;
     border: 1px solid rgba(0, 0, 0, 0.3);
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
     border-radius: 6px;
-    outline: none;
-    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding-box;
-    background-clip: padding-box;
     min-width: 300px;
+    outline: none;
 }
 
 .durandal-view-404 {
+    -moz-border-radius: 6px;
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 6px;
+
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+
+    border-radius: 6px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     color: red;
     margin: 8px 0;
     padding: 8px;
-
-    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-
-    border: 1px solid #999;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
 }
 
 
 /**************** MIGAS DE PAN ****************/
 
-ul.breadcrumb li:before{content: ">"; margin-right: 10px;}
-ul.breadcrumb li:first-child:before{content:""}
+ul.breadcrumb li:before {
+    content: ">";
+    margin-right: 10px;
+}
+
+ul.breadcrumb li:first-child:before { content: "" }
 
 
 /**************** SPLASH **********************/
 
 .splash {
-    text-align: center;
     margin: 15% 0 0 0;
+    text-align: center;
 }
 
 .splash .message {
+    -webkit-text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
     font-size: 5em;
     line-height: 1.5em;
-    -webkit-text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
     text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
     text-transform: uppercase;
 }
 
 .splash .icon-spinner {
-    text-align: center;
     display: inline-block;
     font-size: 5em;
     margin-top: 50px;
+    text-align: center;
 }
 
-.page-host {
-    position: relative;
-}
+.page-host { position: relative; }
 
 .navbar-fixed-top .navbar-inner {
     padding-left: 1em;
     padding-right: 1em;
 }
 
-.navbar-fixed-top .icon-home {
-    font-size: 18px
-}
+.navbar-fixed-top .icon-home { font-size: 18px }
 
 .loader {
     margin: 6px 8px 4px 8px;
     visibility: hidden;
 }
 
-.loader.active {
-    visibility: visible;
-}
+.loader.active { visibility: visible; }
 
 @media (max-width: 979px) {
-    .page-host {
-        top: 0;
-    }
+    .page-host { top: 0; }
 
-    .navbar-fixed-top {
-        margin-bottom: 0;
-    }
+    .navbar-fixed-top { margin-bottom: 0; }
 }
 
 
-.bordered{
-	border: 1px solid #ddd; 
-	border-radius: 0px;
-	padding-left: 5px;
-	padding-right: 5px;
+.bordered {
+    border: 1px solid #ddd;
+    border-radius: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .well {
-    min-height: 20px;
-    padding: 0;
-    margin-bottom: 20px;
+    -moz-border-radius: 0;
+    -moz-box-shadow: none;
+    -webkit-border-radius: 0;
+    -webkit-box-shadow: none;
     background-color: #fff;
     border: none;
-    border-radius: 0px;
-    -webkit-border-radius:0;
-    -moz-border-radius:0;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
     border: 1px solid #e2e2e2;
+    border-radius: 0px;
+    box-shadow: none;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 0;
 }
 
 .well h4 {
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
     background-color: #0e4194;
-    margin-top: 0;
+    border: 1px solid #0e4194;
+    border-radius: 0px;
     color: #fff;
     font-size: 14px;
-    border: 1px solid #0e4194;
+    margin-top: 0;
     padding: 5px 10px;
-    border-radius: 0px;
-    -webkit-border-radius:0;
-    -moz-border-radius:0;
 }
-    .well ul ul {
-        list-style-type:none;
-        padding: 0px 16px;
-    }
-    .well ul li {
-        color:#0e4194;
-    }
-    .well a {
-        color:#888;
-    }
 
-    .well a:hover, a:focus {
-        color: #888;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-.form-search {
-    margin-bottom: 15px;
+.well ul ul {
+    list-style-type: none;
+    padding: 0px 16px;
 }
+
+.well ul li { color: #0e4194; }
+
+.well a { color: #888; }
+
+.well a:hover, a:focus {
+    color: #888;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.form-search { margin-bottom: 15px; }
 
 .well ul {
-    padding: 0 0 0 10px;
     list-style-position: inside;
+    padding: 0 0 0 10px;
 }
 
-.btn,   .form-control {
-    border-radius: 0px;
-    -webkit-border-radius:0;
-    -moz-border-radius:0;
-    -webkit-box-shadow: none;
+.btn, .form-control {
+    -moz-border-radius: 0;
     -moz-box-shadow: none;
-    box-shadow: none;
-    
-}
-    .btn.btn-primary {
-        background-color: #0e4194;
-    }
-form .col-xs-4 {
-    margin-bottom: 5px;
+    -webkit-border-radius: 0;
+    -webkit-box-shadow: none;
+    border-radius: 0px;
+    box-shadow: none;    
 }
 
-.active{
+.btn.btn-primary { background-color: #0e4194; }
+
+form .col-xs-4 { margin-bottom: 5px; }
+
+.active {
     color: #2775c5;
     font-weight: bold;
 }
-.well ul {
-    list-style-type:none;
-}
 
-.well ul li ul, .well ul li ul ul {
-    display: none;
-}
+.well ul { list-style-type: none; }
+
+.well ul li ul, .well ul li ul ul { display: none; }
 
 
 .well ul div {
     background-image: url('img/list-right.gif');
-    background-repeat: no-repeat;
     background-position: 0px 14px;
+    background-repeat: no-repeat;
     padding: 9px 10px 10px 15px;
 }
-.well ul li:hover div, .well ul li:active div, .well div.active {
-     background-image: url('img/list-down.gif');
-}
+
+.well ul li:hover div, .well ul li:active div, .well div.active { background-image: url('img/list-down.gif'); }
 
 
-.well ul li:hover ul, .well ul li:active ul {
-    display: block;
-    
-}
+.well ul li:hover ul, .well ul li:active ul { display: block; }
 
 
-div.active+ul , div.active .active+ul {
-    display: block !important;
-}
+div.active + ul, div.active .active + ul { display: block !important; }
 
 
 @media (max-width: 767px) {
-    .col-xs-4 , .col-xs-12{
+    .col-xs-4, .col-xs-12 {
+        padding: 0;
         width: 100%;
-        padding:0;
     }
 }
-  
+
 /******************* FORM INPUT DATE ***********************/
 
 @media (max-width: 965px) {
-   .form-horizontal div.typsa-fechasta-span {
+    .form-horizontal div.typsa-fechasta-span {
         display: block;
-		width: 100%;
-		margin-left: 0;
+        margin-left: 0;
+        width: 100%;
     }
 }
 
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .inputbox, .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
-    border: 1px solid #ccc !important;
     background: #fff !important;
+    border: 1px solid #ccc !important;
 }
 
-.input-group-addon.btn .fa {
-    padding-left: 0; 
-}
+.input-group-addon.btn .fa { padding-left: 0; }
 
-.multiselect {
-    margin-top:10px;
-}
+.multiselect { margin-top: 10px; }
 
-.box-footer {
-    margin-top:10px;
-}
+.box-footer { margin-top: 10px; }
 
 .tituloConsulta {
-    font-weight: bold;
-    font-size: 20px;
     color: #555;
-    margin-bottom: 17px;
     display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 17px;
 }
+
 .labelTitulo {
-    color:#0e4194;
-    font-weight:bold;
+    color: #0e4194;
+    font-weight: bold;
 }
 
 label {
-    font-weight: normal;
     color: #555;
+    font-weight: normal;
 }
 
 .pagination li.active a, .pagination li a:hover {
-      background-color: #2775c5 !important;
-  color: #fff !important;
-
+    background-color: #2775c5 !important;
+    color: #fff !important;
 }
 
 
@@ -305,24 +278,20 @@ label {
 
 modal.hide {
     display: block !important;
-    z-index:99999;
+    z-index: 99999;
 }
 
 .modal {
+    -moz-background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+    
+    background-clip: padding-box;
+    background-color: rgba(255, 255, 255, 0.8);
+    outline: 0;
     position: fixed;
     z-index: 9999;
-    
-    background-color: rgba(255,255,255,0.8);
-    outline: 0;
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding-box;
-    background-clip: padding-box;
 }
 
-    .modal .splash {
-           font-size: 18px;
-    }
+.modal .splash { font-size: 18px; }
 
-.content-view {
-    margin: 5em;
-}
+.content-view { margin: 5em; }

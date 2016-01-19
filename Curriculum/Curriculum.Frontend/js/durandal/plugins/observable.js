@@ -10,13 +10,13 @@
  * @requires binder
  * @requires knockout
  */
-define(['durandal/system', 'durandal/binder', 'knockout'], function(system, binder, ko) {
+define(["durandal/system", "durandal/binder", "knockout"], function(system, binder, ko) {
     var observableModule,
         toString = Object.prototype.toString,
-        nonObservableTypes = ['[object Function]', '[object String]', '[object Boolean]', '[object Number]', '[object Date]', '[object RegExp]'],
-        observableArrayMethods = ['remove', 'removeAll', 'destroy', 'destroyAll', 'replace'],
-        arrayMethods = ['pop', 'reverse', 'sort', 'shift', 'splice'],
-        additiveArrayFunctions = ['push', 'unshift'],
+        nonObservableTypes = ["[object Function]", "[object String]", "[object Boolean]", "[object Number]", "[object Date]", "[object RegExp]"],
+        observableArrayMethods = ["remove", "removeAll", "destroy", "destroyAll", "replace"],
+        arrayMethods = ["pop", "reverse", "sort", "shift", "splice"],
+        additiveArrayFunctions = ["push", "unshift"],
         arrayProto = Array.prototype,
         observableArrayFunctions = ko.observableArray.fn,
         logConversion = false;
@@ -26,9 +26,9 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
      * @class ObservableModule
      */
 
-    function shouldIgnorePropertyName(propertyName){
+    function shouldIgnorePropertyName(propertyName) {
         var first = propertyName[0];
-        return first === '_' || first === '$';
+        return first === "_" || first === "$";
     }
 
     function isNode(obj) {
@@ -48,7 +48,7 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
     function makeObservableArray(original, observable) {
         var lookup = original.__observable__, notify = true;
 
-        if(lookup && lookup.__full__){
+        if (lookup && lookup.__full__) {
             return;
         }
 
@@ -66,13 +66,13 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
 
         arrayMethods.forEach(function(methodName) {
             original[methodName] = function() {
-                if(notify){
+                if (notify) {
                     observable.valueWillMutate();
                 }
 
                 var methodCallResult = arrayProto[methodName].apply(original, arguments);
 
-                if(notify){
+                if (notify) {
                     observable.valueHasMutated();
                 }
 
@@ -80,19 +80,19 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
             };
         });
 
-        additiveArrayFunctions.forEach(function(methodName){
+        additiveArrayFunctions.forEach(function(methodName) {
             original[methodName] = function() {
                 for (var i = 0, len = arguments.length; i < len; i++) {
                     convertObject(arguments[i]);
                 }
 
-                if(notify){
+                if (notify) {
                     observable.valueWillMutate();
                 }
 
                 var methodCallResult = arrayProto[methodName].apply(original, arguments);
 
-                if(notify){
+                if (notify) {
                     observable.valueHasMutated();
                 }
 
@@ -100,18 +100,18 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
             };
         });
 
-        original['splice'] = function() {
+        original["splice"] = function() {
             for (var i = 2, len = arguments.length; i < len; i++) {
                 convertObject(arguments[i]);
             }
 
-            if(notify){
+            if (notify) {
                 observable.valueWillMutate();
             }
 
-            var methodCallResult = arrayProto['splice'].apply(original, arguments);
+            var methodCallResult = arrayProto["splice"].apply(original, arguments);
 
-            if(notify){
+            if (notify) {
                 observable.valueHasMutated();
             }
 
@@ -128,16 +128,16 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
      * @method convertObject
      * @param {object} obj The target object to convert.
      */
-    function convertObject(obj){
+    function convertObject(obj) {
         var lookup, value;
 
-        if(!canConvertType(obj)){
+        if (!canConvertType(obj)) {
             return;
         }
 
         lookup = obj.__observable__;
 
-        if(lookup && lookup.__full__){
+        if (lookup && lookup.__full__) {
             return;
         }
 
@@ -149,22 +149,22 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
             makeObservableArray(obj, observable);
         } else {
             for (var propertyName in obj) {
-                if(shouldIgnorePropertyName(propertyName)){
+                if (shouldIgnorePropertyName(propertyName)) {
                     continue;
                 }
 
-                if(!lookup[propertyName]){
+                if (!lookup[propertyName]) {
                     value = obj[propertyName];
 
-                    if(!system.isFunction(value)){
+                    if (!system.isFunction(value)) {
                         convertProperty(obj, propertyName, value);
                     }
                 }
             }
         }
 
-        if(logConversion) {
-            system.log('Converted', obj);
+        if (logConversion) {
+            system.log("Converted", obj);
         }
     }
 
@@ -180,8 +180,7 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
                 val = [];
                 observable(val);
                 makeObservableArray(val, observable);
-            }
-            else if (!val.destroyAll) {
+            } else if (!val.destroyAll) {
                 makeObservableArray(val, observable);
             }
         } else {
@@ -197,12 +196,12 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
      * @param {object} [original] The original value of the property. If not specified, it will be retrieved from the object.
      * @return {KnockoutObservable} The underlying observable.
      */
-    function convertProperty(obj, propertyName, original){
+    function convertProperty(obj, propertyName, original) {
         var observable,
             isArray,
             lookup = obj.__observable__ || (obj.__observable__ = {});
 
-        if(original === undefined){
+        if (original === undefined) {
             original = obj[propertyName];
         }
 
@@ -211,16 +210,16 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
             makeObservableArray(original, observable);
             isArray = true;
         } else if (typeof original == "function") {
-            if(ko.isObservable(original)){
+            if (ko.isObservable(original)) {
                 observable = original;
-            }else{
+            } else {
                 return null;
             }
-        } else if(system.isPromise(original)) {
+        } else if (system.isPromise(original)) {
             observable = ko.observable();
 
-            original.then(function (result) {
-                if(system.isArray(result)) {
+            original.then(function(result) {
+                if (system.isArray(result)) {
                     var oa = ko.observableArray(result);
                     makeObservableArray(result, oa);
                     result = oa;
@@ -237,9 +236,9 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
             configurable: true,
             enumerable: true,
             get: observable,
-            set: ko.isWriteableObservable(observable) ? (function (newValue) {
+            set: ko.isWriteableObservable(observable) ? (function(newValue) {
                 if (newValue && system.isPromise(newValue)) {
-                    newValue.then(function (result) {
+                    newValue.then(function(result) {
                         innerSetter(observable, result, system.isArray(result));
                     });
                 } else {
@@ -264,14 +263,14 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
         var computedOptions = { owner: obj, deferEvaluation: true },
             computed;
 
-        if (typeof evaluatorOrOptions === 'function') {
+        if (typeof evaluatorOrOptions === "function") {
             computedOptions.read = evaluatorOrOptions;
         } else {
-            if ('value' in evaluatorOrOptions) {
+            if ("value" in evaluatorOrOptions) {
                 system.error('For defineProperty, you must not specify a "value" for the property. You must provide a "get" function.');
             }
 
-            if (typeof evaluatorOrOptions.get !== 'function') {
+            if (typeof evaluatorOrOptions.get !== "function") {
                 system.error('For defineProperty, the third parameter must be either an evaluator function, or an options object containing a function called "get".');
             }
 
@@ -285,7 +284,7 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
         return convertProperty(obj, propertyName, computed);
     }
 
-    observableModule = function(obj, propertyName){
+    observableModule = function(obj, propertyName) {
         var lookup, observable, value;
 
         if (!obj) {
@@ -293,16 +292,16 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
         }
 
         lookup = obj.__observable__;
-        if(lookup){
+        if (lookup) {
             observable = lookup[propertyName];
-            if(observable){
+            if (observable) {
                 return observable;
             }
         }
 
         value = obj[propertyName];
 
-        if(ko.isObservable(value)){
+        if (ko.isObservable(value)) {
             return value;
         }
 
@@ -321,7 +320,7 @@ define(['durandal/system', 'durandal/binder', 'knockout'], function(system, bind
         var original = binder.binding;
 
         binder.binding = function(obj, view, instruction) {
-            if(instruction.applyBindings && !instruction.skipConversion){
+            if (instruction.applyBindings && !instruction.skipConversion) {
                 convertObject(obj);
             }
 

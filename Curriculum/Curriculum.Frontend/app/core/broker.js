@@ -1,7 +1,7 @@
 define(
     [
         "core/authentication/securityContext", "i18next", "core/util/csrfUtils",
-        "core/exceptionHandler", 'durandal/app', "viewmodels/alerts", "core/config", "knockout", "jquery"
+        "core/exceptionHandler", "durandal/app", "viewmodels/alerts", "core/config", "knockout", "jquery"
     ],
     function brokerUtils(securityContext, i18n, csrfUtils, exceptionHandler, app, alerts, config, ko, $) {
         "use strict";
@@ -12,73 +12,67 @@ define(
             FRONTEND_URL = config.BASE_FRONT_URL,
             currentRequests = ko.observable(0),
 
-        requestMappings = {
-            AUTHENTICATION: "/user",
-            GET_ALL_PAGINATED: "GetAllPaginated",
-            PAGINATED: "Paginated",
-            FIND: "Find",
-            URL: "url",
-            FIND_ALL: "FindAll",
-            BY_ID: "{id}",
+            requestMappings = {
+                AUTHENTICATION: "/user",
+                GET_ALL_PAGINATED: "GetAllPaginated",
+                PAGINATED: "Paginated",
+                FIND: "Find",
+                URL: "url",
+                FIND_ALL: "FindAll",
+                BY_ID: "{id}",
 
-            SETUP: "setup",
-            LOGIN: "login",
-            LOGOUT: "logout",
+                SETUP: "setup",
+                LOGIN: "login",
+                LOGOUT: "logout",
 
-            GET: "Get",
-            GET_ALL: "GetAll",
-            SAVE: "Save",
-            UPDATE: "Update",
+                GET: "Get",
+                GET_ALL: "GetAll",
+                SAVE: "Save",
+                UPDATE: "Update",
 
-            //BlogPost
-            BlogPost: "BlogPost",
-            BlogCategory: "BlogCategory",
-            BlogTag: "BlogTag",
-            FindByTag: "FindByTag",
-            FindByCategory: "FindByCategory",
-            FindByIdTitle: "FindByIdTitle",
-            FindByArchives: "FindByArchives",
-            GET_ARCHIVES: "getArchives",
-        },
+                //BlogPost
+                Profiles: "Profiles",
+            },
 
-        requestCount = ko.observable(0),
+            requestCount = ko.observable(0),
 
-        REQUEST_TYPE = "ajax", verb = { HEAD: "HEAD", GET: "GET", POST: "POST", PUT: "PUT", DELETE: "DELETE" },
-        CONTENT_TYPE = "application/json; charset=utf-8",
-        CONTENT_TYPE_WWW_FORM_ENCODED = 'application/x-www-form-urlencoded; charset=UTF-8',
-        DATA_TYPE = "json",
-        CONTENT_TYPE_MULTIPART = "multipart/form-data;",
-        DATA_TYPE_FORMDATA = "form-data",
-        DEFAULT_CACHE_TIMEOUT = config.DEFAULT_CACHE_TIMEOUT,
-        EXCEPTION_HANDLER_DECODER = "exceptionHandler",
-        previousRequestMoment = null,
-        ALERT_CLEARING_INTERVAL = 5000,
+            REQUEST_TYPE = "ajax",
+            verb = { HEAD: "HEAD", GET: "GET", POST: "POST", PUT: "PUT", DELETE: "DELETE" },
+            CONTENT_TYPE = "application/json; charset=utf-8",
+            CONTENT_TYPE_WWW_FORM_ENCODED = "application/x-www-form-urlencoded; charset=UTF-8",
+            DATA_TYPE = "json",
+            CONTENT_TYPE_MULTIPART = "multipart/form-data;",
+            DATA_TYPE_FORMDATA = "form-data",
+            DEFAULT_CACHE_TIMEOUT = config.DEFAULT_CACHE_TIMEOUT,
+            EXCEPTION_HANDLER_DECODER = "exceptionHandler",
+            previousRequestMoment = null,
+            ALERT_CLEARING_INTERVAL = 5000,
 
-        bgRequests = [
-            'fichaInventarioBase/getTotalesTecnico',
-            'fichaInventarioBase/getTotalesDCPRH',
-            'fichaInventarioBase/getTotalesDARH',
-            'fichaInventarioBase/getTotalesAAA',
-            'fichaInventarioBase/getTotalesALA',
-            'monitoreosPiezometricos/getTotales',
-            'mediciones/getTotales',
-            'monitoreosHidroquimicos/getTotales',
-            'getTotalesAprobarInicioActividad',
-            'getTotalesDeclararEnergiaProducida',
-            'getTotalesVolumenesPendientesValidacion',
-            'getTotalesVolumenesPendientesDeclaracion',
-            'Recibos/GetTotalRecibosImpagados',
-            'ConsultarAutorizacionesVencidas/getTotales',
-            'monitoreosCalidad/getTotalesCurso',
-            'monitoreosCalidad/getTotalesValidar',
-            'monitoreosCalidad/getTotalesRevisar',
-            'FichaDerechoUso/findByCur',
-            'declaracionVolumen/getTotales'
-        ];
+            bgRequests = [
+                "fichaInventarioBase/getTotalesTecnico",
+                "fichaInventarioBase/getTotalesDCPRH",
+                "fichaInventarioBase/getTotalesDARH",
+                "fichaInventarioBase/getTotalesAAA",
+                "fichaInventarioBase/getTotalesALA",
+                "monitoreosPiezometricos/getTotales",
+                "mediciones/getTotales",
+                "monitoreosHidroquimicos/getTotales",
+                "getTotalesAprobarInicioActividad",
+                "getTotalesDeclararEnergiaProducida",
+                "getTotalesVolumenesPendientesValidacion",
+                "getTotalesVolumenesPendientesDeclaracion",
+                "Recibos/GetTotalRecibosImpagados",
+                "ConsultarAutorizacionesVencidas/getTotales",
+                "monitoreosCalidad/getTotalesCurso",
+                "monitoreosCalidad/getTotalesValidar",
+                "monitoreosCalidad/getTotalesRevisar",
+                "FichaDerechoUso/findByCur",
+                "declaracionVolumen/getTotales"
+            ];
 
         amplify.subscribe("request.before", function incrementRequestCount(settings) {
             if (!_.contains(bgRequests, settings.resourceId)) {
-                currentRequests(currentRequests() + 1)
+                currentRequests(currentRequests() + 1);
             }
         });
 
@@ -100,7 +94,7 @@ define(
             }
             previousRequestMoment = actualMoment;
 
-            xhr.setRequestHeader('Authorization', 'Bearer ' + securityContext.getAuthenticationToken());
+            xhr.setRequestHeader("Authorization", "Bearer " + securityContext.getAuthenticationToken());
 
             return csrfUtils.appendXsrfToXhr(xhr) && csrfUtils.appendCsrfToXhr(xhr);
         }
@@ -158,7 +152,7 @@ define(
             success(data, status);
             if (xhr.write || data === "download" || data === "send") {
                 alerts.removeAllAlerts();
-                alerts.success(i18n.t('SUCCESS_ALERT_TEXT'));
+                alerts.success(i18n.t("SUCCESS_ALERT_TEXT"));
             }
         }
 
@@ -167,9 +161,9 @@ define(
                 error(data, status);
 
                 if (xhr.authentication) {
-                    data.exceptionType = 'System.AuthenticationError';
+                    data.exceptionType = "System.AuthenticationError";
                 } else {
-                    data.exceptionType = 'System.ValidationError';
+                    data.exceptionType = "System.ValidationError";
                 }
 
                 exceptionHandler.handle({
@@ -191,9 +185,9 @@ define(
                         }
                     });
             } else {
-                var authBroker = require('core/authentication/authenticationBroker');
+                var authBroker = require("core/authentication/authenticationBroker");
 
-                return authBroker.refreshToken(securityContext.getRefreshToken()).done(function (data) {
+                return authBroker.refreshToken(securityContext.getRefreshToken()).done(function(data) {
                     securityContext.refresh(data);
 
                     return $.ajax(settings);
@@ -222,15 +216,14 @@ define(
                     status: "fail",
                     data: data
                 });
-            }
-            else {
+            } else {
                 exceptionHandler
-                .handle({
-                    status: "fail",
-                    data: {
-                        exceptionType: "System.Exception"
-                    }
-                });
+                    .handle({
+                        status: "fail",
+                        data: {
+                            exceptionType: "System.Exception"
+                        }
+                    });
             }
         }
 
@@ -269,8 +262,8 @@ define(
                 crossDomain: true,
                 type: verb,
                 contentType: CONTENT_TYPE,
-                dataType: 'binary',
-                responseType: 'arraybuffer',
+                dataType: "binary",
+                responseType: "arraybuffer",
                 dataMap: dataMap,
                 decoder: EXCEPTION_HANDLER_DECODER
             };

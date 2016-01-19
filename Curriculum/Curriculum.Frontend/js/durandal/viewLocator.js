@@ -9,19 +9,19 @@
  * @requires system
  * @requires viewEngine
  */
-define(['durandal/system', 'durandal/viewEngine'], function (system, viewEngine) {
+define(["durandal/system", "durandal/viewEngine"], function(system, viewEngine) {
     function findInElements(nodes, url) {
         for (var i = 0; i < nodes.length; i++) {
             var current = nodes[i];
-            var existingUrl = current.getAttribute('data-view');
+            var existingUrl = current.getAttribute("data-view");
             if (existingUrl == url) {
                 return current;
             }
         }
     }
-    
+
     function escape(str) {
-        return (str + '').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
+        return (str + "").replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
     }
 
     /**
@@ -37,22 +37,22 @@ define(['durandal/system', 'durandal/viewEngine'], function (system, viewEngine)
          * @param {string} [areasPath] Partial views are mapped to the "views" folder if not specified. Use this parameter to change their location.
          */
         useConvention: function(modulesPath, viewsPath, areasPath) {
-            modulesPath = modulesPath || 'viewmodels';
-            viewsPath = viewsPath || 'views';
+            modulesPath = modulesPath || "viewmodels";
+            viewsPath = viewsPath || "views";
             areasPath = areasPath || viewsPath;
 
-            var reg = new RegExp(escape(modulesPath), 'gi');
+            var reg = new RegExp(escape(modulesPath), "gi");
 
-            this.convertModuleIdToViewId = function (moduleId) {
+            this.convertModuleIdToViewId = function(moduleId) {
                 return moduleId.replace(reg, viewsPath);
             };
 
-            this.translateViewIdToArea = function (viewId, area) {
-                if (!area || area == 'partial') {
-                    return areasPath + '/' + viewId;
+            this.translateViewIdToArea = function(viewId, area) {
+                if (!area || area == "partial") {
+                    return areasPath + "/" + viewId;
                 }
-                
-                return areasPath + '/' + area + '/' + viewId;
+
+                return areasPath + "/" + area + "/" + viewId;
             };
         },
         /**
@@ -99,12 +99,12 @@ define(['durandal/system', 'durandal/viewEngine'], function (system, viewEngine)
          * @param {object} obj The object to determine the fallback id for.
          * @return {string} The view id.
          */
-        determineFallbackViewId: function (obj) {
+        determineFallbackViewId: function(obj) {
             var funcNameRegex = /function (.{1,})\(/;
             var results = (funcNameRegex).exec((obj).constructor.toString());
             var typeName = (results && results.length > 1) ? results[1] : "";
 
-            return 'views/' + typeName;
+            return "views/" + typeName;
         },
         /**
          * Takes a view id and translates it into a particular area. By default, no translation occurs.
@@ -113,7 +113,7 @@ define(['durandal/system', 'durandal/viewEngine'], function (system, viewEngine)
          * @param {string} area The area to translate the view to.
          * @return {string} The translated view id.
          */
-        translateViewIdToArea: function (viewId, area) {
+        translateViewIdToArea: function(viewId, area) {
             return viewId;
         },
         /**
@@ -125,7 +125,7 @@ define(['durandal/system', 'durandal/viewEngine'], function (system, viewEngine)
          * @return {Promise} A promise of the view.
          */
         locateView: function(viewOrUrlOrId, area, elementsToSearch) {
-            if (typeof viewOrUrlOrId === 'string') {
+            if (typeof viewOrUrlOrId === "string") {
                 var viewId;
 
                 if (viewEngine.isViewUrl(viewOrUrlOrId)) {

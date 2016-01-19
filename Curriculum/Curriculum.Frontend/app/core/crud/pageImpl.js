@@ -5,8 +5,18 @@ define(function pageImpl() {
     "use strict";
 
     return function pageImpl(currentPage) {
-        var page = {}, content = [], size = 0, number = 0, numberOfElements = 0, totalPages = 0, sort = null, totalElements =
-            0, firstPage = true, lastPage = true, pageSize = 0;
+        var page = {},
+            content = [],
+            size = 0,
+            number = 0,
+            numberOfElements = 0,
+            totalPages = 0,
+            sort = null,
+            totalElements =
+                0,
+            firstPage = true,
+            lastPage = true,
+            pageSize = 0;
 
         if (currentPage) {
             content = currentPage.content;

@@ -10,13 +10,13 @@ define(function validationUtils() {
         return /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/i.test(value);
     }
 
-   /* function isDistinct(newValue, originalValue)
-    {
-        if (originalValue !== undefined && originalValue !== newValue)
-            return true;
-        else
-            return false;
-    }*/
+    /* function isDistinct(newValue, originalValue)
+     {
+         if (originalValue !== undefined && originalValue !== newValue)
+             return true;
+         else
+             return false;
+     }*/
 
     utils.MAX_LENGTH = 255;
     utils.MAX_LENGTH_DESCRIPTION = 1024;
@@ -41,7 +41,7 @@ define(function validationUtils() {
     utils.GEOPOSITIONAL_STEP = 0.000001;
 
     utils.isValidColor = isValidColor;
-   // utils.isDistinct = isDistinct;
+    // utils.isDistinct = isDistinct;
 
     return utils;
 });

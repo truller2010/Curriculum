@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
-// // Project: Curriculum.Core
+// // Project: Curriculum.CoreUtils
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:56
+// // File created on 16/01/2016   23:10
 // //
-// // File Modified on 14/01/2016/   14:56
+// // File Modified on 16/01/2016/   23:10
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -38,15 +38,13 @@ using System.Text.RegularExpressions;
 
 #endregion
 
-namespace Curriculum.Core.Text
+namespace Curriculum.CoreUtils.Text
 {
     /// <summary>
-    /// 
     /// </summary>
     public class StringUtils
     {
         /// <summary>
-        /// 
         /// </summary>
         private StringUtils()
         {
@@ -54,7 +52,6 @@ namespace Curriculum.Core.Text
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -65,7 +62,6 @@ namespace Curriculum.Core.Text
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="length"></param>
         /// <param name="str1"></param>
@@ -92,7 +88,6 @@ namespace Curriculum.Core.Text
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -106,7 +101,6 @@ namespace Curriculum.Core.Text
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -116,7 +110,6 @@ namespace Curriculum.Core.Text
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="inputEmail"></param>
         /// <returns></returns>

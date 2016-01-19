@@ -1,5 +1,5 @@
 /* global _:false, amplify: false, define: false */
-define(['durandal/system'], function securityContext(system) {
+define(["durandal/system"], function securityContext(system) {
     // TODO QUnit securityContext
     "use strict";
     //var context = {}, CACHE_STORAGE = amplify.store.sessionStorage
@@ -8,26 +8,28 @@ define(['durandal/system'], function securityContext(system) {
     //	ANONYMOUS : "ROLE_ANONYMOUS",
     //	ADMINISTRATOR : "ROLE_ADMINISTRATOR"
     //};
-    var context = {}, instance = {}, roles = {
-        ADMIN: {
-            id: 1,
-            name: 'ADMIN'
-        },
-    };
+    var context = {},
+        instance = {},
+        roles = {
+            ADMIN: {
+                id: 1,
+                name: "ADMIN"
+            },
+        };
 
     function save() {
         if (isRememberMe()) {
-            sessionStorage.removeItem('authentication');
-            localStorage.setItem('authentication', JSON.stringify(instance));
+            sessionStorage.removeItem("authentication");
+            localStorage.setItem("authentication", JSON.stringify(instance));
         } else {
-            localStorage.removeItem('authentication');
-            sessionStorage.setItem('authentication', JSON.stringify(instance));
+            localStorage.removeItem("authentication");
+            sessionStorage.setItem("authentication", JSON.stringify(instance));
         }
     }
 
     function load() {
-        instance = JSON.parse(localStorage.getItem('authentication')) || JSON.parse(sessionStorage.getItem('authentication')) || {};
-        console.log('Loaded identity: ', instance);
+        instance = JSON.parse(localStorage.getItem("authentication")) || JSON.parse(sessionStorage.getItem("authentication")) || {};
+        console.log("Loaded identity: ", instance);
         console.log(instance);
     }
 
@@ -38,7 +40,7 @@ define(['durandal/system'], function securityContext(system) {
     function getFormattedPrincipal() {
         var principal = getPrincipal();
         if (instance.externo == 0) {
-                principal += " - " + instance.roles[0];
+            principal += " - " + instance.roles[0];
         }
         return principal;
     }
@@ -60,10 +62,9 @@ define(['durandal/system'], function securityContext(system) {
     }
 
     function refresh(securityContext) {
-        if (securityContext.access_token === undefined || securityContext.access_token === '') {
+        if (securityContext.access_token === undefined || securityContext.access_token === "") {
             securityContext.authenticated = false;
-        }
-        else {
+        } else {
             securityContext.authenticationToken = securityContext.access_token;
             securityContext.refreshToken = securityContext.refresh_token;
             securityContext.authenticated = true;
@@ -74,8 +75,8 @@ define(['durandal/system'], function securityContext(system) {
     }
 
     function clear() {
-        localStorage.removeItem('authentication');
-        sessionStorage.removeItem('authentication');
+        localStorage.removeItem("authentication");
+        sessionStorage.removeItem("authentication");
         sessionStorage.removeItem("typeMenu");
         instance = {};
     }

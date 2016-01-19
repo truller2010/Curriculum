@@ -13,16 +13,9 @@
     <property name="SessionFactory" ref="NHibernateSessionFactory" />
   </object>
 
-  <object id="BlogPostRepository" type="Curriculum.Repository.BlogPost.BlogPostRepository, Curriculum.Repository">
+  <object id="ProfilesRepository" type="Curriculum.Repository.Profiles.ProfilesRepository, Curriculum.Repository">
     <property name="SessionFactory" ref="NHibernateSessionFactory" />
   </object>
 
-  <object id="BlogCategoryRepository" type="Curriculum.Repository.BlogCategory.BlogCategoryRepository, Curriculum.Repository">
-    <property name="SessionFactory" ref="NHibernateSessionFactory" />
-  </object>
-
-  <object id="BlogTagRepository" type="Curriculum.Repository.BlogTag.BlogTagRepository, Curriculum.Repository">
-    <property name="SessionFactory" ref="NHibernateSessionFactory" />
-  </object>
   
 </objects>

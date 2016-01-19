@@ -31,8 +31,7 @@ define(function orderImpl() {
 
             if (direction() === ASC) {
                 iconTitle = "ORDER_DESC_TITLE";
-            }
-            else {
+            } else {
                 iconTitle = "ORDER_ASC_TITLE";
             }
 
@@ -44,12 +43,12 @@ define(function orderImpl() {
             var iconClass = "fa fa-sort";
 
             if (direction() !== NONE) {
-               
+
                 if (direction() === ASC) {
-                	iconClass = iconClass + "-up";
-                	
+                    iconClass = iconClass + "-up";
+
                 } else if (direction() === DESC) {
-                	iconClass = iconClass + "-down";
+                    iconClass = iconClass + "-down";
                 }
             }
 

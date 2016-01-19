@@ -1,5 +1,5 @@
 ﻿/* global cordova: false, $: false */
-define(["durandal/system", "jquery"],function cordovaUtils(system, $) {
+define(["durandal/system", "jquery"], function cordovaUtils(system, $) {
     "use strict";
 
     var utils = {}, online = ko.observable(false);

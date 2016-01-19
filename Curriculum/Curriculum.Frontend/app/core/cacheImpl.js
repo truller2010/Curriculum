@@ -21,8 +21,10 @@ define(function cacheImpl() {
         function cache(resource, settings, ajaxSettings, ampXHR) {
             /* jshint nomen:false, camelcase: false */
             var cacheKey =
-                amplify.request_original.cache._key(settings.resourceId, ajaxSettings.url,
-                    ajaxSettings.data), cached = amplify.store(cacheKey), success = ampXHR.success;
+                    amplify.request_original.cache._key(settings.resourceId, ajaxSettings.url,
+                        ajaxSettings.data),
+                cached = amplify.store(cacheKey),
+                success = ampXHR.success;
 
             if (cached) {
                 ajaxSettings.success(cached);
@@ -31,7 +33,7 @@ define(function cacheImpl() {
 
             ampXHR.success = function ampXHRSuccess(data) {
                 amplify.store(cacheKey, data, {
-                    expires : resource.cache.expires
+                    expires: resource.cache.expires
                 });
 
                 cachedKeys.push(cacheKey);

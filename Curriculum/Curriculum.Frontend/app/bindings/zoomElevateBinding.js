@@ -1,25 +1,25 @@
 /* global define: false, ko: false, moment: false */
 define(["jquery"], function zoomElevateBinding($) {
-	"use strict";
+    "use strict";
 
-	var binding = {};
+    var binding = {};
 
-	function init(element, valueAccessor, allBindings, viewModel,
-			bindingContext) {
-		
-		// Apply zoom elevate
-		var url = viewModel.pathLocationImg+valueAccessor();
-		$(element).attr( "data-zoom-image", url);
-		$(element).elevateZoom({cursor: 'pointer'});
-	}
+    function init(element, valueAccessor, allBindings, viewModel,
+        bindingContext) {
 
-	function update(element, valueAccessor, allBindingsAccessor, viewModel,
-			bindingContext) {
+        // Apply zoom elevate
+        var url = viewModel.pathLocationImg + valueAccessor();
+        $(element).attr("data-zoom-image", url);
+        $(element).elevateZoom({ cursor: "pointer" });
+    }
 
-	}
+    function update(element, valueAccessor, allBindingsAccessor, viewModel,
+        bindingContext) {
 
-	binding.init = init;
-	binding.update = update;
+    }
 
-	return binding;
+    binding.init = init;
+    binding.update = update;
+
+    return binding;
 });

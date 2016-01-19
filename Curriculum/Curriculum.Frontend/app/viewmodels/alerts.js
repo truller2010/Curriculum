@@ -1,28 +1,31 @@
 /* global define: false, ko: false */
 define([
-    "i18next", 'jquery'
+    "i18next", "jquery"
 ], function alertsViewModel(i18n, $) {
     "use strict";
 
-    var viewModel = {}, alerts = ko.observableArray(), alertClass = {
-        INFO: "alert alert-info bounce",
-        SUCCESS: "alert alert-success bounceIn",
-        WARN: "alert shake",
-        ERROR: "alert alert-danger tada",
-        FATAL: "alert alert-fatal tada"
-    }, labelClass = {
-        INFO: "label label-info",
-        SUCCESS: "label label-success",
-        WARN: "label label-warning",
-        ERROR: "label label-important",
-        FATAL: "label label-inverse"
-    };
+    var viewModel = {},
+        alerts = ko.observableArray(),
+        alertClass = {
+            INFO: "alert alert-info bounce",
+            SUCCESS: "alert alert-success bounceIn",
+            WARN: "alert shake",
+            ERROR: "alert alert-danger tada",
+            FATAL: "alert alert-fatal tada"
+        },
+        labelClass = {
+            INFO: "label label-info",
+            SUCCESS: "label label-success",
+            WARN: "label label-warning",
+            ERROR: "label label-important",
+            FATAL: "label label-inverse"
+        };
 
     function info(detail, summary) {
         alerts.push({
             alertClass: alertClass.INFO,
             labelClass: labelClass.INFO,
-            label: i18n.t('INFO'),
+            label: i18n.t("INFO"),
             summary: summary,
             detail: detail
         });
@@ -36,7 +39,7 @@ define([
         alerts.push({
             alertClass: alertClass.SUCCESS,
             labelClass: labelClass.SUCCESS,
-            label: i18n.t('SUCCESS'),
+            label: i18n.t("SUCCESS"),
             summary: summary,
             detail: detail
         });
@@ -46,7 +49,7 @@ define([
         alerts.push({
             alertClass: alertClass.WARN,
             labelClass: labelClass.WARN,
-            label: i18n.t('WARN'),
+            label: i18n.t("WARN"),
             summary: summary,
             detail: detail
         });
@@ -56,7 +59,7 @@ define([
         alerts.push({
             alertClass: alertClass.ERROR,
             labelClass: labelClass.ERROR,
-            label: i18n.t('ERROR'),
+            label: i18n.t("ERROR"),
             summary: summary,
             detail: detail
         });
@@ -66,7 +69,7 @@ define([
         alerts.push({
             alertClass: alertClass.FATAL,
             labelClass: labelClass.FATAL,
-            label: i18n.t('FATAL'),
+            label: i18n.t("FATAL"),
             summary: summary,
             detail: detail
         });
@@ -78,8 +81,8 @@ define([
 
     function removeAlert(index) {
         alerts.splice(index, 1);
-        if ($('#alerts')) {
-            $('#alerts').css("height", "auto");
+        if ($("#alerts")) {
+            $("#alerts").css("height", "auto");
         }
     }
 

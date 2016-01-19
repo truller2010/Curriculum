@@ -1,13 +1,13 @@
-#region Curriculum Header License
+#region KotikoBlog Header License
 
 // // Solution: Curriculum
 // // Project: Curriculum.Repository
 // //
 // // This file is included in the Curriculum solution.
 // //
-// // File created on 14/01/2016   14:54
+// // File created on 16/01/2016   23:12
 // //
-// // File Modified on 14/01/2016/   14:54
+// // File Modified on 16/01/2016/   23:12
 // 
 // // Permission is hereby granted, free of charge, to any person obtaining a copy
 // // of this software and associated documentation files (the "Software"), to deal
@@ -33,8 +33,8 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Curriculum.Core.Filter;
-using Curriculum.Core.Pager;
+using Curriculum.CoreUtils.Filter;
+using Curriculum.CoreUtils.Pager;
 using Curriculum.Models.Authentication.AuthenticationUsers;
 using Curriculum.Repository.Abstract;
 using NHibernate.Linq;
@@ -44,12 +44,10 @@ using NHibernate.Linq;
 namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
 {
     /// <summary>
-    /// 
     /// </summary>
     public class AuthenticationUsersRepository : HibernateDao, IAuthenticationUsersRepository
     {
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -59,7 +57,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         public IList<AuthenticationUsers> GetAll()
@@ -68,7 +65,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -78,7 +74,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="entities"></param>
         public void Save(IList<AuthenticationUsers> entities)
@@ -87,7 +82,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="entity"></param>
         public void Update(AuthenticationUsers entity)
@@ -96,7 +90,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="username"></param>
         /// <param name="hashedPassword"></param>
@@ -109,7 +102,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="CUCurriculum"></param>
         /// <param name="passOld"></param>
@@ -130,7 +122,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="pageRequest"></param>
         /// <returns></returns>
@@ -140,7 +131,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         public IQueryable<AuthenticationUsers> GetAllQueryable()
@@ -149,7 +139,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
@@ -161,7 +150,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
@@ -173,7 +161,6 @@ namespace Curriculum.Repository.Authentication.AuthenticationUsersRepository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="locked"></param>
         /// <returns></returns>
