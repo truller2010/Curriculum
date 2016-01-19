@@ -36,12 +36,13 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Spring.Web.Mvc;
 
 #endregion
 
 namespace Curriculum.Backend
 {
-    public class WebApiApplication : HttpApplication
+    public class WebApiApplication : SpringMvcApplication
     {
         protected void Application_Start()
         {
